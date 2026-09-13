@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://dbt4q18np7y0k"]
+
+[ext_resource type="Texture2D" uid="uid://dxvmdeirxto1" path="res://Sprites/oval.png" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c776r2n3h4jgq" path="res://Scenes/player.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://dwryx3kbwwlov" path="res://Sprites/deck level-01.png" id="1_kry3j"]
+[ext_resource type="Texture2D" uid="uid://p81fsujv4vgc" path="res://Sprites/up-arrow.png" id="3_21xkr"]
+[ext_resource type="PackedScene" uid="uid://darf0u3wh3au1" path="res://Scenes/interactable.tscn" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cykrix66j8vpb" path="res://Sprites/down-ararow.png" id="3_jjvhh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
+size = Vector2(1082, 307)
+
+[node name="Main" type="Node2D" unique_id=2112882412]
+
+[node name="DeckLevel" type="Node2D" parent="." unique_id=1013063569]
+process_mode = 4
+visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DeckLevel" unique_id=93005677]
+
+[node name="Sprite2D" type="Sprite2D" parent="DeckLevel/StaticBody2D" unique_id=1272633067]
+texture = ExtResource("1_kry3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeckLevel/StaticBody2D" unique_id=505472259]
+position = Vector2(0, 210.5)
+shape = SubResource("RectangleShape2D_l1l02")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DeckLevel/StaticBody2D" unique_id=21376395]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeckLevel/StaticBody2D/StaticBody2D" unique_id=251184238]
+build_mode = 1
+polygon = PackedVector2Array(-224, 95, -223, -356, 531, -355, 529, 77)
+
+[node name="Marker2D" type="Marker2D" parent="DeckLevel" unique_id=1267272660]
+position = Vector2(-212, 32)
+
+[node name="GoUp" parent="DeckLevel" unique_id=610343071 instance=ExtResource("3_h2yge")]
+position = Vector2(-292, 31)
+scale = Vector2(7.1952806, 7.2356305)
+interactRadius = 1.5
+interactType = "GoUp"
+
+[node name="ExtraIcon" type="Sprite2D" parent="DeckLevel/GoUp" unique_id=481803758]
+position = Vector2(7.500005, -17.176416)
+scale = Vector2(0.044679735, 0.044679735)
+texture = ExtResource("3_21xkr")
+
+[node name="ShipLevel" type="StaticBody2D" parent="." unique_id=1793590727]
+rotation = 1.5707964
+
+[node name="Sprite2D" type="Sprite2D" parent="ShipLevel" unique_id=303963373]
+rotation = 1.5707964
+texture = ExtResource("1_0xm2m")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShipLevel" unique_id=98235427]
+scale = Vector2(1, 1.0090446)
+build_mode = 1
+polygon = PackedVector2Array(-176.99998, 221.00002, -199, 84.00001, -202, -18.99999, -192, -146.99998, -159.00002, -287, -119.000015, -365, -61.00002, -430, -16.00002, -451, 19.99998, -451, 72.999985, -418.21738, 124.999985, -354.79105, 172.99998, -239, 198, -96.00001, 202, 57.999992, 172.00002, 246, 117.000015, 371, 78.000015, 422, 34.00002, 447, -3.99998, 457, -68.999985, 431, -123.999985, 364, -158.99998, 284)
+
+[node name="Interactables" type="Node2D" parent="ShipLevel" unique_id=346291633]
+
+[node name="PinkTriangle" parent="ShipLevel/Interactables" unique_id=1592992979 instance=ExtResource("3_h2yge")]
+position = Vector2(-28.99999, 265)
+rotation = -1.5707964
+scale = Vector2(4.3999977, 4.424672)
+
+[node name="Polygon2D" type="Polygon2D" parent="ShipLevel/Interactables/PinkTriangle" unique_id=168907451]
+position = Vector2(0.90909135, -1.1300267)
+color = Color(0.8467559, 0.24899548, 0.90862316, 1)
+polygon = PackedVector2Array(-6.818184, 5.6501365, -0.6818199, -4.746114, 4.772732, 5.6501365)
+
+[node name="PinkTriangle2" parent="ShipLevel/Interactables" unique_id=6015795 instance=ExtResource("3_h2yge")]
+position = Vector2(-24.000013, -323.99994)
+rotation = -1.5707964
+scale = Vector2(4.3999977, 4.424672)
+
+[node name="Polygon2D" type="Polygon2D" parent="ShipLevel/Interactables/PinkTriangle2" unique_id=1279343714]
+position = Vector2(0.90909135, -1.1300267)
+color = Color(0.8467559, 0.24899548, 0.90862316, 1)
+polygon = PackedVector2Array(-6.818184, 5.6501365, -0.6818199, -4.746114, 4.772732, 5.6501365)
+
+[node name="YellowSquare" parent="ShipLevel/Interactables" unique_id=351198961 instance=ExtResource("3_h2yge")]
+position = Vector2(-105.999985, 156.00003)
+rotation = -1.5707964
+scale = Vector2(4.3999977, 4.424672)
+
+[node name="ColorRect" type="ColorRect" parent="ShipLevel/Interactables/YellowSquare" unique_id=1594291896]
+offset_left = -5.454541
+offset_top = -4.972121
+offset_right = 5.0000105
+offset_bottom = 5.482431
+color = Color(0.88420695, 0.9270696, 0.5235205, 1)
+
+[node name="OrangeRect" parent="ShipLevel/Interactables" unique_id=1248435767 instance=ExtResource("3_h2yge")]
+position = Vector2(-90, 52.000015)
+rotation = -1.5707964
+scale = Vector2(4.3999977, 4.424672)
+
+[node name="ColorRect" type="ColorRect" parent="ShipLevel/Interactables/OrangeRect" unique_id=1259807495]
+offset_left = -5.6818175
+offset_top = -2.260054
+offset_right = 6.818189
+offset_bottom = 3.7086082
+color = Color(0.83449876, 0.5827985, 0.2972063, 1)
+
+[node name="GoDown" parent="ShipLevel" unique_id=1508820061 instance=ExtResource("3_h2yge")]
+position = Vector2(51, 0.9999979)
+rotation = -1.5707964
+scale = Vector2(4.3999977, 4.424672)
+interactType = "GoDown"
+
+[node name="ExtraIcon" type="Sprite2D" parent="ShipLevel/GoDown" unique_id=361558461]
+position = Vector2(7.500005, -17.176416)
+scale = Vector2(0.044679735, 0.044679735)
+texture = ExtResource("3_jjvhh")
+
+[node name="ColorRect" type="ColorRect" parent="ShipLevel/GoDown" unique_id=1621631762]
+offset_left = -11.818187
+offset_top = -5.8761406
+offset_right = 11.590913
+offset_bottom = 6.3281517
+color = Color(0.47287983, 0.47655392, 0.47564614, 1)
+
+[node name="Marker2D" type="Marker2D" parent="ShipLevel" unique_id=1375542035]
+position = Vector2(48, 70)
+
+[node name="Player" parent="." unique_id=891791948 instance=ExtResource("1_ig7tw")]
+z_index = 5
+position = Vector2(0, -66.99999)
+scale = Vector2(0.1, 0.1)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=2057952523]
+scale = Vector2(10.094146, 10.111902)
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
