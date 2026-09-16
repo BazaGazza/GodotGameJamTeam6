@@ -10,6 +10,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
 size = Vector2(1082, 307)
 
+[sub_resource type="DrawableTexture2D" id="DrawableTexture2D_8om4m"]
+
 [node name="Main" type="Node2D" unique_id=2112882412]
 
 [node name="DeckLevel" type="Node2D" parent="." unique_id=1013063569]
@@ -134,3 +136,14 @@ scale = Vector2(10.094146, 10.111902)
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
+
+[node name="Ocean Background" type="StaticBody2D" parent="." unique_id=353772947]
+z_index = -1
+position = Vector2(22, -12)
+scale = Vector2(6, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ocean Background" unique_id=1025804473]
+modulate = Color(0, 0, 1, 1)
+position = Vector2(-6.666667, 3.3333335)
+scale = Vector2(3.4140625, 1.5781251)
+texture = SubResource("DrawableTexture2D_8om4m")

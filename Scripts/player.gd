@@ -4,6 +4,10 @@ extends CharacterBody2D
 @export var baseSpeed = 100
 var movementSpeed
 
+var EventChance
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.currentPlayer = self
