@@ -10,7 +10,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
 size = Vector2(1082, 307)
 
-[sub_resource type="DrawableTexture2D" id="DrawableTexture2D_8om4m"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_gfaf0"]
+radius = 1.8185629
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_21xkr"]
+load_path = "res://.godot/imported/sea.jpeg-2d3adac23d308b6e2259358346c4f057.ctex"
 
 [node name="Main" type="Node2D" unique_id=2112882412]
 
@@ -106,6 +110,8 @@ offset_bottom = 3.7086082
 color = Color(0.83449876, 0.5827985, 0.2972063, 1)
 
 [node name="GoDown" parent="ShipLevel" unique_id=1508820061 instance=ExtResource("3_h2yge")]
+process_mode = 4
+visible = false
 position = Vector2(51, 0.9999979)
 rotation = -1.5707964
 scale = Vector2(4.3999977, 4.424672)
@@ -124,7 +130,15 @@ offset_bottom = 6.3281517
 color = Color(0.47287983, 0.47655392, 0.47564614, 1)
 
 [node name="Marker2D" type="Marker2D" parent="ShipLevel" unique_id=1375542035]
-position = Vector2(48, 70)
+process_mode = 4
+
+[node name="Mast" type="Area2D" parent="ShipLevel" unique_id=1003031291]
+position = Vector2(8.000001, 18)
+rotation = -1.5707964
+scale = Vector2(20.484375, 9.468751)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipLevel/Mast" unique_id=489825309]
+shape = SubResource("CircleShape2D_gfaf0")
 
 [node name="Player" parent="." unique_id=891791948 instance=ExtResource("1_ig7tw")]
 z_index = 5
@@ -144,6 +158,7 @@ scale = Vector2(6, 6)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ocean Background" unique_id=1025804473]
 modulate = Color(0, 0, 1, 1)
+z_index = -1
 position = Vector2(-6.666667, 3.3333335)
 scale = Vector2(3.4140625, 1.5781251)
-texture = SubResource("DrawableTexture2D_8om4m")
+texture = SubResource("CompressedTexture2D_21xkr")
