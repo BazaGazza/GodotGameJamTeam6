@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dcrba6u2lufxp"]
+
+[node name="Control" type="Control" unique_id=1480459118]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="." unique_id=1758141113]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Play Game"
+
+[node name="Sprite2D" type="Sprite2D" parent="Button" unique_id=2136876822]
