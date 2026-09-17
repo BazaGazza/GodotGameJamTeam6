@@ -3,7 +3,7 @@ var currentPlayer: Player
 @onready var mainScene: Node2D = get_tree().current_scene
 @onready var shipLevel = mainScene.get_node("ShipLevel")
 @onready var deckLevel = mainScene.get_node("DeckLevel")
-
+##@onready var StaticBody2D = $"Ocean Background"
 var currentScene = "Ship"
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+##	StaticBody2D.
 
 # the game timer probably goes in here too
 
