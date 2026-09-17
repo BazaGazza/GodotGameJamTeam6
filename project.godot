@@ -73,6 +73,8 @@ interact={
 
 [rendering]
 
+rendering_device/staging_buffer/texture_upload_region_size_px=128
+rendering_device/staging_buffer/texture_download_region_size_px=128
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

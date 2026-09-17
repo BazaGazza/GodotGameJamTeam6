@@ -153,12 +153,11 @@ position_smoothing_speed = 8.0
 
 [node name="Ocean Background" type="StaticBody2D" parent="." unique_id=353772947]
 z_index = -1
-position = Vector2(22, -12)
 scale = Vector2(6, 6)
 
 [node name="Sprite2D" type="Sprite2D" parent="Ocean Background" unique_id=1025804473]
 modulate = Color(0, 0, 1, 1)
 z_index = -1
-position = Vector2(-6.666667, 3.3333335)
-scale = Vector2(3.4140625, 1.5781251)
+position = Vector2(8.249988, 10.25)
+scale = Vector2(0.48285708, 0.56333333)
 texture = SubResource("CompressedTexture2D_21xkr")

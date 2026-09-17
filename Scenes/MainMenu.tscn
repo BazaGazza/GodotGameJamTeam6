@@ -10,8 +10,10 @@ grow_vertical = 2
 
 [node name="Play Button" type="Button" parent="." unique_id=1758141113]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 704.0
+offset_top = 445.0
+offset_right = 1090.0
+offset_bottom = 698.0
 text = "Play Game"
 
 [node name="Sprite2D" type="Sprite2D" parent="Play Button" unique_id=2136876822]
@@ -21,8 +23,10 @@ position = Vector2(334, 154)
 scale = Vector2(6, 6)
 
 [node name="Label" type="Label" parent="Main Title" unique_id=74551322]
-offset_right = 118.0
-offset_bottom = 23.0
+offset_left = 37.0
+offset_top = 4.0
+offset_right = 155.0
+offset_bottom = 27.0
 text = "MAST MAYHEM"
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1245475642]
