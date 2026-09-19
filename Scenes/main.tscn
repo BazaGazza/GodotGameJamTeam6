@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://p81fsujv4vgc" path="res://Sprites/up-arrow.png" id="3_21xkr"]
 [ext_resource type="PackedScene" uid="uid://darf0u3wh3au1" path="res://Scenes/interactable.tscn" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cykrix66j8vpb" path="res://Sprites/down-ararow.png" id="3_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://MinigamePanelBaseClass.tscn" id="7_6bp64"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
 size = Vector2(1082, 307)
@@ -133,7 +134,7 @@ color = Color(0.47287983, 0.47655392, 0.47564614, 1)
 process_mode = 4
 
 [node name="Mast" type="Area2D" parent="ShipLevel" unique_id=1003031291]
-position = Vector2(8.000001, 18)
+position = Vector2(0.37757322, 0)
 rotation = -1.5707964
 scale = Vector2(20.484375, 9.468751)
 
@@ -161,3 +162,9 @@ z_index = -1
 position = Vector2(8.249988, 10.25)
 scale = Vector2(0.48285708, 0.56333333)
 texture = SubResource("CompressedTexture2D_21xkr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Ocean Background/Sprite2D" unique_id=1577896261]
+layer = 5
+follow_viewport_enabled = true
+
+[node name="CanvasLayer" parent="Ocean Background/Sprite2D/CanvasLayer" unique_id=696335225 instance=ExtResource("7_6bp64")]
