@@ -20,6 +20,8 @@ func hidePrompt(hiddenPrompt):
 	if currentInteractable == hiddenPrompt:
 		currentInteractable = null
 
+
+
 func _input(event):
 	if event.is_action_pressed("interact") and currentInteractable:
 		var type: String = currentInteractable.interactType

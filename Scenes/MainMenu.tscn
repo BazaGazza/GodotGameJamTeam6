@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dcrba6u2lufxp"]
 
-[ext_resource type="Script" uid="uid://cruwnldyq76uk" path="res://Scenes/play_button.gd" id="1_tt5f1"]
+[ext_resource type="Script" uid="uid://cruwnldyq76uk" path="res://Scripts/play_button.gd" id="1_tt5f1"]
 
 [node name="Control" type="Node2D" unique_id=1969375548]
 
