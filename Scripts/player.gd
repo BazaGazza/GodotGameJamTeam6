@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var baseSpeed = 100
 var movementSpeed
+var doingMinigame:bool = false
 
 var EventChance
 
@@ -10,7 +11,9 @@ var EventChance
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameManager.currentPlayer = self
+	#GameManager.currentPlayer = self
+	GameManager.setCurrentPlayer(self)
+	
 	movementSpeed = baseSpeed
 
 

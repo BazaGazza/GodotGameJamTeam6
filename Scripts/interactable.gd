@@ -5,6 +5,7 @@ extends Area2D
 @export var interactType = "Nothing"
 @onready var extraIcon = get_node_or_null("ExtraIcon")
 
+var currentPlayer:Player = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,6 +14,11 @@ func _ready() -> void:
 		extraIcon.visible = false
 	$Icon.hide()
 	$CollisionShape2D.scale = Vector2(interactRadius, interactRadius)
+	
+	if GameManager.currentPlayer:
+		currentPlayer = GameManager.currentPlayer
+	else:
+		GameManager.playerReady.connect(func(newPlayer):currentPlayer = newPlayer)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,6 +33,8 @@ func _on_toggle_prompt(newInteractable):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is not Player: return
+	if currentPlayer.doingMinigame == true: return
+		
 	if extraIcon:
 		extraIcon.visible = true
 	$Icon.show()

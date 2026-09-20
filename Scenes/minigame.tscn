@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://c72r5doca5h3s"]
+
+[ext_resource type="Script" uid="uid://dg50ng6hn56b3" path="res://Scenes/minigame.gd" id="1_iqey4"]
+[ext_resource type="Texture2D" uid="uid://daq2iqr01g01y" path="res://Sprites/cannon-minigame.png" id="1_s7wve"]
+[ext_resource type="Texture2D" uid="uid://dmyi07pw085xq" path="res://Sprites/Ramming rod placeholder.png" id="3_5bepb"]
+[ext_resource type="Texture2D" uid="uid://cl08pyvpxgnf6" path="res://Sprites/cannonball.png" id="3_xt64r"]
+[ext_resource type="Texture2D" uid="uid://dodcyg4ujqyay" path="res://Sprites/powder-charge.png" id="4_iqey4"]
+
+[node name="minigame" type="Control" unique_id=1271992693]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iqey4")
+
+[node name="Background" type="ColorRect" parent="." unique_id=793932141]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="MainFrame" type="MarginContainer" parent="." unique_id=111304815]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="CannonMinigame" type="Control" parent="MainFrame" unique_id=1902821591]
+layout_mode = 2
+
+[node name="Cannon" type="TextureRect" parent="MainFrame/CannonMinigame" unique_id=1508803699]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -63.0
+offset_right = 224.0
+offset_bottom = 63.0
+grow_vertical = 2
+scale = Vector2(3.57, 3.57)
+pivot_offset = Vector2(0, 63)
+texture = ExtResource("1_s7wve")
+
+[node name="Rod" type="TextureRect" parent="MainFrame/CannonMinigame" unique_id=1631503637]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -534.0
+offset_top = -99.0
+offset_right = -359.0
+offset_bottom = 801.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset = Vector2(87.5, 450)
+texture = ExtResource("3_5bepb")
+
+[node name="Cannonball" type="TextureRect" parent="MainFrame/CannonMinigame" unique_id=1599863122]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.939011
+anchor_top = 0.4979592
+anchor_right = 0.939011
+anchor_bottom = 0.4979592
+offset_left = -198.0
+offset_top = -99.0
+offset_right = 2.0
+offset_bottom = 101.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(100, 100)
+texture = ExtResource("3_xt64r")
+metadata/_edit_use_anchors_ = true
+
+[node name="Powder" type="TextureRect" parent="MainFrame/CannonMinigame" unique_id=1945531844]
+layout_mode = 0
+offset_left = 1259.0
+offset_top = 386.0
+offset_right = 1416.0
+offset_bottom = 598.0
+texture = ExtResource("4_iqey4")
+
+[node name="HintText" type="Label" parent="." unique_id=2144077998]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_top = 125.0
+offset_right = 83.0
+offset_bottom = 80.0
+grow_horizontal = 2
+scale = Vector2(6, 6)
+pivot_offset = Vector2(80, 15)
+text = "load powder charge"
+horizontal_alignment = 1
+vertical_alignment = 1

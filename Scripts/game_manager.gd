@@ -1,13 +1,22 @@
 extends Node2D
 var currentPlayer: Player
-@onready var mainScene: Node2D = get_tree().current_scene
-@onready var shipLevel = mainScene.get_node("ShipLevel")
-@onready var deckLevel = mainScene.get_node("DeckLevel")
+
 ##@onready var StaticBody2D = $"Ocean Background"
 var currentScene = "Ship"
+var mainScene
+var shipLevel
+var deckLevel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	mainScene = get_tree().current_scene
+	if mainScene.name != "MainMenu":
+		# to test UI, and be able to run Ui scenes seperately without the game breaking
+		queue_free()
+		return
+		
+	shipLevel = mainScene.get_node("ShipLevel")
+	deckLevel = mainScene.get_node("DeckLevel")
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,6 +25,12 @@ func _process(delta: float) -> void:
 ##	StaticBody2D.
 
 # the game timer probably goes in here too
+
+
+signal playerReady(player)
+func setCurrentPlayer(player):
+	currentPlayer = player
+	playerReady.emit(player)
 
 func goDown():
 	currentPlayer.scale = Vector2(0.5,0.5)

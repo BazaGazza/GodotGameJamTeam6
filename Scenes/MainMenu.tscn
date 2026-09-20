@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cruwnldyq76uk" path="res://Scripts/play_button.gd" id="1_tt5f1"]
 
-[node name="Control" type="Node2D" unique_id=1969375548]
+[node name="MainMenu" type="Node2D" unique_id=1969375548]
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1245475642]
 position = Vector2(322, 154)

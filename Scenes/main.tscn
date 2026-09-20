@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://p81fsujv4vgc" path="res://Sprites/up-arrow.png" id="3_21xkr"]
 [ext_resource type="PackedScene" uid="uid://darf0u3wh3au1" path="res://Scenes/interactable.tscn" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cykrix66j8vpb" path="res://Sprites/down-ararow.png" id="3_jjvhh"]
-[ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://MinigamePanelBaseClass.tscn" id="7_6bp64"]
+[ext_resource type="Texture2D" uid="uid://5xp8cwqyesk3" path="res://Sprites/Placeholder cannon.png" id="5_6bp64"]
+[ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://Scenes/minigame.tscn" id="8_344ge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
 size = Vector2(1082, 307)
@@ -54,15 +55,18 @@ texture = ExtResource("3_21xkr")
 
 [node name="ShipLevel" type="StaticBody2D" parent="." unique_id=1793590727]
 rotation = 1.5707964
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ShipLevel" unique_id=303963373]
 rotation = 1.5707964
 texture = ExtResource("1_0xm2m")
+metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShipLevel" unique_id=98235427]
 scale = Vector2(1, 1.0090446)
 build_mode = 1
 polygon = PackedVector2Array(-176.99998, 221.00002, -199, 84.00001, -202, -18.99999, -192, -146.99998, -159.00002, -287, -119.000015, -365, -61.00002, -430, -16.00002, -451, 19.99998, -451, 72.999985, -418.21738, 124.999985, -354.79105, 172.99998, -239, 198, -96.00001, 202, 57.999992, 172.00002, 246, 117.000015, 371, 78.000015, 422, 34.00002, 447, -3.99998, 457, -68.999985, 431, -123.999985, 364, -158.99998, 284)
+metadata/_edit_lock_ = true
 
 [node name="Interactables" type="Node2D" parent="ShipLevel" unique_id=346291633]
 
@@ -98,17 +102,20 @@ offset_right = 5.0000105
 offset_bottom = 5.482431
 color = Color(0.88420695, 0.9270696, 0.5235205, 1)
 
-[node name="OrangeRect" parent="ShipLevel/Interactables" unique_id=1248435767 instance=ExtResource("3_h2yge")]
-position = Vector2(-90, 52.000015)
+[node name="Cannon" parent="ShipLevel/Interactables" unique_id=1248435767 instance=ExtResource("3_h2yge")]
+position = Vector2(-187, 47.00001)
 rotation = -1.5707964
 scale = Vector2(4.3999977, 4.424672)
+interactType = "CannonMinigame"
 
-[node name="ColorRect" type="ColorRect" parent="ShipLevel/Interactables/OrangeRect" unique_id=1259807495]
-offset_left = -5.6818175
-offset_top = -2.260054
-offset_right = 6.818189
-offset_bottom = 3.7086082
-color = Color(0.83449876, 0.5827985, 0.2972063, 1)
+[node name="TextureRect" type="TextureRect" parent="ShipLevel/Interactables/Cannon" unique_id=737618701]
+offset_left = -361.1366
+offset_top = -308.27148
+offset_right = 365.8634
+offset_bottom = 302.72852
+scale = Vector2(0.025, 0.025)
+pivot_offset = Vector2(363.5, 305.5)
+texture = ExtResource("5_6bp64")
 
 [node name="GoDown" parent="ShipLevel" unique_id=1508820061 instance=ExtResource("3_h2yge")]
 process_mode = 4
@@ -152,19 +159,15 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
-[node name="Ocean Background" type="StaticBody2D" parent="." unique_id=353772947]
-z_index = -1
-scale = Vector2(6, 6)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ocean Background" unique_id=1025804473]
+[node name="OceanBackground" type="Sprite2D" parent="." unique_id=1025804473]
 modulate = Color(0, 0, 1, 1)
 z_index = -1
-position = Vector2(8.249988, 10.25)
-scale = Vector2(0.48285708, 0.56333333)
+position = Vector2(49.499924, 61.5)
+scale = Vector2(2.8971424, 3.38)
 texture = SubResource("CompressedTexture2D_21xkr")
+metadata/_edit_lock_ = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Ocean Background/Sprite2D" unique_id=1577896261]
-layer = 5
-follow_viewport_enabled = true
+[node name="MinigameUI" type="CanvasLayer" parent="." unique_id=1198620330]
+visible = false
 
-[node name="CanvasLayer" parent="Ocean Background/Sprite2D/CanvasLayer" unique_id=696335225 instance=ExtResource("7_6bp64")]
+[node name="minigame" parent="MinigameUI" unique_id=1271992693 instance=ExtResource("8_344ge")]
