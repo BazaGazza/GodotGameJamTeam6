@@ -6,6 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://cl08pyvpxgnf6" path="res://Sprites/cannonball.png" id="3_xt64r"]
 [ext_resource type="Texture2D" uid="uid://dodcyg4ujqyay" path="res://Sprites/powder-charge.png" id="4_iqey4"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
+size = Vector2(152, 218)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l1l02"]
+distance = -200.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iqey4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_id8w1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yx24v"]
+
 [node name="minigame" type="Control" unique_id=1271992693]
 layout_mode = 3
 anchors_preset = 15
@@ -13,6 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_iqey4")
 
 [node name="Background" type="ColorRect" parent="." unique_id=793932141]
@@ -38,6 +51,7 @@ theme_override_constants/margin_bottom = 50
 
 [node name="CannonMinigame" type="Control" parent="MainFrame" unique_id=1902821591]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="Cannon" type="TextureRect" parent="MainFrame/CannonMinigame" unique_id=1508803699]
 layout_mode = 1
@@ -51,6 +65,12 @@ grow_vertical = 2
 scale = Vector2(3.57, 3.57)
 pivot_offset = Vector2(0, 63)
 texture = ExtResource("1_s7wve")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MainFrame/CannonMinigame/Cannon" unique_id=604367992]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainFrame/CannonMinigame/Cannon/StaticBody2D" unique_id=284108390]
+scale = Vector2(0.99999994, 0.99999994)
+polygon = PackedVector2Array(16.80672, 0.53500366, 222.96918, -0.025215149, 223.24928, 19.582626, 25.770308, 20.422958, 24.369745, 101.935555, 223.24928, 102.215675, 224.92996, 124.90475, -0.56022453, 124.90475, -1.4005604, 0.53500366)
 
 [node name="Rod" type="TextureRect" parent="MainFrame/CannonMinigame" unique_id=1631503637]
 layout_mode = 1
@@ -87,13 +107,18 @@ pivot_offset = Vector2(100, 100)
 texture = ExtResource("3_xt64r")
 metadata/_edit_use_anchors_ = true
 
-[node name="Powder" type="TextureRect" parent="MainFrame/CannonMinigame" unique_id=1945531844]
-layout_mode = 0
-offset_left = 1259.0
-offset_top = 386.0
-offset_right = 1416.0
-offset_bottom = 598.0
+[node name="Powder" type="CharacterBody2D" parent="MainFrame/CannonMinigame" unique_id=994263630]
+position = Vector2(1259, 322)
+collision_layer = 4
+collision_mask = 4
+input_pickable = true
+motion_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/CannonMinigame/Powder" unique_id=1226604046]
 texture = ExtResource("4_iqey4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Powder" unique_id=276228564]
+shape = SubResource("RectangleShape2D_l1l02")
 
 [node name="HintText" type="Label" parent="." unique_id=2144077998]
 layout_mode = 1
@@ -110,3 +135,36 @@ pivot_offset = Vector2(80, 15)
 text = "load powder charge"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BottomBoundary" type="StaticBody2D" parent="." unique_id=893639299]
+position = Vector2(0, 1077)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary" unique_id=416132219]
+shape = SubResource("WorldBoundaryShape2D_l1l02")
+
+[node name="TopBoundary" type="StaticBody2D" parent="." unique_id=739690665]
+rotation = 3.1415927
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBoundary" unique_id=2068006161]
+shape = SubResource("WorldBoundaryShape2D_iqey4")
+
+[node name="LeftBoundary" type="StaticBody2D" parent="." unique_id=1078280651]
+rotation = 1.5707964
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBoundary" unique_id=1531564049]
+shape = SubResource("WorldBoundaryShape2D_id8w1")
+
+[node name="RightBoundary" type="StaticBody2D" parent="." unique_id=222977560]
+position = Vector2(1917, 0)
+rotation = -1.5707964
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBoundary" unique_id=383032368]
+shape = SubResource("WorldBoundaryShape2D_yx24v")

@@ -7,6 +7,7 @@
 radius = 90.02222
 
 [node name="Player" type="CharacterBody2D" unique_id=891791948]
+motion_mode = 1
 safe_margin = 2.0
 script = ExtResource("1_onrkg")
 baseSpeed = 150

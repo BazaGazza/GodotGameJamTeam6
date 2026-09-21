@@ -15,15 +15,54 @@ func _ready() -> void:
 	InteractionManager.minigameScript = self
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+var dragNode = null
+var dragGoal = null
+var dragOffset = null
+
+func moveDrag(delta):
+	if dragOffset == null: return
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		dragNode.velocity = Vector2.ZERO
+		dragNode = null
+		return
+
+	dragGoal = dragNode.get_global_mouse_position() + dragOffset
+	dragNode.velocity = ((dragGoal - dragNode.global_position).normalized() * 1200)
+	dragNode.move_and_slide()
+
 func _process(delta: float) -> void:
-	pass
+	if dragNode != null:
+		moveDrag(delta)
+		
 
 
 func cannonMinigame():
 	var minigameFrame = mainFrame.get_node("CannonMinigame")
-	print('cannon minigame called')
-	pass
+	hintText.text = "load the powder charge..."
+	
+	var powderBody = minigameFrame.get_node("Powder")
+	var rodUI = minigameFrame.get_node("Rod")
+	var cannonballUI = minigameFrame.get_node("Cannonball")
+	
+	# i have to use a dictionary to store the variables,
+	#because for lambda functions like 'dragConnection' when it's created (everytime guiinput is called), it will make it's own set of variables,
+	# so 'dragging' will get set to false everytime.
+	# a dictioanry works because it doesn't clone the dictionary, only gets a reference when the lambda functoin is called
+	var variables = {
+		"powderFinished":false
+	}
+
+	var dragConnection = powderBody.input_event.connect(func(viewport,event,shape_idx):
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+			if event.is_pressed():
+				dragNode = powderBody
+				dragOffset = powderBody.global_position - powderBody.get_global_mouse_position()
+	)
+	
+	while not variables.powderFinished:
+		await get_tree().process_frame
+	
+	return
 
 var gameFunctions = {
 	"CannonMinigame": cannonMinigame,
@@ -46,6 +85,6 @@ func startGame(gameType:String):
 		else:
 			child.visible = false
 	
-	gameFunction.call()
-	# probably yield or wait here, to reset movement speed after minigame
-	#currentPlayer.movementSpeed = currentPlayer.baseSpeed
+	await gameFunction.call()
+	currentPlayer.movementSpeed = currentPlayer.baseSpeed
+	currentPlayer.doingMinigame = false
