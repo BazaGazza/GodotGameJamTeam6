@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b84bbpqib4f1y"]
+
+[ext_resource type="PackedScene" uid="uid://darf0u3wh3au1" path="res://Scenes/interactable.tscn" id="1_p7g3v"]
+[ext_resource type="Texture2D" uid="uid://cj16xbppx0nsv" path="res://Sprites/Cannon top view place holder.png" id="2_0558p"]
+
+[node name="Interactable" unique_id=610343071 instance=ExtResource("1_p7g3v")]
+interactType = "CannonMinigame"
+
+[node name="Icon" parent="." index="1" unique_id=2102358570]
+offset_left = 5.0
+offset_top = -13.921927
+offset_right = 11.960968
+offset_bottom = -6.9609594
+
+[node name="TextureRect" type="TextureRect" parent="." index="2" unique_id=2049020952]
+offset_left = -363.40927
+offset_top = -314.3736
+offset_right = 363.59073
+offset_bottom = 790.6264
+scale = Vector2(0.02, 0.02)
+pivot_offset = Vector2(363.5, 305.5)
+texture = ExtResource("2_0558p")
+stretch_mode = 3
