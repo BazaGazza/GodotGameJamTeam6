@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://b4u1svlmtf02y"]
+
+[ext_resource type="FontFile" uid="uid://bfn5fns14rq66" path="res://Fonts/FOT-RodinBokutoh Pro B.otf" id="1_amlv4"]
+
+[resource]
+Label/colors/font_color = Color(0.6561719, 0.925, 0.71591145, 1)
+Label/colors/font_outline_color = Color(0.34509805, 1, 0.53333336, 0.32941177)
+Label/constants/outline_size = 4
+Label/fonts/font = ExtResource("1_amlv4")
+RichTextLabel/colors/default_color = Color(0.654902, 0.9254902, 0.7176471, 1)
+RichTextLabel/colors/font_outline_color = Color(0.34509805, 1, 0.53333336, 0.32941177)
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/fonts/normal_font = ExtResource("1_amlv4")

@@ -5,9 +5,28 @@
 [ext_resource type="Texture2D" uid="uid://dmyi07pw085xq" path="res://Sprites/Ramming rod placeholder.png" id="3_5bepb"]
 [ext_resource type="Texture2D" uid="uid://cl08pyvpxgnf6" path="res://Sprites/cannonball.png" id="3_xt64r"]
 [ext_resource type="Texture2D" uid="uid://dodcyg4ujqyay" path="res://Sprites/powder-charge.png" id="4_iqey4"]
+[ext_resource type="Theme" uid="uid://b4u1svlmtf02y" path="res://new_theme.tres" id="6_yx24v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oood0"]
+size = Vector2(4.677889, 84.22968)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_id8w1"]
+size = Vector2(5.7423134, 84.22968)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
 size = Vector2(152, 218)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l1l02"]
+radius = 148.63715
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufkp0"]
+size = Vector2(201, 161)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yx24v"]
+size = Vector2(641, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6vwk"]
+size = Vector2(206, 161)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l1l02"]
 distance = -200.0
@@ -67,45 +86,43 @@ pivot_offset = Vector2(0, 63)
 texture = ExtResource("1_s7wve")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MainFrame/CannonMinigame/Cannon" unique_id=604367992]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainFrame/CannonMinigame/Cannon/StaticBody2D" unique_id=284108390]
 scale = Vector2(0.99999994, 0.99999994)
 polygon = PackedVector2Array(16.80672, 0.53500366, 222.96918, -0.025215149, 223.24928, 19.582626, 25.770308, 20.422958, 24.369745, 101.935555, 223.24928, 102.215675, 224.92996, 124.90475, -0.56022453, 124.90475, -1.4005604, 0.53500366)
 
-[node name="Rod" type="TextureRect" parent="MainFrame/CannonMinigame" unique_id=1631503637]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -534.0
-offset_top = -99.0
-offset_right = -359.0
-offset_bottom = 801.0
-grow_horizontal = 0
-grow_vertical = 2
-rotation = -1.5707964
-pivot_offset = Vector2(87.5, 450)
-texture = ExtResource("3_5bepb")
+[node name="PowderArea" type="Area2D" parent="MainFrame/CannonMinigame/Cannon" unique_id=674741054]
+collision_layer = 4
+collision_mask = 4
 
-[node name="Cannonball" type="TextureRect" parent="MainFrame/CannonMinigame" unique_id=1599863122]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.939011
-anchor_top = 0.4979592
-anchor_right = 0.939011
-anchor_bottom = 0.4979592
-offset_left = -198.0
-offset_top = -99.0
-offset_right = 2.0
-offset_bottom = 101.0
-grow_horizontal = 0
-grow_vertical = 2
-scale = Vector2(1.5, 1.5)
-pivot_offset = Vector2(100, 100)
-texture = ExtResource("3_xt64r")
-metadata/_edit_use_anchors_ = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Cannon/PowderArea" unique_id=315124262]
+position = Vector2(26.512594, 61.78147)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_oood0")
+
+[node name="BallArea1" type="Area2D" parent="MainFrame/CannonMinigame/Cannon" unique_id=1696386074]
+position = Vector2(119.04761, -0.025217606)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Cannon/BallArea1" unique_id=435101305]
+position = Vector2(48.459396, 61.904755)
+scale = Vector2(0.9999991, 0.9999991)
+shape = SubResource("RectangleShape2D_id8w1")
+debug_color = Color(0.70196074, 0, 0, 0.41960785)
+
+[node name="BallArea2" type="Area2D" parent="MainFrame/CannonMinigame/Cannon" unique_id=882430029]
+position = Vector2(18.207283, -2.5462258)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Cannon/BallArea2" unique_id=1365130260]
+position = Vector2(48.459396, 61.904755)
+scale = Vector2(0.9999991, 0.9999991)
+shape = SubResource("RectangleShape2D_id8w1")
+debug_color = Color(0.70196074, 0, 0, 0.41960785)
 
 [node name="Powder" type="CharacterBody2D" parent="MainFrame/CannonMinigame" unique_id=994263630]
 position = Vector2(1259, 322)
@@ -120,51 +137,101 @@ texture = ExtResource("4_iqey4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Powder" unique_id=276228564]
 shape = SubResource("RectangleShape2D_l1l02")
 
-[node name="HintText" type="Label" parent="." unique_id=2144077998]
+[node name="Cannonball" type="CharacterBody2D" parent="MainFrame/CannonMinigame" unique_id=2121899613]
+position = Vector2(1596, 314)
+collision_layer = 4
+collision_mask = 4
+input_pickable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/CannonMinigame/Cannonball" unique_id=545251472]
+scale = Vector2(1.4400048, 1.4400048)
+texture = ExtResource("3_xt64r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Cannonball" unique_id=283848326]
+scale = Vector2(0.9727748, 0.9727748)
+shape = SubResource("CircleShape2D_l1l02")
+
+[node name="Rod" type="CharacterBody2D" parent="MainFrame/CannonMinigame" unique_id=328639442]
+position = Vector2(1400, 873)
+collision_layer = 4
+collision_mask = 4
+input_pickable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/CannonMinigame/Rod" unique_id=1009507558]
+rotation = -1.5707964
+texture = ExtResource("3_5bepb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Rod" unique_id=1118059071]
+position = Vector2(-316.5, 3.5)
+shape = SubResource("RectangleShape2D_ufkp0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Rod" unique_id=1342397052]
+position = Vector2(97.5, -4)
+shape = SubResource("RectangleShape2D_yx24v")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/CannonMinigame/Rod" unique_id=88447574]
+scale = Vector2(1.0199853, 1.1130118)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Rod/Area2D" unique_id=2087082269]
+position = Vector2(-312, 4.5)
+shape = SubResource("RectangleShape2D_f6vwk")
+debug_color = Color(0.70196074, 0, 0, 0.41960785)
+
+[node name="HintText" type="RichTextLabel" parent="." unique_id=1429109670]
+z_index = 10
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -77.0
-offset_top = 125.0
-offset_right = 83.0
-offset_bottom = 80.0
+anchor_left = 0.44811198
+anchor_top = 0.1
+anchor_right = 0.55188805
+anchor_bottom = 0.10061728
+offset_left = -0.75
+offset_right = 45.25
+offset_bottom = 16.333336
 grow_horizontal = 2
 scale = Vector2(6, 6)
-pivot_offset = Vector2(80, 15)
-text = "load powder charge"
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = ExtResource("6_yx24v")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="BottomBoundary" type="StaticBody2D" parent="." unique_id=893639299]
+[node name="Boundaries" type="Node" parent="." unique_id=1598324448]
+
+[node name="BottomBoundary" type="StaticBody2D" parent="Boundaries" unique_id=893639299]
 position = Vector2(0, 1077)
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary" unique_id=416132219]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BottomBoundary" unique_id=416132219]
 shape = SubResource("WorldBoundaryShape2D_l1l02")
 
-[node name="TopBoundary" type="StaticBody2D" parent="." unique_id=739690665]
-rotation = 3.1415927
+[node name="TopBoundary" type="StaticBody2D" parent="Boundaries" unique_id=739690665]
+rotation = -3.1415925
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBoundary" unique_id=2068006161]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/TopBoundary" unique_id=2068006161]
 shape = SubResource("WorldBoundaryShape2D_iqey4")
 
-[node name="LeftBoundary" type="StaticBody2D" parent="." unique_id=1078280651]
+[node name="LeftBoundary" type="StaticBody2D" parent="Boundaries" unique_id=1078280651]
 rotation = 1.5707964
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBoundary" unique_id=1531564049]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/LeftBoundary" unique_id=1531564049]
 shape = SubResource("WorldBoundaryShape2D_id8w1")
 
-[node name="RightBoundary" type="StaticBody2D" parent="." unique_id=222977560]
+[node name="RightBoundary" type="StaticBody2D" parent="Boundaries" unique_id=222977560]
 position = Vector2(1917, 0)
 rotation = -1.5707964
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBoundary" unique_id=383032368]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/RightBoundary" unique_id=383032368]
 shape = SubResource("WorldBoundaryShape2D_yx24v")
