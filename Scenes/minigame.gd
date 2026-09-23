@@ -5,18 +5,34 @@ extends Control
 
 var currentPlayer:Player = null
 
+var defaultPositions = {}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if GameManager.currentPlayer:
 		currentPlayer = GameManager.currentPlayer
 	else:
 		GameManager.playerReady.connect(func(newPlayer):currentPlayer = newPlayer)
-		
 	InteractionManager.minigameScript = self
+	savePositions(mainFrame)
 
-func fadeLabel(label,transparency):
+	
+
+	
+func savePositions(parent):
+	for child in parent.get_children():
+		if child is CharacterBody2D:
+			defaultPositions[child] = child.position
+		savePositions(child)
+
+func resetPositions():
+	for child in defaultPositions:
+		var pos = defaultPositions[child]
+		child.position = pos
+
+func fadeLabel(label,transparency,duration = 1):
 	var tween = create_tween()
-	tween.tween_property(label,"modulate:a",transparency, 2)
+	tween.tween_property(label,"modulate:a",transparency,duration)
 	pass
 	
 func richTextWavy(text:String):
@@ -76,11 +92,9 @@ func _physics_process(delta: float) -> void:
 	currentRamSpeed = clamp(currentRamSpeed-(delta*decay),0,currentRamSpeed)
 	
 	cannonballBody.velocity = ramVelocity
-	ramVelocity = ramVelocity.move_toward(Vector2.ZERO, 500 * delta)
+	ramVelocity = ramVelocity.move_toward(Vector2.ZERO, 1000 * delta)
 	cannonballBody.move_and_slide()
 	
-
-
 func cannonMinigame():
 	var minigameFrame = mainFrame.get_node("CannonMinigame")
 	hintText.modulate.a = 0
@@ -99,7 +113,6 @@ func cannonMinigame():
 	var variables = {
 		"dragFinished":false
 	}
-	
 
 	var dragFunction = func(viewport,event,shape_idx,newBody):
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -146,15 +159,12 @@ func cannonMinigame():
 	
 	var ramFunction = func(body):
 		if body.name == "Cannonball":
-			ramVelocity = Vector2(-currentRamSpeed*8,0)
+			ramVelocity = Vector2(-currentRamSpeed*12,0)
 			currentRamSpeed = 0
 	var finishRamFunction = func(body):
 		if body.name == "Cannonball":
 			variables.dragFinished = true
 
-		
-
-			
 	rodBody.get_node("Area2D").body_entered.connect(ramFunction)
 	minigameFrame.get_node("Cannon/BallArea2").body_entered.connect(finishRamFunction)
 	
@@ -162,9 +172,10 @@ func cannonMinigame():
 		await get_tree().process_frame
 		
 	rodBody.get_node("Area2D").body_entered.disconnect(ramFunction)
-	
+	fadeLabel(hintText,0,0.5)
 	print("Finished Cannon Minigame")
 	
+	await get_tree().create_timer(1.0).timeout
 	return
 
 var gameFunctions = {
@@ -174,7 +185,7 @@ var gameFunctions = {
 
 func startGame(gameType:String):
 	if currentPlayer.doingMinigame == true: return
-	
+	resetPositions()
 	currentPlayer.movementSpeed = 0
 	currentPlayer.doingMinigame = true
 	

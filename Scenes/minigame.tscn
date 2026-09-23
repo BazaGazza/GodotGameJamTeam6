@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dg50ng6hn56b3" path="res://Scenes/minigame.gd" id="1_iqey4"]
 [ext_resource type="Texture2D" uid="uid://daq2iqr01g01y" path="res://Sprites/cannon-minigame.png" id="1_s7wve"]
 [ext_resource type="Texture2D" uid="uid://dmyi07pw085xq" path="res://Sprites/Ramming rod placeholder.png" id="3_5bepb"]
-[ext_resource type="Texture2D" uid="uid://cl08pyvpxgnf6" path="res://Sprites/cannonball.png" id="3_xt64r"]
-[ext_resource type="Texture2D" uid="uid://dodcyg4ujqyay" path="res://Sprites/powder-charge.png" id="4_iqey4"]
+[ext_resource type="Texture2D" uid="uid://bt6aeo8y07b36" path="res://Sprites/Gun powder charge bag placeholder.png" id="3_id8w1"]
+[ext_resource type="Texture2D" uid="uid://cgylpd8sre7jd" path="res://Sprites/Cannon ball.png" id="4_yx24v"]
 [ext_resource type="Theme" uid="uid://b4u1svlmtf02y" path="res://new_theme.tres" id="6_yx24v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oood0"]
@@ -14,7 +14,7 @@ size = Vector2(4.677889, 84.22968)
 size = Vector2(5.7423134, 84.22968)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
-size = Vector2(152, 218)
+size = Vector2(194, 205)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l1l02"]
 radius = 148.63715
@@ -114,7 +114,7 @@ shape = SubResource("RectangleShape2D_id8w1")
 debug_color = Color(0.70196074, 0, 0, 0.41960785)
 
 [node name="BallArea2" type="Area2D" parent="MainFrame/CannonMinigame/Cannon" unique_id=882430029]
-position = Vector2(18.207283, -2.5462258)
+position = Vector2(29.971989, -2.5462258)
 collision_layer = 4
 collision_mask = 4
 
@@ -132,9 +132,11 @@ input_pickable = true
 motion_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="MainFrame/CannonMinigame/Powder" unique_id=1226604046]
-texture = ExtResource("4_iqey4")
+scale = Vector2(0.28185922, 0.2786008)
+texture = ExtResource("3_id8w1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Powder" unique_id=276228564]
+position = Vector2(1, 1.5)
 shape = SubResource("RectangleShape2D_l1l02")
 
 [node name="Cannonball" type="CharacterBody2D" parent="MainFrame/CannonMinigame" unique_id=2121899613]
@@ -144,8 +146,8 @@ collision_mask = 4
 input_pickable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="MainFrame/CannonMinigame/Cannonball" unique_id=545251472]
-scale = Vector2(1.4400048, 1.4400048)
-texture = ExtResource("3_xt64r")
+scale = Vector2(0.36000717, 0.36000717)
+texture = ExtResource("4_yx24v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Cannonball" unique_id=283848326]
 scale = Vector2(0.9727748, 0.9727748)
