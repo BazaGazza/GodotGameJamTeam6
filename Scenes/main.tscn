@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://p81fsujv4vgc" path="res://Sprites/up-arrow.png" id="3_21xkr"]
 [ext_resource type="PackedScene" uid="uid://darf0u3wh3au1" path="res://Scenes/interactable.tscn" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cykrix66j8vpb" path="res://Sprites/down-ararow.png" id="3_jjvhh"]
-[ext_resource type="Texture2D" uid="uid://cj16xbppx0nsv" path="res://Sprites/Cannon top view place holder.png" id="5_344ge"]
+[ext_resource type="PackedScene" uid="uid://b84bbpqib4f1y" path="res://Scenes/interactable-Cannon.tscn" id="5_344ge"]
 [ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://Scenes/minigame.tscn" id="8_344ge"]
+[ext_resource type="Script" uid="uid://b5a6woogfgv1d" path="res://Scenes/backgrounds.gd" id="8_hptm8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
 size = Vector2(1082, 307)
@@ -102,21 +103,10 @@ offset_right = 5.0000105
 offset_bottom = 5.482431
 color = Color(0.88420695, 0.9270696, 0.5235205, 1)
 
-[node name="Cannon" parent="ShipLevel/Interactables" unique_id=1248435767 instance=ExtResource("3_h2yge")]
-position = Vector2(-187, 47.00001)
+[node name="Cannon" parent="ShipLevel/Interactables" unique_id=1985657767 instance=ExtResource("5_344ge")]
+position = Vector2(-162, 71.00001)
 rotation = -1.5707964
-scale = Vector2(4.3999977, 4.424672)
-interactType = "CannonMinigame"
-
-[node name="TextureRect" type="TextureRect" parent="ShipLevel/Interactables/Cannon" unique_id=737618701]
-offset_left = -363.40927
-offset_top = -314.3736
-offset_right = 363.59073
-offset_bottom = 790.6264
-scale = Vector2(0.02, 0.02)
-pivot_offset = Vector2(363.5, 305.5)
-texture = ExtResource("5_344ge")
-stretch_mode = 3
+scale = Vector2(4, 4.024)
 
 [node name="GoDown" parent="ShipLevel" unique_id=1508820061 instance=ExtResource("3_h2yge")]
 process_mode = 4
@@ -160,13 +150,23 @@ zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
-[node name="OceanBackground" type="Sprite2D" parent="." unique_id=1025804473]
+[node name="Backgrounds" type="Node2D" parent="." unique_id=1368142683]
+scale = Vector2(2.3, 1)
+script = ExtResource("8_hptm8")
+
+[node name="OceanBackground" type="Sprite2D" parent="Backgrounds" unique_id=1025804473]
 modulate = Color(0, 0, 1, 1)
 z_index = -1
 position = Vector2(49.499924, 61.5)
 scale = Vector2(2.8971424, 3.38)
 texture = SubResource("CompressedTexture2D_21xkr")
-metadata/_edit_lock_ = true
+
+[node name="OceanBackground2" type="Sprite2D" parent="Backgrounds" unique_id=792416354]
+modulate = Color(0, 0, 1, 1)
+z_index = -1
+position = Vector2(1570.0001, 62.000004)
+scale = Vector2(2.8971424, 3.38)
+texture = SubResource("CompressedTexture2D_21xkr")
 
 [node name="MinigameUI" type="CanvasLayer" parent="." unique_id=1198620330]
 visible = false
