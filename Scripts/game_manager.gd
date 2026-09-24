@@ -1,7 +1,7 @@
 extends Node2D
 var currentPlayer: Player
 
-##@onready var StaticBody2D = $"Ocean Background"
+
 var currentScene = "Ship"
 var mainScene
 var shipLevel
