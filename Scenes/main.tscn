@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://darf0u3wh3au1" path="res://Scenes/interactable.tscn" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cykrix66j8vpb" path="res://Sprites/down-ararow.png" id="3_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://b84bbpqib4f1y" path="res://Scenes/interactable-Cannon.tscn" id="5_344ge"]
+[ext_resource type="PackedScene" uid="uid://dchbe4xnf3xjo" path="res://Scenes/enemy_ship.tscn" id="7_hptm8"]
 [ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://Scenes/minigame.tscn" id="8_344ge"]
 [ext_resource type="Script" uid="uid://b5a6woogfgv1d" path="res://Scenes/backgrounds.gd" id="8_hptm8"]
 
@@ -139,20 +140,20 @@ scale = Vector2(20.484375, 9.468751)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShipLevel/Mast" unique_id=489825309]
 shape = SubResource("CircleShape2D_gfaf0")
 
+[node name="EnemyShips" type="Node" parent="ShipLevel" unique_id=565564427]
+
+[node name="EnemyShip" parent="ShipLevel/EnemyShips" unique_id=1293328923 instance=ExtResource("7_hptm8")]
+position = Vector2(-95, -441)
+
 [node name="Player" parent="." unique_id=891791948 instance=ExtResource("1_ig7tw")]
 z_index = 5
 position = Vector2(0, -66.99999)
 scale = Vector2(0.1, 0.1)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=2057952523]
-scale = Vector2(10.094146, 10.111902)
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true
-position_smoothing_speed = 8.0
-
 [node name="Backgrounds" type="Node2D" parent="." unique_id=1368142683]
 scale = Vector2(2.3, 1)
 script = ExtResource("8_hptm8")
+metadata/_edit_lock_ = true
 
 [node name="OceanBackground" type="Sprite2D" parent="Backgrounds" unique_id=1025804473]
 modulate = Color(0, 0, 1, 1)
@@ -160,6 +161,7 @@ z_index = -1
 position = Vector2(49.499924, 61.5)
 scale = Vector2(2.8971424, 3.38)
 texture = SubResource("CompressedTexture2D_21xkr")
+metadata/_edit_lock_ = true
 
 [node name="OceanBackground2" type="Sprite2D" parent="Backgrounds" unique_id=792416354]
 modulate = Color(0, 0, 1, 1)

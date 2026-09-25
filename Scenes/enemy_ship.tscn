@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dchbe4xnf3xjo"]
+
+[ext_resource type="Script" uid="uid://cars2rhhgax04" path="res://Scenes/enemy_ship.gd" id="1_fqvla"]
+[ext_resource type="Texture2D" uid="uid://bexpiht4j27k5" path="res://Sprites/Placeholder enemy ship.png" id="1_tmwji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
+
+[node name="EnemyShip" type="Node2D" unique_id=1293328923]
+script = ExtResource("1_fqvla")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1186528619]
+scale = Vector2(0.16000126, 0.16000126)
+texture = ExtResource("1_tmwji")
+
+[node name="ShipHurtbox" type="Area2D" parent="." unique_id=1650287822]
+scale = Vector2(8.56, 8.56)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipHurtbox" unique_id=865381665]
+shape = SubResource("RectangleShape2D_l1l02")

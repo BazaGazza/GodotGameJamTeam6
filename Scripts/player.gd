@@ -5,6 +5,10 @@ extends CharacterBody2D
 var movementSpeed
 var doingMinigame:bool = false
 
+@onready var playerCamera:Camera2D = $Camera2D
+@onready var playerSprite = $AnimatedSprite2D
+
+
 var EventChance
 
 
@@ -13,7 +17,7 @@ var EventChance
 func _ready() -> void:
 	#GameManager.currentPlayer = self
 	GameManager.setCurrentPlayer(self)
-	
+	playerCamera.set_meta("DefaultOffset",playerCamera.offset.y)
 	movementSpeed = baseSpeed
 
 
@@ -29,8 +33,10 @@ func _physics_process(delta:float):
 	velocity = Vector2.ZERO
 	
 	if Input.is_action_pressed("move_right"):
+		playerSprite.flip_h = true
 		velocity.x += 1
 	if Input.is_action_pressed("move_left"):
+		playerSprite.flip_h = false
 		velocity.x -= 1
 		
 	if GameManager.currentScene == "Ship":
@@ -40,7 +46,10 @@ func _physics_process(delta:float):
 			velocity.y += 1
 
 	
-	if velocity.length() > 0:
+	if velocity.length() > 0 and movementSpeed > 0:
 		velocity = velocity.normalized()*movementSpeed
+		playerSprite.play("walk")
+	else:
+		playerSprite.animation = "idle"
 
 	move_and_slide()

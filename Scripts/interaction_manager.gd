@@ -29,15 +29,16 @@ func _input(event):
 		print("Interacted with: "+type)
 		
 		#hides the prompt just selected
+		var saveInteractable = currentInteractable
+		
 		currentInteractable = null
 		hideOtherPrompts.emit(null)
-		
 		if type == "GoDown":
 			GameManager.goDown()
 		elif type == "GoUp":
 			GameManager.goUp()
 		else:
-			minigameScript.startGame(type)
+			minigameScript.startGame(type,saveInteractable)
 		#hardcode the up and down, but otherwise i think i would want a way to store functions in a dictionary
 		# and call the function for the minigame from there
 		

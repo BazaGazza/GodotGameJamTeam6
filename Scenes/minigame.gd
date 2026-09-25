@@ -30,7 +30,7 @@ func resetPositions():
 		var pos = defaultPositions[child]
 		child.position = pos
 
-func fadeLabel(label,transparency,duration = 1):
+func fadeLabel(label,transparency,duration = 0.65):
 	var tween = create_tween()
 	tween.tween_property(label,"modulate:a",transparency,duration)
 	pass
@@ -183,7 +183,7 @@ var gameFunctions = {
 }
 
 
-func startGame(gameType:String):
+func startGame(gameType:String,interactableObject:Interactable):
 	if currentPlayer.doingMinigame == true: return
 	resetPositions()
 	currentPlayer.movementSpeed = 0
@@ -200,6 +200,20 @@ func startGame(gameType:String):
 			child.visible = false
 	
 	await gameFunction.call()
+	
+	if gameType == "CannonMinigame":
+		#also do the aiming mini game
+		var aimer = interactableObject.get_node("Aimer")
+		mainFrame.visible = false
+		$Background.visible = false
+		hintText.modulate.a = 0
+		fadeLabel(hintText,1)
+		hintText.text = richTextWavy("press 'E' to fire the cannon!")
+		
+		await aimer.startAim()
+		mainFrame.visible = true
+		$Background.visible = true
+	
 	currentPlayer.movementSpeed = currentPlayer.baseSpeed
 	currentPlayer.doingMinigame = false
 	parentCanvas.visible = false

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://darf0u3wh3au1" path="res://Scenes/interactable.tscn" id="1_p7g3v"]
 [ext_resource type="Texture2D" uid="uid://cj16xbppx0nsv" path="res://Sprites/Cannon top view place holder.png" id="2_0558p"]
 [ext_resource type="Script" uid="uid://2qdmg15gvdkd" path="res://Scenes/cannon_aim.gd" id="3_0558p"]
+[ext_resource type="Texture2D" uid="uid://bd7b27bocpirr" path="res://Sprites/Explosion placeholder.png" id="4_2tj01"]
 
 [sub_resource type="Gradient" id="Gradient_0558p"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0)
@@ -33,14 +34,23 @@ position = Vector2(0, -14.916351)
 script = ExtResource("3_0558p")
 
 [node name="Line2D" type="Line2D" parent="Aimer" index="0" unique_id=1649537725]
-position = Vector2(0, -15.910775)
-points = PackedVector2Array(0, 0, 0, 15.083651)
+z_index = 100
+position = Vector2(0, -11.962373)
+scale = Vector2(1, 2.3616958)
+points = PackedVector2Array(0, -20.88289, 0, 4.6440997)
 width = 1.0
 default_color = Color(0.9941406, 0.011650085, 0.011650085, 1)
 gradient = SubResource("Gradient_0558p")
 
 [node name="Hitbox" type="Area2D" parent="Aimer" index="1" unique_id=454822873]
-position = Vector2(0, -18.894045)
+position = Vector2(0, -61.65425)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Aimer/Hitbox" index="0" unique_id=287140756]
 shape = SubResource("RectangleShape2D_126ht")
+
+[node name="ExplosionSprite" type="Sprite2D" parent="Aimer/Hitbox" index="1" unique_id=1963341270]
+visible = false
+z_index = 200
+z_as_relative = false
+scale = Vector2(0.040002465, 0.040002465)
+texture = ExtResource("4_2tj01")
