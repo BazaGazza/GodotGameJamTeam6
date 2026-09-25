@@ -2,6 +2,7 @@ extends Control
 @onready var parentCanvas = get_parent()
 @onready var mainFrame = $MainFrame
 @onready var hintText = $HintText
+@onready var backgroundFrame = $Background
 
 var currentPlayer:Player = null
 
@@ -178,9 +179,27 @@ func cannonMinigame():
 	await get_tree().create_timer(1.0).timeout
 	return
 	
+
+func plankMinigame():
+	var temp = 0
+	while temp < 5:
+		await get_tree().create_timer(1.0).timeout
+		temp += 1
+		
+func wheelMinigame():
+	currentPlayer.playerCamera.offset = Vector2(300,currentPlayer.playerCamera.offset.y)
+	
+	var temp = 0
+	while temp < 5:
+		await get_tree().create_timer(1.0).timeout
+		temp += 1
+	currentPlayer.playerCamera.offset = Vector2(0,currentPlayer.playerCamera.offset.y)
+	
 #Place to add and connect interactables via names
 var gameFunctions = {
 	"CannonMinigame": cannonMinigame,
+	"PlankMinigame": plankMinigame,
+	"WheelMinigame": wheelMinigame,
 	##
 }
 
@@ -200,6 +219,11 @@ func startGame(gameType:String,interactableObject:Interactable):
 			child.visible = true
 		else:
 			child.visible = false
+	
+	if gameType == "WheelMinigame":
+		backgroundFrame.visible = false
+	else:
+		backgroundFrame.visible = true	
 	
 	await gameFunction.call()
 	

@@ -1,11 +1,17 @@
 [gd_scene format=3 uid="uid://c72r5doca5h3s"]
 
-[ext_resource type="Script" uid="uid://dg50ng6hn56b3" path="res://Scenes/minigame.gd" id="1_iqey4"]
-[ext_resource type="Texture2D" uid="uid://daq2iqr01g01y" path="res://Sprites/cannon-minigame.png" id="1_s7wve"]
+[ext_resource type="Script" uid="uid://dg50ng6hn56b3" path="res://Scripts/minigame.gd" id="1_iqey4"]
 [ext_resource type="Texture2D" uid="uid://dmyi07pw085xq" path="res://Sprites/Ramming rod placeholder.png" id="3_5bepb"]
 [ext_resource type="Texture2D" uid="uid://bt6aeo8y07b36" path="res://Sprites/Gun powder charge bag placeholder.png" id="3_id8w1"]
 [ext_resource type="Texture2D" uid="uid://cgylpd8sre7jd" path="res://Sprites/Cannon ball.png" id="4_yx24v"]
+[ext_resource type="Texture2D" uid="uid://c8bju6jd0wdxm" path="res://Sprites/plank.png" id="6_xcq3l"]
 [ext_resource type="Theme" uid="uid://b4u1svlmtf02y" path="res://new_theme.tres" id="6_yx24v"]
+[ext_resource type="Texture2D" uid="uid://7mk2bhxogg2k" path="res://Sprites/Hole placeholder.png" id="7_vnlq7"]
+[ext_resource type="Texture2D" uid="uid://wfc5ij7m1316" path="res://Sprites/rustic-brown-wood-texture-background-with-planks-and-vintage-feel-photo.jpg" id="8_hr1fu"]
+[ext_resource type="Texture2D" uid="uid://3a4cnpl610xh" path="res://Sprites/Placeholder Steering wheel.png" id="8_xcq3l"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_255i5"]
+load_path = "res://.godot/imported/cannon-minigame.png-c4a94c041d55e03fc9fbaf25f10da106.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oood0"]
 size = Vector2(4.677889, 84.22968)
@@ -27,6 +33,12 @@ size = Vector2(641, 74)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6vwk"]
 size = Vector2(206, 161)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbrk7"]
+size = Vector2(141, 296)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oood0"]
+radius = 443.991
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l1l02"]
 distance = -200.0
@@ -69,6 +81,7 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="CannonMinigame" type="Control" parent="MainFrame" unique_id=1902821591]
+visible = false
 layout_mode = 2
 mouse_filter = 1
 
@@ -83,7 +96,7 @@ offset_bottom = 63.0
 grow_vertical = 2
 scale = Vector2(3.57, 3.57)
 pivot_offset = Vector2(0, 63)
-texture = ExtResource("1_s7wve")
+texture = SubResource("CompressedTexture2D_255i5")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MainFrame/CannonMinigame/Cannon" unique_id=604367992]
 collision_layer = 4
@@ -180,6 +193,117 @@ collision_mask = 4
 position = Vector2(-312, 4.5)
 shape = SubResource("RectangleShape2D_f6vwk")
 debug_color = Color(0.70196074, 0, 0, 0.41960785)
+
+[node name="PlankMinigame" type="Control" parent="MainFrame" unique_id=114902012]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Plank" type="CharacterBody2D" parent="MainFrame/PlankMinigame" unique_id=746476654]
+position = Vector2(460, 488)
+scale = Vector2(1.5919846, 2.4954236)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/PlankMinigame/Plank" unique_id=1993085760]
+scale = Vector2(0.3496802, 0.34968007)
+texture = ExtResource("6_xcq3l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/Plank" unique_id=1676886263]
+position = Vector2(-1.5, -2)
+shape = SubResource("RectangleShape2D_nbrk7")
+
+[node name="HoleArea" type="Area2D" parent="MainFrame/PlankMinigame" unique_id=892221337]
+position = Vector2(1394, 524)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea" unique_id=918733742]
+scale = Vector2(0.80000246, 0.80000246)
+texture = ExtResource("7_vnlq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea" unique_id=1734410942]
+scale = Vector2(0.80000246, 0.80000246)
+shape = SubResource("CircleShape2D_oood0")
+
+[node name="Planks" type="Node2D" parent="MainFrame/PlankMinigame/HoleArea" unique_id=1122076147]
+
+[node name="Plank1" type="CharacterBody2D" parent="MainFrame/PlankMinigame/HoleArea/Planks" unique_id=1963350399]
+position = Vector2(120, 3)
+rotation = 0.60502374
+scale = Vector2(1.5919846, 2.5883093)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1" unique_id=1998172174]
+scale = Vector2(0.3496802, 0.34968007)
+texture = ExtResource("6_xcq3l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1" unique_id=1453401201]
+position = Vector2(-1.5, -2)
+shape = SubResource("RectangleShape2D_nbrk7")
+
+[node name="Plank2" type="CharacterBody2D" parent="MainFrame/PlankMinigame/HoleArea/Planks" unique_id=8200122]
+position = Vector2(-37.999996, 4)
+rotation = -1.0066432
+scale = Vector2(1.5919846, 2.5883093)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2" unique_id=800290386]
+scale = Vector2(0.3496802, 0.34968007)
+texture = ExtResource("6_xcq3l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2" unique_id=712024354]
+position = Vector2(-1.5, -2)
+shape = SubResource("RectangleShape2D_nbrk7")
+
+[node name="Plank3" type="CharacterBody2D" parent="MainFrame/PlankMinigame/HoleArea/Planks" unique_id=448791427]
+position = Vector2(0, 87)
+rotation = 1.2427647
+scale = Vector2(1.5919846, 2.5883093)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3" unique_id=747624526]
+scale = Vector2(0.3496802, 0.34968007)
+texture = ExtResource("6_xcq3l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3" unique_id=1570343366]
+position = Vector2(-1.5, -2)
+shape = SubResource("RectangleShape2D_nbrk7")
+
+[node name="Plank4" type="CharacterBody2D" parent="MainFrame/PlankMinigame/HoleArea/Planks" unique_id=1972937312]
+position = Vector2(-114, -84)
+rotation = 0.6887235
+scale = Vector2(1.5919846, 2.5883093)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4" unique_id=947109777]
+scale = Vector2(0.3496802, 0.34968007)
+texture = ExtResource("6_xcq3l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4" unique_id=2104274938]
+position = Vector2(-1.5, -2)
+shape = SubResource("RectangleShape2D_nbrk7")
+
+[node name="PlankBackground" type="TextureRect" parent="MainFrame/PlankMinigame" unique_id=793983650]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_hr1fu")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="WheelMinigame" type="Control" parent="MainFrame" unique_id=483800096]
+visible = false
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="MainFrame/WheelMinigame" unique_id=1254653753]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("8_xcq3l")
 
 [node name="HintText" type="RichTextLabel" parent="." unique_id=1429109670]
 z_index = 10

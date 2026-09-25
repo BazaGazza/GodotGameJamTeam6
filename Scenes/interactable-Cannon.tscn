@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://darf0u3wh3au1" path="res://Scenes/interactable.tscn" id="1_p7g3v"]
 [ext_resource type="Texture2D" uid="uid://cj16xbppx0nsv" path="res://Sprites/Cannon top view place holder.png" id="2_0558p"]
-[ext_resource type="Script" uid="uid://2qdmg15gvdkd" path="res://Scenes/cannon_aim.gd" id="3_0558p"]
+[ext_resource type="Script" uid="uid://2qdmg15gvdkd" path="res://Scripts/cannon_aim.gd" id="3_0558p"]
 [ext_resource type="Texture2D" uid="uid://bd7b27bocpirr" path="res://Sprites/Explosion placeholder.png" id="4_2tj01"]
 
 [sub_resource type="Gradient" id="Gradient_0558p"]

@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cykrix66j8vpb" path="res://Sprites/down-ararow.png" id="3_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://b84bbpqib4f1y" path="res://Scenes/interactable-Cannon.tscn" id="5_344ge"]
 [ext_resource type="PackedScene" uid="uid://bkwqt763hg5op" path="res://Scenes/interactable-Steering Wheel.tscn" id="5_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://icrr7tora4c8" path="res://Scenes/interactable-Plank.tscn" id="7_6iyac"]
 [ext_resource type="PackedScene" uid="uid://dchbe4xnf3xjo" path="res://Scenes/enemy_ship.tscn" id="7_hptm8"]
 [ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://Scenes/minigame.tscn" id="8_344ge"]
 [ext_resource type="Script" uid="uid://b5a6woogfgv1d" path="res://Scenes/backgrounds.gd" id="8_hptm8"]
@@ -73,48 +74,20 @@ metadata/_edit_lock_ = true
 
 [node name="Interactables" type="Node2D" parent="ShipLevel" unique_id=346291633]
 
-[node name="PinkTriangle" parent="ShipLevel/Interactables" unique_id=1592992979 instance=ExtResource("3_h2yge")]
-visible = false
-position = Vector2(-28.99999, 265)
-rotation = -1.5707964
-scale = Vector2(4.3999977, 4.424672)
-
-[node name="Polygon2D" type="Polygon2D" parent="ShipLevel/Interactables/PinkTriangle" unique_id=168907451]
-position = Vector2(0.90909135, -1.1300267)
-color = Color(0.8467559, 0.24899548, 0.90862316, 1)
-polygon = PackedVector2Array(-6.818184, 5.6501365, -0.6818199, -4.746114, 4.772732, 5.6501365)
-
 [node name="Steering Wheel" parent="ShipLevel/Interactables" unique_id=619485484 instance=ExtResource("5_d1ilt")]
-position = Vector2(6.0336685, 278.41522)
+position = Vector2(-19.000015, -356)
 rotation = -1.5707964
 scale = Vector2(4, 4.024)
-
-[node name="PinkTriangle2" parent="ShipLevel/Interactables" unique_id=6015795 instance=ExtResource("3_h2yge")]
-position = Vector2(-24.000013, -323.99994)
-rotation = -1.5707964
-scale = Vector2(4.3999977, 4.424672)
-
-[node name="Polygon2D" type="Polygon2D" parent="ShipLevel/Interactables/PinkTriangle2" unique_id=1279343714]
-position = Vector2(0.90909135, -1.1300267)
-color = Color(0.8467559, 0.24899548, 0.90862316, 1)
-polygon = PackedVector2Array(-6.818184, 5.6501365, -0.6818199, -4.746114, 4.772732, 5.6501365)
-
-[node name="YellowSquare" parent="ShipLevel/Interactables" unique_id=351198961 instance=ExtResource("3_h2yge")]
-position = Vector2(-105.999985, 156.00003)
-rotation = -1.5707964
-scale = Vector2(4.3999977, 4.424672)
-
-[node name="ColorRect" type="ColorRect" parent="ShipLevel/Interactables/YellowSquare" unique_id=1594291896]
-offset_left = -5.454541
-offset_top = -4.972121
-offset_right = 5.0000105
-offset_bottom = 5.482431
-color = Color(0.88420695, 0.9270696, 0.5235205, 1)
+interactType = "WheelMinigame"
 
 [node name="Cannon" parent="ShipLevel/Interactables" unique_id=1985657767 instance=ExtResource("5_344ge")]
 position = Vector2(-162, 71.00001)
 rotation = -1.5707964
 scale = Vector2(4, 4.024)
+
+[node name="Hole" parent="ShipLevel/Interactables" unique_id=1685676388 instance=ExtResource("7_6iyac")]
+position = Vector2(-119.00001, -127.99999)
+interactType = "PlankMinigame"
 
 [node name="GoDown" parent="ShipLevel" unique_id=1508820061 instance=ExtResource("3_h2yge")]
 process_mode = 4

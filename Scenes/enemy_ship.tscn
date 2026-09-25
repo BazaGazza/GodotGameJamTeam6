@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dchbe4xnf3xjo"]
 
-[ext_resource type="Script" uid="uid://cars2rhhgax04" path="res://Scenes/enemy_ship.gd" id="1_fqvla"]
+[ext_resource type="Script" uid="uid://cars2rhhgax04" path="res://Scripts/enemy_ship.gd" id="1_fqvla"]
 [ext_resource type="Texture2D" uid="uid://bexpiht4j27k5" path="res://Sprites/Placeholder enemy ship.png" id="1_tmwji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
