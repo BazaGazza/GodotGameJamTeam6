@@ -177,9 +177,11 @@ func cannonMinigame():
 	
 	await get_tree().create_timer(1.0).timeout
 	return
-
+	
+#Place to add and connect interactables via names
 var gameFunctions = {
 	"CannonMinigame": cannonMinigame,
+	##
 }
 
 
