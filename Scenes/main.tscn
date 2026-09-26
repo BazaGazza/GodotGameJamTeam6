@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://dbt4q18np7y0k"]
 
-[ext_resource type="Texture2D" uid="uid://dxvmdeirxto1" path="res://Sprites/oval.png" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c776r2n3h4jgq" path="res://Scenes/player.tscn" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://dwryx3kbwwlov" path="res://Sprites/deck level-01.png" id="1_kry3j"]
-[ext_resource type="Texture2D" uid="uid://p81fsujv4vgc" path="res://Sprites/up-arrow.png" id="3_21xkr"]
-[ext_resource type="PackedScene" uid="uid://darf0u3wh3au1" path="res://Scenes/interactable.tscn" id="3_h2yge"]
-[ext_resource type="Texture2D" uid="uid://cykrix66j8vpb" path="res://Sprites/down-ararow.png" id="3_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://darvh331r4yb2" path="res://Sprites/ship-asset.png" id="4_6iyac"]
 [ext_resource type="PackedScene" uid="uid://b84bbpqib4f1y" path="res://Scenes/interactable-Cannon.tscn" id="5_344ge"]
 [ext_resource type="PackedScene" uid="uid://bkwqt763hg5op" path="res://Scenes/interactable-Steering Wheel.tscn" id="5_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://icrr7tora4c8" path="res://Scenes/interactable-Plank.tscn" id="7_6iyac"]
@@ -13,127 +9,70 @@
 [ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://Scenes/minigame.tscn" id="8_344ge"]
 [ext_resource type="Script" uid="uid://b5a6woogfgv1d" path="res://Scenes/backgrounds.gd" id="8_hptm8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
-size = Vector2(1082, 307)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_gfaf0"]
-radius = 1.8185629
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(4.198323, 5.0693064)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_21xkr"]
 load_path = "res://.godot/imported/sea.jpeg-2d3adac23d308b6e2259358346c4f057.ctex"
 
 [node name="Main" type="Node2D" unique_id=2112882412]
 
-[node name="DeckLevel" type="Node2D" parent="." unique_id=1013063569]
-process_mode = 4
-visible = false
-
-[node name="StaticBody2D" type="StaticBody2D" parent="DeckLevel" unique_id=93005677]
-
-[node name="Sprite2D" type="Sprite2D" parent="DeckLevel/StaticBody2D" unique_id=1272633067]
-texture = ExtResource("1_kry3j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeckLevel/StaticBody2D" unique_id=505472259]
-position = Vector2(0, 210.5)
-shape = SubResource("RectangleShape2D_l1l02")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="DeckLevel/StaticBody2D" unique_id=21376395]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DeckLevel/StaticBody2D/StaticBody2D" unique_id=251184238]
-build_mode = 1
-polygon = PackedVector2Array(-224, 95, -223, -356, 531, -355, 529, 77)
-
-[node name="Marker2D" type="Marker2D" parent="DeckLevel" unique_id=1267272660]
-position = Vector2(-212, 32)
-
-[node name="GoUp" parent="DeckLevel" unique_id=610343071 instance=ExtResource("3_h2yge")]
-position = Vector2(-292, 31)
-scale = Vector2(7.1952806, 7.2356305)
-interactRadius = 1.5
-interactType = "GoUp"
-
-[node name="ExtraIcon" type="Sprite2D" parent="DeckLevel/GoUp" unique_id=481803758]
-position = Vector2(7.500005, -17.176416)
-scale = Vector2(0.044679735, 0.044679735)
-texture = ExtResource("3_21xkr")
-
 [node name="ShipLevel" type="StaticBody2D" parent="." unique_id=1793590727]
 rotation = 1.5707964
-metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ShipLevel" unique_id=303963373]
 rotation = 1.5707964
-texture = ExtResource("1_0xm2m")
-metadata/_edit_lock_ = true
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_6iyac")
+flip_h = true
+flip_v = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShipLevel" unique_id=98235427]
+position = Vector2(-4.371139e-08, -1)
 scale = Vector2(1, 1.0090446)
 build_mode = 1
-polygon = PackedVector2Array(-176.99998, 221.00002, -199, 84.00001, -202, -18.99999, -192, -146.99998, -159.00002, -287, -119.000015, -365, -61.00002, -430, -16.00002, -451, 19.99998, -451, 72.999985, -418.21738, 124.999985, -354.79105, 172.99998, -239, 198, -96.00001, 202, 57.999992, 172.00002, 246, 117.000015, 371, 78.000015, 422, 34.00002, 447, -3.99998, 457, -68.999985, 431, -123.999985, 364, -158.99998, 284)
-metadata/_edit_lock_ = true
+polygon = PackedVector2Array(-49.00001, -301.2751, -49.00002, -420.19943, -37.000023, -479.66162, -16.000023, -512.36584, 56.999977, -523.2672, 109.99998, -532.1866, 145.99998, -442.9933, 154.00002, 417.22632, 149.00003, 613.45154, 103.00003, 632.28125, 8.000029, 641.20056, -47.999973, 621.3798, -49.999985, 330.0151)
 
 [node name="Interactables" type="Node2D" parent="ShipLevel" unique_id=346291633]
 
 [node name="Steering Wheel" parent="ShipLevel/Interactables" unique_id=619485484 instance=ExtResource("5_d1ilt")]
-position = Vector2(-19.000015, -356)
+position = Vector2(40.999977, -542)
 rotation = -1.5707964
 scale = Vector2(4, 4.024)
 interactType = "WheelMinigame"
 
 [node name="Cannon" parent="ShipLevel/Interactables" unique_id=1985657767 instance=ExtResource("5_344ge")]
-position = Vector2(-162, 71.00001)
+position = Vector2(-50, -25)
 rotation = -1.5707964
-scale = Vector2(4, 4.024)
+scale = Vector2(6, 6.036)
 
 [node name="Hole" parent="ShipLevel/Interactables" unique_id=1685676388 instance=ExtResource("7_6iyac")]
-position = Vector2(-119.00001, -127.99999)
+position = Vector2(-10.000008, -193)
 interactType = "PlankMinigame"
 
-[node name="GoDown" parent="ShipLevel" unique_id=1508820061 instance=ExtResource("3_h2yge")]
-process_mode = 4
-visible = false
-position = Vector2(51, 0.9999979)
-rotation = -1.5707964
-scale = Vector2(4.3999977, 4.424672)
-interactType = "GoDown"
-
-[node name="ExtraIcon" type="Sprite2D" parent="ShipLevel/GoDown" unique_id=361558461]
-position = Vector2(7.500005, -17.176416)
-scale = Vector2(0.044679735, 0.044679735)
-texture = ExtResource("3_jjvhh")
-
-[node name="ColorRect" type="ColorRect" parent="ShipLevel/GoDown" unique_id=1621631762]
-offset_left = -11.818187
-offset_top = -5.8761406
-offset_right = 11.590913
-offset_bottom = 6.3281517
-color = Color(0.47287983, 0.47655392, 0.47564614, 1)
-
-[node name="Marker2D" type="Marker2D" parent="ShipLevel" unique_id=1375542035]
-process_mode = 4
-
-[node name="Mast" type="Area2D" parent="ShipLevel" unique_id=1003031291]
-position = Vector2(0.37757322, 0)
+[node name="Mast" type="StaticBody2D" parent="ShipLevel" unique_id=882011966]
+position = Vector2(46, 70.00001)
 rotation = -1.5707964
 scale = Vector2(20.484375, 9.468751)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShipLevel/Mast" unique_id=489825309]
-shape = SubResource("CircleShape2D_gfaf0")
+scale = Vector2(1, 1.0000001)
+shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="EnemyShips" type="Node" parent="ShipLevel" unique_id=565564427]
 
 [node name="EnemyShip" parent="ShipLevel/EnemyShips" unique_id=1293328923 instance=ExtResource("7_hptm8")]
-position = Vector2(-95, -441)
+position = Vector2(93, -413)
 
 [node name="Player" parent="." unique_id=891791948 instance=ExtResource("1_ig7tw")]
 z_index = 5
-position = Vector2(0, -66.99999)
-scale = Vector2(0.1, 0.1)
+position = Vector2(-6.9999995, 74.99998)
+scale = Vector2(0.15, 0.15)
+baseSpeed = 200
 
 [node name="Backgrounds" type="Node2D" parent="." unique_id=1368142683]
 scale = Vector2(2.3, 3)
 script = ExtResource("8_hptm8")
-metadata/_edit_lock_ = true
 
 [node name="OceanBackground" type="Sprite2D" parent="Backgrounds" unique_id=1025804473]
 modulate = Color(0, 0, 1, 1)
@@ -141,7 +80,6 @@ z_index = -1
 position = Vector2(49.499924, 61.5)
 scale = Vector2(2.8971424, 3.38)
 texture = SubResource("CompressedTexture2D_21xkr")
-metadata/_edit_lock_ = true
 
 [node name="OceanBackground2" type="Sprite2D" parent="Backgrounds" unique_id=792416354]
 modulate = Color(0, 0, 1, 1)

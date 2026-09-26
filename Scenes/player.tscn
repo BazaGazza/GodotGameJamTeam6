@@ -85,6 +85,6 @@ frame_progress = 0.97152245
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1745768006]
 scale = Vector2(10.094146, 10.111902)
 offset = Vector2(0, -100)
-zoom = Vector2(3, 3)
+zoom = Vector2(1.6, 1.6)
 position_smoothing_enabled = true
-position_smoothing_speed = 8.0
+position_smoothing_speed = 4.0

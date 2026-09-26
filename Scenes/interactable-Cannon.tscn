@@ -11,6 +11,7 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_126ht"]
 
 [node name="Interactable" unique_id=610343071 instance=ExtResource("1_p7g3v")]
+scale = Vector2(1.4, 1.4)
 interactType = "CannonMinigame"
 
 [node name="Icon" parent="." index="1" unique_id=2102358570]

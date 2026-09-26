@@ -41,6 +41,7 @@ func richTextWavy(text:String):
 	return "[shake rate=8.0 level=2 connected=0]"+text+"[/shake]"
 
 @onready var cannonballBody = $MainFrame/CannonMinigame.get_node("Cannonball")
+var currentMinigame = ""
 
 var ramVelocity = Vector2.ZERO
 var dragNode = null
@@ -79,6 +80,7 @@ func _physics_process(delta: float) -> void:
 	
 	if dragNode != null:
 		moveDrag(delta)
+		if currentMinigame != "CannonMinigame": return
 		if dragNode != null and dragNode.name == "Rod":
 			var currentPos = dragNode.global_position
 			if previousPosition == null: 
@@ -90,12 +92,22 @@ func _physics_process(delta: float) -> void:
 			previousPosition = currentPos
 	
 	#1/distance, so standing still is more penalized, and making big movements, there's less decay
+	if currentMinigame != "CannonMinigame": return
 	var decay = 15*(1/distance)
 	currentRamSpeed = clamp(currentRamSpeed-(delta*decay),0,currentRamSpeed)
 	
 	cannonballBody.velocity = ramVelocity
 	ramVelocity = ramVelocity.move_toward(Vector2.ZERO, 1000 * delta)
 	cannonballBody.move_and_slide()
+	
+	
+
+var gameCanceled = false
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("move_up") or event.is_action_pressed("move_down") or event.is_action_pressed("move_left"):
+		gameCanceled = true
+		
 	
 func cannonMinigame():
 	var minigameFrame = mainFrame.get_node("CannonMinigame")
@@ -129,13 +141,14 @@ func cannonMinigame():
 	PowderArea.body_entered.connect(areaFunction)
 	powderBody.input_event.connect(dragFunction.bind(powderBody))
 	
-	while not variables.dragFinished:
+	while not variables.dragFinished and not gameCanceled:
 		await get_tree().process_frame
 	
 	variables.dragFinished = false
 	dragNode = null
 	powderBody.input_event.disconnect(dragFunction)
 	PowderArea.body_entered.disconnect(areaFunction)
+	if gameCanceled: return
 	
 	hintText.modulate.a = 0
 	fadeLabel(hintText,1)
@@ -145,13 +158,14 @@ func cannonMinigame():
 	BallArea1.body_entered.connect(areaFunction)
 	cannonballBody.input_event.connect(dragFunction.bind(cannonballBody))
 	
-	while not variables.dragFinished:
+	while not variables.dragFinished and not gameCanceled:
 		await get_tree().process_frame
 	variables.dragFinished = false
 	dragNode = null
 	cannonballBody.input_event.disconnect(dragFunction)
 	BallArea1.body_entered.disconnect(areaFunction)
-	
+	if gameCanceled: return
+		
 	hintText.modulate.a = 0
 	fadeLabel(hintText,1)
 	hintText.text = richTextWavy("ram the cannonball!")
@@ -170,10 +184,11 @@ func cannonMinigame():
 	rodBody.get_node("Area2D").body_entered.connect(ramFunction)
 	minigameFrame.get_node("Cannon/BallArea2").body_entered.connect(finishRamFunction)
 	
-	while not variables.dragFinished:
+	while not variables.dragFinished and not gameCanceled:
 		await get_tree().process_frame
-		
 	rodBody.get_node("Area2D").body_entered.disconnect(ramFunction)
+	if gameCanceled: return
+	
 	fadeLabel(hintText,0,0.5)
 	print("Finished Cannon Minigame")
 	
@@ -208,18 +223,11 @@ func wheelMinigame(): #RODOLFO ADD WHEEL
 	#Ship moving after rotation made 
 
 	
-	
-	
-	
-	
-	
-	
 #Place to add and connect interactables via names
 var gameFunctions = {
 	"CannonMinigame": cannonMinigame,
 	"PlankMinigame": plankMinigame,
 	"WheelMinigame": wheelMinigame,
-	##
 }
 
 
@@ -231,22 +239,26 @@ func startGame(gameType:String,interactableObject:Interactable):
 	
 	parentCanvas.visible = true
 	var gameFunction = gameFunctions[gameType]
+	currentMinigame = gameType
 	
 	#toggle visibility of minigame
 	for child in mainFrame.get_children():
 		if child.name == gameType:
+			child.process_mode = Node.PROCESS_MODE_INHERIT
 			child.visible = true
 		else:
+			child.process_mode = Node.PROCESS_MODE_DISABLED
 			child.visible = false
 	
 	if gameType == "WheelMinigame":
 		backgroundFrame.visible = false
 	else:
 		backgroundFrame.visible = true	
-	
+
+	gameCanceled = false
 	await gameFunction.call()
-	
-	if gameType == "CannonMinigame":
+			
+	if gameType == "CannonMinigame" and not gameCanceled:
 		#also do the aiming mini game
 		var aimer = interactableObject.get_node("Aimer")
 		mainFrame.visible = false
@@ -258,7 +270,8 @@ func startGame(gameType:String,interactableObject:Interactable):
 		await aimer.startAim()
 		mainFrame.visible = true
 		$Background.visible = true
-	
+		
+	currentMinigame = ""
 	currentPlayer.movementSpeed = currentPlayer.baseSpeed
 	currentPlayer.doingMinigame = false
 	parentCanvas.visible = false

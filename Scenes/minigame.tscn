@@ -60,7 +60,6 @@ mouse_filter = 1
 script = ExtResource("1_iqey4")
 
 [node name="Background" type="ColorRect" parent="." unique_id=793932141]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,7 +81,7 @@ theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="CannonMinigame" type="Control" parent="MainFrame" unique_id=1902821591]
-visible = false
+process_mode = 4
 layout_mode = 2
 mouse_filter = 1
 
@@ -196,13 +195,17 @@ shape = SubResource("RectangleShape2D_f6vwk")
 debug_color = Color(0.70196074, 0, 0, 0.41960785)
 
 [node name="PlankMinigame" type="Control" parent="MainFrame" unique_id=114902012]
+process_mode = 4
 visible = false
 layout_mode = 2
 mouse_filter = 1
 
 [node name="Plank" type="CharacterBody2D" parent="MainFrame/PlankMinigame" unique_id=746476654]
+visibility_layer = 0
 position = Vector2(460, 488)
 scale = Vector2(1.5919846, 2.4954236)
+collision_layer = 4
+collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="MainFrame/PlankMinigame/Plank" unique_id=1993085760]
 scale = Vector2(0.3496802, 0.34968007)
@@ -229,6 +232,8 @@ shape = SubResource("CircleShape2D_oood0")
 position = Vector2(120, 3)
 rotation = 0.60502374
 scale = Vector2(1.5919846, 2.5883093)
+collision_layer = 4
+collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1" unique_id=1998172174]
 scale = Vector2(0.3496802, 0.34968007)
@@ -242,6 +247,8 @@ shape = SubResource("RectangleShape2D_nbrk7")
 position = Vector2(-37.999996, 4)
 rotation = -1.0066432
 scale = Vector2(1.5919846, 2.5883093)
+collision_layer = 4
+collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2" unique_id=800290386]
 scale = Vector2(0.3496802, 0.34968007)
@@ -255,6 +262,8 @@ shape = SubResource("RectangleShape2D_nbrk7")
 position = Vector2(0, 87)
 rotation = 1.2427647
 scale = Vector2(1.5919846, 2.5883093)
+collision_layer = 4
+collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3" unique_id=747624526]
 scale = Vector2(0.3496802, 0.34968007)
@@ -268,6 +277,8 @@ shape = SubResource("RectangleShape2D_nbrk7")
 position = Vector2(-114, -84)
 rotation = 0.6887235
 scale = Vector2(1.5919846, 2.5883093)
+collision_layer = 4
+collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4" unique_id=947109777]
 scale = Vector2(0.3496802, 0.34968007)
@@ -297,10 +308,14 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="WheelMinigame" type="Control" parent="MainFrame" unique_id=483800096]
+process_mode = 4
+visible = false
 layout_mode = 2
 mouse_filter = 1
 
 [node name="Wheel" type="CharacterBody2D" parent="MainFrame/WheelMinigame" unique_id=545945409]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainFrame/WheelMinigame/Wheel" unique_id=907421943]
 build_mode = 1
