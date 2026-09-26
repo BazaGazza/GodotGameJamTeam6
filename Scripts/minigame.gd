@@ -4,6 +4,7 @@ extends Control
 @onready var hintText = $HintText
 @onready var backgroundFrame = $Background
 
+	
 var currentPlayer:Player = null
 
 var defaultPositions = {}
@@ -186,14 +187,32 @@ func plankMinigame():
 		await get_tree().create_timer(1.0).timeout
 		temp += 1
 		
-func wheelMinigame():
+func wheelMinigame(): #RODOLFO ADD WHEEL
 	currentPlayer.playerCamera.offset = Vector2(300,currentPlayer.playerCamera.offset.y)
 	
-	var temp = 0
-	while temp < 5:
-		await get_tree().create_timer(1.0).timeout
-		temp += 1
+	
+	
 	currentPlayer.playerCamera.offset = Vector2(0,currentPlayer.playerCamera.offset.y)
+	
+	var wheel_node = mainFrame.get_node("WheelMinigame/Wheel")
+	
+	
+	var rotation_speed: float = 8.0
+	#IDEA Player drags tips of steering wheel to steer in different directions to complete ship by steering away from incoming rocks 
+	#The ship will then move up or down in y-direction to steer clear of rocks
+	var delta = get_process_delta_time()
+	
+	var target_angle = (wheel_node.get_global_mouse_position() - wheel_node.global_position).angle()
+	wheel_node.rotation = lerp_angle(wheel_node.rotation, target_angle, rotation_speed * delta)
+
+	#Ship moving after rotation made 
+
+	
+	
+	
+	
+	
+	
 	
 #Place to add and connect interactables via names
 var gameFunctions = {
