@@ -60,6 +60,7 @@ mouse_filter = 1
 script = ExtResource("1_iqey4")
 
 [node name="Background" type="ColorRect" parent="." unique_id=793932141]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -195,6 +196,7 @@ shape = SubResource("RectangleShape2D_f6vwk")
 debug_color = Color(0.70196074, 0, 0, 0.41960785)
 
 [node name="PlankMinigame" type="Control" parent="MainFrame" unique_id=114902012]
+visible = false
 layout_mode = 2
 mouse_filter = 1
 
@@ -295,14 +297,18 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="WheelMinigame" type="Control" parent="MainFrame" unique_id=483800096]
-visible = false
 layout_mode = 2
 mouse_filter = 1
 
-[node name="TextureRect" type="TextureRect" parent="MainFrame/WheelMinigame" unique_id=1254653753]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Wheel" type="CharacterBody2D" parent="MainFrame/WheelMinigame" unique_id=545945409]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainFrame/WheelMinigame/Wheel" unique_id=907421943]
+build_mode = 1
+polygon = PackedVector2Array(505, 224, 570, 229, 635, 248, 680, 273, 733, 323, 770, 382, 788, 453, 789, 503, 779, 556, 757, 611, 723, 658, 682, 693, 603, 734, 505, 742, 406, 713, 349, 667, 295, 595, 273, 521, 272, 455, 286, 396, 305, 356, 335, 314, 371, 279, 419, 250, 485, 226, 500, 224, 490, 129, 433, 138, 415, 143, 391, 101, 342, 33, 311, 9, 303, 9, 299, 23, 301, 59, 312, 120, 331, 175, 327, 181, 268, 230, 220, 289, 186, 360, 170, 425, 165, 455, 115, 461, 65, 469, 17, 487, 4, 501, 9, 515, 25, 523, 76, 536, 139, 544, 171, 546, 176, 575, 198, 634, 218, 671, 265, 732, 299, 762, 341, 792, 328, 827, 320, 854, 311, 886, 306, 916, 305, 940, 310, 954, 317, 960, 332, 957, 349, 944, 369, 918, 397, 877, 414, 845, 424, 828, 457, 838, 497, 843, 527, 844, 560, 842, 597, 836, 622, 830, 642, 825, 650, 842, 669, 875, 691, 908, 708, 932, 720, 946, 735, 957, 746, 962, 753, 961, 758, 957, 762, 951, 763, 942, 764, 927, 761, 903, 756, 880, 749, 855, 740, 828, 730, 797, 725, 786, 731, 780, 747, 769, 761, 757, 777, 742, 793, 726, 806, 710, 817, 696, 833, 672, 844, 655, 852, 636, 860, 616, 869, 597, 877, 571, 882, 546, 919, 545, 949, 543, 977, 538, 1008, 531, 1023, 527, 1040, 518, 1049, 509, 1050, 504, 1049, 497, 1045, 490, 1030, 481, 1009, 474, 990, 468, 966, 463, 937, 459, 907, 455, 892, 455, 889, 454, 887, 437, 884, 420, 880, 396, 874, 377, 867, 356, 857, 331, 846, 308, 833, 287, 818, 267, 799, 242, 773, 216, 753, 199, 732, 183, 735, 174, 744, 153, 750, 134, 757, 109, 764, 82, 769, 54, 770, 31, 766, 19, 761, 14, 753, 11, 745, 13, 738, 18, 729, 24, 713, 41, 701, 57, 686, 79, 674, 96, 662, 119, 651, 139, 649, 142, 632, 135, 613, 131, 589, 127, 559, 124, 531, 122, 515, 123, 504, 125, 492, 129, 504, 223)
+
+[node name="TextureRect" type="TextureRect" parent="MainFrame/WheelMinigame/Wheel" unique_id=1254653753]
+offset_right = 1054.0
+offset_bottom = 966.0
 texture = ExtResource("8_xcq3l")
 
 [node name="HintText" type="RichTextLabel" parent="." unique_id=1429109670]
