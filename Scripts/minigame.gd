@@ -327,14 +327,25 @@ func plankMinigame():
 		
 	placePlankSignal.disconnect(placeFunction)
 		
+		
 func wheelMinigame(): #RODOLFO ADD WHEEL
+	
+	
+	#getting all references down early 
+	var minigameFrame = mainFrame.get_node("WheelMinigame")
+	var wheel_node:CharacterBody2D = minigameFrame.get_node("Wheel")
+	var collider:CollisionPolygon2D = minigameFrame.get_node("CollisionPolygon2")
+
+	#setting up all variables
+	
+	
+	#setting visibility to true 
+	for child in mainFrame.get_children():
+		child.visibility = true
+	
 	currentPlayer.playerCamera.offset = Vector2(300,currentPlayer.playerCamera.offset.y)
-	
-	
-	
 	currentPlayer.playerCamera.offset = Vector2(0,currentPlayer.playerCamera.offset.y)
 	
-	var wheel_node = mainFrame.get_node("WheelMinigame/Wheel")
 	
 	
 	var rotation_speed: float = 8.0
@@ -346,6 +357,11 @@ func wheelMinigame(): #RODOLFO ADD WHEEL
 	wheel_node.rotation = lerp_angle(wheel_node.rotation, target_angle, rotation_speed * delta)
 
 	#Ship moving after rotation made 
+
+
+
+
+
 
 	
 #Place to add and connect interactables via names
