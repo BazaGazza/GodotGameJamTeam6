@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cykrix66j8vpb"
-path="res://.godot/imported/down-ararow.png-454966f0ffc3dd6d5ca6dcc132d6e3bf.ctex"
+uid="uid://dppoh0ikkihtl"
+path="res://.godot/imported/mast.png-0e0a4940b35daff78c2ee52bd468caa8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/down-ararow.png"
-dest_files=["res://.godot/imported/down-ararow.png-454966f0ffc3dd6d5ca6dcc132d6e3bf.ctex"]
+source_file="res://Sprites/mast.png"
+dest_files=["res://.godot/imported/mast.png-0e0a4940b35daff78c2ee52bd468caa8.ctex"]
 
 [params]
 

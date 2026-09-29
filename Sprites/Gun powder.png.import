@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7mk2bhxogg2k"
-path="res://.godot/imported/Hole placeholder.png-fd720d1842dd08634cd63773081b71e2.ctex"
+uid="uid://10gu7y44eugn"
+path="res://.godot/imported/Gun powder.png-23337bc1992f4a48873267bf8a8410b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Hole placeholder.png"
-dest_files=["res://.godot/imported/Hole placeholder.png-fd720d1842dd08634cd63773081b71e2.ctex"]
+source_file="res://Sprites/Gun powder.png"
+dest_files=["res://.godot/imported/Gun powder.png-23337bc1992f4a48873267bf8a8410b6.ctex"]
 
 [params]
 

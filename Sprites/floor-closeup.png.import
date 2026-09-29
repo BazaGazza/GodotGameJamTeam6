@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wfc5ij7m1316"
-path="res://.godot/imported/rustic-brown-wood-texture-background-with-planks-and-vintage-feel-photo.jpg-8f85a65efb8eff7ae7aae6416745ea2e.ctex"
+uid="uid://h1ysyl5blnet"
+path="res://.godot/imported/floor-closeup.png-cab1d15823c9edbbe46c59bb73fa5fb9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/rustic-brown-wood-texture-background-with-planks-and-vintage-feel-photo.jpg"
-dest_files=["res://.godot/imported/rustic-brown-wood-texture-background-with-planks-and-vintage-feel-photo.jpg-8f85a65efb8eff7ae7aae6416745ea2e.ctex"]
+source_file="res://Sprites/floor-closeup.png"
+dest_files=["res://.godot/imported/floor-closeup.png-cab1d15823c9edbbe46c59bb73fa5fb9.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://icrr7tora4c8"]
 
 [ext_resource type="PackedScene" uid="uid://darf0u3wh3au1" path="res://Scenes/interactable.tscn" id="1_qgnuu"]
-[ext_resource type="Texture2D" uid="uid://7mk2bhxogg2k" path="res://Sprites/Hole placeholder.png" id="2_1n50r"]
+[ext_resource type="Texture2D" uid="uid://bq682katn3ent" path="res://Sprites/Hole.png" id="2_1n50r"]
 
 [node name="Interactable" unique_id=610343071 instance=ExtResource("1_qgnuu")]
 rotation = -1.5707964
@@ -13,13 +13,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -434.5
+offset_left = -435.08517
 offset_top = -385.0
-offset_right = 434.5
+offset_right = 521.9148
 offset_bottom = 385.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.02, 0.02)
+scale = Vector2(0.015635297, 0.020000007)
 pivot_offset = Vector2(434.5, 385)
 size_flags_horizontal = 4
 size_flags_vertical = 4

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3a4cnpl610xh"
-path="res://.godot/imported/Placeholder Steering wheel.png-167904ebf8bf303c65d46af73273981f.ctex"
+uid="uid://clntodesj43a0"
+path="res://.godot/imported/Cannon.png-dbd4d0153f87650b86572ebd931011be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Placeholder Steering wheel.png"
-dest_files=["res://.godot/imported/Placeholder Steering wheel.png-167904ebf8bf303c65d46af73273981f.ctex"]
+source_file="res://Sprites/Cannon.png"
+dest_files=["res://.godot/imported/Cannon.png-dbd4d0153f87650b86572ebd931011be.ctex"]
 
 [params]
 

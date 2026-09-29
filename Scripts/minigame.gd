@@ -274,9 +274,7 @@ func plankMinigame():
 		currentPlank.queue_free()
 		currentPlank = null
 		
-		print(placedPlanks)
 		var newPlank = planksHolder.get_node("Plank"+str(placedPlanks+1))
-		print(newPlank)
 		newPlank.visible = true
 		var originalScale = newPlank.scale
 		newPlank.scale = originalScale * 1.15

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bkwqt763hg5op"]
 
 [ext_resource type="PackedScene" uid="uid://darf0u3wh3au1" path="res://Scenes/interactable.tscn" id="1_32bqh"]
-[ext_resource type="Texture2D" uid="uid://3a4cnpl610xh" path="res://Sprites/Placeholder Steering wheel.png" id="2_qb6nv"]
+[ext_resource type="Texture2D" uid="uid://cfg6u05m4fg1h" path="res://Sprites/Wheel.png" id="2_qb6nv"]
 
 [node name="Interactable" unique_id=610343071 instance=ExtResource("1_32bqh")]
 

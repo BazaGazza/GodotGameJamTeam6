@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwryx3kbwwlov"
-path="res://.godot/imported/deck level-01.png-2033cb7face0bd24663f40194596265b.ctex"
+uid="uid://bbekbkqskxpap"
+path="res://.godot/imported/lower-rails.png-b51a35c7bfd2248a153de38d252ad8c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/deck level-01.png"
-dest_files=["res://.godot/imported/deck level-01.png-2033cb7face0bd24663f40194596265b.ctex"]
+source_file="res://Sprites/lower-rails.png"
+dest_files=["res://.godot/imported/lower-rails.png-b51a35c7bfd2248a153de38d252ad8c3.ctex"]
 
 [params]
 

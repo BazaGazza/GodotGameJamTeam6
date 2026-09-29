@@ -28,17 +28,17 @@ func _physics_process(delta: float) -> void:
 	
 	var newRotation = Aimer.rotation_degrees + rotSpeed * rotationDirection * delta
 	
-	if newRotation >= 45:
-		newRotation = 45
+	if newRotation >= 35:
+		newRotation = 35
 		rotationDirection = -1
-	elif newRotation <= -45:
-		newRotation = -45
+	elif newRotation <= -35:
+		newRotation = -35
 		rotationDirection = 1
 	Aimer.rotation_degrees = newRotation
 
 func startAim():
 	
-	Aimer.rotation_degrees = randf_range(-45,45)
+	Aimer.rotation_degrees = randf_range(-35,35)
 	
 	var defaultOffset = currentPlayer.playerCamera.get_meta("DefaultOffset")
 	Aimer.visible = true
@@ -53,8 +53,10 @@ func startAim():
 	explosionSprite.visible = true
 	var hitAreas = Hitbox.get_overlapping_areas()
 	for hurtbox in hitAreas:
-		var ship:EnemyShip = hurtbox.owner
-		ship.destroy()
+		if hurtbox.owner is EnemyShip:
+			var ship:EnemyShip = hurtbox.owner
+			ship.destroy()
+
 	
 	await get_tree().create_timer(0.5).timeout
 	explosionSprite.visible = false
