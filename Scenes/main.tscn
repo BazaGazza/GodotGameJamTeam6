@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://dbt4q18np7y0k"]
 
+[ext_resource type="Script" uid="uid://2kqx1ddmp6cg" path="res://Scenes/ship_level.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://c776r2n3h4jgq" path="res://Scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://darvh331r4yb2" path="res://Sprites/ship-asset.png" id="4_6iyac"]
 [ext_resource type="PackedScene" uid="uid://b84bbpqib4f1y" path="res://Scenes/interactable-Cannon.tscn" id="5_344ge"]
 [ext_resource type="PackedScene" uid="uid://bkwqt763hg5op" path="res://Scenes/interactable-Steering Wheel.tscn" id="5_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://dppoh0ikkihtl" path="res://Sprites/mast.png" id="5_hptm8"]
 [ext_resource type="Texture2D" uid="uid://bbekbkqskxpap" path="res://Sprites/lower-rails.png" id="6_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://icrr7tora4c8" path="res://Scenes/interactable-Plank.tscn" id="7_6iyac"]
+[ext_resource type="PackedScene" uid="uid://dlgiy3ikgk72f" path="res://Scenes/interactable-Plank.tscn" id="7_6iyac"]
 [ext_resource type="PackedScene" uid="uid://dchbe4xnf3xjo" path="res://Scenes/enemy_ship.tscn" id="7_hptm8"]
 [ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://Scenes/minigame.tscn" id="8_344ge"]
 [ext_resource type="Script" uid="uid://b5a6woogfgv1d" path="res://Scenes/backgrounds.gd" id="8_hptm8"]
@@ -42,6 +43,7 @@ grow_vertical = 2
 [node name="ShipLevel" type="Node2D" parent="ShipNode/ShipMask" unique_id=1095382606]
 y_sort_enabled = true
 position = Vector2(762, 819)
+script = ExtResource("1_d1ilt")
 
 [node name="Sprite2D" type="Sprite2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=303963373]
 position = Vector2(52, 139)
@@ -115,7 +117,7 @@ position = Vector2(11, 121)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_d1ilt")
 
-[node name="EnemyShips" type="Node" parent="ShipNode/ShipMask/ShipLevel" unique_id=565564427]
+[node name="EnemyShips" type="Node2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=483103050]
 
 [node name="EnemyShip" parent="ShipNode/ShipMask/ShipLevel/EnemyShips" unique_id=1293328923 instance=ExtResource("7_hptm8")]
 position = Vector2(264, -436)
