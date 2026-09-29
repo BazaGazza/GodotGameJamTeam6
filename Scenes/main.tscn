@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://dbt4q18np7y0k"]
 
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://dxvmdeirxto1" path="res://Sprites/oval.png" id="1_0xm2m"]
+=======
+[ext_resource type="Script" uid="uid://berbwpw0omros" path="res://Scenes/ship_level.gd" id="1_d1ilt"]
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://c776r2n3h4jgq" path="res://Scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dwryx3kbwwlov" path="res://Sprites/deck level-01.png" id="1_kry3j"]
 [ext_resource type="Texture2D" uid="uid://p81fsujv4vgc" path="res://Sprites/up-arrow.png" id="3_21xkr"]
@@ -27,8 +31,15 @@ visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="DeckLevel" unique_id=93005677]
 
+<<<<<<< Updated upstream
 [node name="Sprite2D" type="Sprite2D" parent="DeckLevel/StaticBody2D" unique_id=1272633067]
 texture = ExtResource("1_kry3j")
+=======
+[node name="ShipLevel" type="Node2D" parent="ShipNode/ShipMask" unique_id=1095382606]
+y_sort_enabled = true
+position = Vector2(762, 819)
+script = ExtResource("1_d1ilt")
+>>>>>>> Stashed changes
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeckLevel/StaticBody2D" unique_id=505472259]
 position = Vector2(0, 210.5)
