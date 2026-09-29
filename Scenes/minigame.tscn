@@ -506,20 +506,20 @@ process_mode = 4
 layout_mode = 2
 mouse_filter = 1
 
-[node name="Node2D" type="Node2D" parent="MainFrame/WheelMinigame" unique_id=386809020]
-position = Vector2(625, 575)
+[node name="pivot" type="Node2D" parent="MainFrame/WheelMinigame" unique_id=386809020]
+position = Vector2(625, 574)
 
-[node name="Wheel" type="CharacterBody2D" parent="MainFrame/WheelMinigame/Node2D" unique_id=545945409]
+[node name="Wheel" type="CharacterBody2D" parent="MainFrame/WheelMinigame/pivot" unique_id=545945409]
 position = Vector2(-10, 5)
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainFrame/WheelMinigame/Node2D/Wheel" unique_id=907421943]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainFrame/WheelMinigame/pivot/Wheel" unique_id=907421943]
 position = Vector2(-1, -10)
 build_mode = 1
 polygon = PackedVector2Array(-20, -286, 45, -281, 110, -262, 155, -237, 208, -187, 245, -128, 263, -57, 264, -7, 254, 46, 232, 101, 198, 148, 157, 183, 78, 224, -20, 232, -119, 203, -176, 157, -230, 85, -252, 11, -253, -55, -239, -114, -220, -154, -190, -196, -154, -231, -106, -260, -40, -284, -25, -286, -35, -381, -92, -372, -110, -367, -134, -409, -183, -477, -214, -501, -222, -501, -226, -487, -224, -451, -213, -390, -194, -335, -198, -329, -257, -280, -305, -221, -339, -150, -355, -85, -360, -55, -410, -49, -460, -41, -508, -23, -521, -9, -516, 5, -500, 13, -449, 26, -386, 34, -354, 36, -349, 65, -327, 124, -307, 161, -260, 222, -226, 252, -184, 282, -197, 317, -205, 344, -214, 376, -219, 406, -220, 430, -215, 444, -208, 450, -193, 447, -176, 434, -156, 408, -128, 367, -111, 335, -101, 318, -68, 328, -28, 333, 2, 334, 35, 332, 72, 326, 97, 320, 117, 315, 125, 332, 144, 365, 166, 398, 183, 422, 195, 436, 210, 447, 221, 452, 228, 451, 233, 447, 237, 441, 238, 432, 239, 417, 236, 393, 231, 370, 224, 345, 215, 318, 205, 287, 200, 276, 206, 270, 222, 259, 236, 247, 252, 232, 268, 216, 281, 200, 292, 186, 308, 162, 319, 145, 327, 126, 335, 106, 344, 87, 352, 61, 357, 36, 394, 35, 424, 33, 452, 28, 483, 21, 498, 17, 515, 8, 524, -1, 525, -6, 524, -13, 520, -20, 505, -29, 484, -36, 465, -42, 441, -47, 412, -51, 382, -55, 367, -55, 364, -56, 362, -73, 359, -90, 355, -114, 349, -133, 342, -154, 332, -179, 321, -202, 308, -223, 293, -243, 274, -268, 248, -294, 228, -311, 207, -327, 210, -336, 219, -357, 225, -376, 232, -401, 239, -428, 244, -456, 245, -479, 241, -491, 236, -496, 228, -499, 220, -497, 213, -492, 204, -486, 188, -469, 176, -453, 161, -431, 149, -414, 137, -391, 126, -371, 124, -368, 107, -375, 88, -379, 64, -383, 34, -386, 6, -388, -10, -387, -21, -385, -33, -381, -21, -287)
 
-[node name="TextureRect" type="TextureRect" parent="MainFrame/WheelMinigame/Node2D/Wheel" unique_id=1254653753]
+[node name="TextureRect" type="TextureRect" parent="MainFrame/WheelMinigame/pivot/Wheel" unique_id=1254653753]
 offset_left = -525.0
 offset_top = -521.0
 offset_right = 529.0

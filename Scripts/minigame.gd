@@ -333,15 +333,15 @@ func wheelMinigame(): #RODOLFO ADD WHEEL
 	
 	#getting all references down early 
 	var minigameFrame = mainFrame.get_node("WheelMinigame")
-	var wheel_node:CharacterBody2D = minigameFrame.get_node("Wheel")
-	var collider:CollisionPolygon2D = minigameFrame.get_node("CollisionPolygon2")
+	var wheel_node:CharacterBody2D = minigameFrame.get_node("pivot/Wheel")
+	var collider:CollisionPolygon2D = minigameFrame.get_node("pivot/Wheel/CollisionPolygon2")
 
 	#setting up all variables
 	
 	
 	#setting visibility to true 
 	for child in mainFrame.get_children():
-		child.visibility = true
+		child.visible = true
 	
 	currentPlayer.playerCamera.offset = Vector2(300,currentPlayer.playerCamera.offset.y)
 	currentPlayer.playerCamera.offset = Vector2(0,currentPlayer.playerCamera.offset.y)
