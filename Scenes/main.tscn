@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dchbe4xnf3xjo" path="res://Scenes/enemy_ship.tscn" id="7_hptm8"]
 [ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://Scenes/minigame.tscn" id="8_344ge"]
 [ext_resource type="Script" uid="uid://b5a6woogfgv1d" path="res://Scenes/backgrounds.gd" id="8_hptm8"]
+[ext_resource type="PackedScene" uid="uid://k3aua5y3vsjc" path="res://Scenes/timer_ui.tscn" id="12_6iyac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(3.3196034, 4.6468644)
@@ -173,3 +174,8 @@ layer = 3
 visible = false
 
 [node name="minigame" parent="MinigameUI" unique_id=1271992693 instance=ExtResource("8_344ge")]
+
+[node name="TimerUI" type="CanvasLayer" parent="." unique_id=149802906]
+layer = 5
+
+[node name="timerUI" parent="TimerUI" unique_id=1938765599 instance=ExtResource("12_6iyac")]

@@ -6,6 +6,7 @@
 [node name="Interactable" unique_id=610343071 instance=ExtResource("1_qgnuu")]
 rotation = -1.5707964
 scale = Vector2(4.0313945, 4.055729)
+interactType = "PlankMinigame"
 
 [node name="TextureRect" type="TextureRect" parent="." index="2" unique_id=519007633]
 anchors_preset = -1
