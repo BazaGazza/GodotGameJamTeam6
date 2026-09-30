@@ -1,57 +1,46 @@
 extends Node2D
 var currentPlayer: Player
 
+var shipHealth = 100
+var defaultHealth = 100
+var timer = 0
 
-var currentScene = "Ship"
-var mainScene
-var shipLevel
-var deckLevel
+var currentScene:Node = null
+var currentSceneName = "Ship"
+
+var InteractablesNode:Node2D = null
+var holeScene:PackedScene = preload("res://Scenes/interactable-Hole.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	mainScene = get_tree().current_scene
-	if mainScene.name != "MainMenu":
-		# to test UI, and be able to run Ui scenes seperately without the game breaking
-		queue_free()
-		return
-		
-	shipLevel = mainScene.get_node("ShipLevel")
-	deckLevel = mainScene.get_node("DeckLevel")
-	pass
+	resetGame()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-##	StaticBody2D.
+	currentScene = get_tree().current_scene
+	if currentScene == null: return
+	if currentScene.name != "Main": return
+	if InteractablesNode == null:
+		InteractablesNode = currentScene.get_node("ShipNode").get_node("ShipMask").get_node("ShipLevel").get_node("Interactables")
 
-# the game timer probably goes in here too
+	timer += delta
+	# the game timer probably goes in here too
+	spawnHole()
+
+	
 
 
 signal playerReady(player)
 func setCurrentPlayer(player):
 	currentPlayer = player
 	playerReady.emit(player)
-
-func goDown():
-	currentPlayer.scale = Vector2(0.5,0.5)
-	shipLevel.process_mode = Node.PROCESS_MODE_DISABLED
-	shipLevel.visible = false
 	
-	deckLevel.process_mode = Node.PROCESS_MODE_INHERIT
-	deckLevel.visible = true
+func resetGame():
+	timer = 0
+	shipHealth = defaultHealth
 	
-	currentPlayer.global_position = deckLevel.get_node("Marker2D").global_position
-	currentScene = "Deck"
-	pass
+func spawnHole():
+	var holeClone = holeScene.instantiate()
+	var randomPos = Vector2(0,0)
+	holeClone.position = randomPos
+	InteractablesNode.add_child(holeClone)
 	
-func goUp():
-	currentPlayer.scale = Vector2(0.1,0.1)
-	shipLevel.process_mode = Node.PROCESS_MODE_INHERIT
-	shipLevel.visible = true
-	
-	deckLevel.process_mode = Node.PROCESS_MODE_DISABLED
-	deckLevel.visible = false
-	
-	currentPlayer.global_position = shipLevel.get_node("Marker2D").global_position
-	currentScene = "Ship"
-	pass

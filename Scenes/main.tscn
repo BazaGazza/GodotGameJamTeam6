@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bkwqt763hg5op" path="res://Scenes/interactable-Steering Wheel.tscn" id="5_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://dppoh0ikkihtl" path="res://Sprites/mast.png" id="5_hptm8"]
 [ext_resource type="Texture2D" uid="uid://bbekbkqskxpap" path="res://Sprites/lower-rails.png" id="6_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://dlgiy3ikgk72f" path="res://Scenes/interactable-Plank.tscn" id="7_6iyac"]
+[ext_resource type="PackedScene" uid="uid://icrr7tora4c8" path="res://Scenes/interactable-Hole.tscn" id="7_6iyac"]
 [ext_resource type="PackedScene" uid="uid://dchbe4xnf3xjo" path="res://Scenes/enemy_ship.tscn" id="7_hptm8"]
 [ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://Scenes/minigame.tscn" id="8_344ge"]
 [ext_resource type="Script" uid="uid://b5a6woogfgv1d" path="res://Scenes/backgrounds.gd" id="8_hptm8"]
@@ -139,6 +139,13 @@ z_as_relative = false
 position = Vector2(-9, 82.99998)
 scale = Vector2(0.15, 0.15)
 baseSpeed = 200
+
+[node name="HoleArea" type="Area2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=784632357]
+z_index = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShipNode/ShipMask/ShipLevel/HoleArea" unique_id=767318662]
+build_mode = 1
+polygon = PackedVector2Array(-537, 4, -575, 4, -611, 7, -617, 48, -621, 86, -608, 116, -593, 138, -542, 142, -409, 139, -76, 142, 180, 142, 418, 138, 477, 129, 470, 52, 467, 9, 453, -26, 383, -35, 73, -35, -14, -33, -162, -22, -317, -9, -407, -3, -495, 2)
 
 [node name="Backgrounds" type="Node2D" parent="." unique_id=1368142683]
 scale = Vector2(2.3, 3)

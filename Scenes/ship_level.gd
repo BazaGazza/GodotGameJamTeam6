@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var ship:Node2D = self
-@onready var tempHealth = 100
+@onready var tempHealth = GameManager.shipHealth
 var maxHealth = 100
 
 var originalY
