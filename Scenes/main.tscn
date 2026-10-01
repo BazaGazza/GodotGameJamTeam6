@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://2kqx1ddmp6cg" path="res://Scenes/ship_level.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://c776r2n3h4jgq" path="res://Scenes/player.tscn" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://dqymdumwmni0n" path="res://Sprites/ripple-texture.png" id="2_6iyac"]
+[ext_resource type="Texture2D" uid="uid://dm3vt8ea8oqi1" path="res://Sprites/ripple1-skewed.png" id="2_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://df7v7276s2h0" path="res://Sprites/ripple-trail.png" id="3_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://darvh331r4yb2" path="res://Sprites/ship-asset.png" id="4_6iyac"]
 [ext_resource type="PackedScene" uid="uid://b84bbpqib4f1y" path="res://Scenes/interactable-Cannon.tscn" id="5_344ge"]
 [ext_resource type="PackedScene" uid="uid://bkwqt763hg5op" path="res://Scenes/interactable-Steering Wheel.tscn" id="5_d1ilt"]
@@ -15,6 +16,10 @@
 
 [sub_resource type="Gradient" id="Gradient_l1l02"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_wsu2k"]
+_data = [Vector2(0, 0.6017699), 0.0, 0.0, 0, 0, Vector2(0.9364407, 0.840708), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(3.3196034, 4.6468644)
@@ -53,18 +58,37 @@ position = Vector2(762, 819)
 script = ExtResource("1_d1ilt")
 
 [node name="RippleParticle" type="CPUParticles2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=929277301]
+visible = false
 top_level = true
 z_index = -1
 z_as_relative = false
-position = Vector2(-726, 308)
+position = Vector2(-771, 473)
 amount = 2
-texture = ExtResource("2_6iyac")
+texture = ExtResource("2_fdnlq")
 lifetime = 0.25
 local_coords = true
 emission_shape = 3
-emission_rect_extents = Vector2(150, 100)
+emission_rect_extents = Vector2(25, 25)
 direction = Vector2(-1, 0)
 gravity = Vector2(-1000, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_l1l02")
+
+[node name="TrailParticle" type="CPUParticles2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=1374369305]
+top_level = true
+z_index = -1
+z_as_relative = false
+position = Vector2(-736, 296)
+amount = 2
+texture = ExtResource("3_jkdf5")
+lifetime = 1.5
+local_coords = true
+direction = Vector2(-1, 0)
+gravity = Vector2(-20, 0)
+scale_amount_min = 1.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_wsu2k")
 color_ramp = SubResource("Gradient_l1l02")
 
 [node name="Sprite2D" type="Sprite2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=303963373]
