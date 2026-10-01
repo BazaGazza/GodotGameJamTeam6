@@ -11,7 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	var damage:int = 0
-	damage = GameManager.spawnedHoles * 2
+	damage = GameManager.spawnedHoles * 1
 	
 	GameManager.currentHealth -= damage*delta
 	var progress = 1-(GameManager.currentHealth/GameManager.maxHealth)

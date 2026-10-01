@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://2kqx1ddmp6cg" path="res://Scenes/ship_level.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://c776r2n3h4jgq" path="res://Scenes/player.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://dqymdumwmni0n" path="res://Sprites/ripple-texture.png" id="2_6iyac"]
 [ext_resource type="Texture2D" uid="uid://darvh331r4yb2" path="res://Sprites/ship-asset.png" id="4_6iyac"]
 [ext_resource type="PackedScene" uid="uid://b84bbpqib4f1y" path="res://Scenes/interactable-Cannon.tscn" id="5_344ge"]
 [ext_resource type="PackedScene" uid="uid://bkwqt763hg5op" path="res://Scenes/interactable-Steering Wheel.tscn" id="5_d1ilt"]
@@ -11,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://Scenes/minigame.tscn" id="8_344ge"]
 [ext_resource type="Script" uid="uid://b5a6woogfgv1d" path="res://Scenes/backgrounds.gd" id="8_hptm8"]
 [ext_resource type="PackedScene" uid="uid://k3aua5y3vsjc" path="res://Scenes/timer_ui.tscn" id="12_6iyac"]
+
+[sub_resource type="Gradient" id="Gradient_l1l02"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(3.3196034, 4.6468644)
@@ -47,6 +51,21 @@ grow_vertical = 2
 y_sort_enabled = true
 position = Vector2(762, 819)
 script = ExtResource("1_d1ilt")
+
+[node name="RippleParticle" type="CPUParticles2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=929277301]
+top_level = true
+z_index = -1
+z_as_relative = false
+position = Vector2(-726, 308)
+amount = 2
+texture = ExtResource("2_6iyac")
+lifetime = 0.25
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(150, 100)
+direction = Vector2(-1, 0)
+gravity = Vector2(-1000, 0)
+color_ramp = SubResource("Gradient_l1l02")
 
 [node name="Sprite2D" type="Sprite2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=303963373]
 position = Vector2(52, 139)

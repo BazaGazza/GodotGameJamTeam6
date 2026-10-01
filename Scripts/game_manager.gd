@@ -27,6 +27,7 @@ var baseShakeRate = 0.0
 
 var fadeScene = preload("res://Scenes/fade_screen.tscn")
 var fadeScreen:CanvasLayer
+var gameActive = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -41,6 +42,11 @@ func fadeFromBlack(duration = 0.25):
 	fadeScreen.fadeFromBlack()
 
 func _process(delta: float) -> void:
+	if currentHealth <= 0 and gameActive:
+		gameActive = false
+		endGame()
+		return
+	
 	currentScene = get_tree().current_scene
 	if currentScene == null: return
 	if currentScene.name != "Main": return
@@ -83,11 +89,11 @@ func resetGame():
 			child.queue_free()
 	
 func endGame():
-	GameManager.fadeToBlack(0.5)
-	await get_tree().create_timer(0.5).timeout
-	GameManager.fadeFromBlack(0.5)
-	GameManager.resetGame()
-	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	fadeToBlack(0.25)
+	await get_tree().create_timer(0.25).timeout
+	get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
+	fadeFromBlack(0.25)
+	resetGame()
 	
 func spawnHole():
 	var holeArea = currentScene.get_node("ShipNode").get_node("ShipMask").get_node("ShipLevel").get_node("HoleArea")
@@ -115,6 +121,7 @@ func spawnHole():
 	holeClone.set_meta("Clone",true)
 	
 	InteractablesNode.add_child(holeClone)
+	currentHealth -= 5
 	
 func richTextWavy(text:String):
 	return "[shake rate="+str(currentShakeRate)+" level="+str(currentShakeLevel)+" connected=1]"+text+"[/shake]"

@@ -5,3 +5,4 @@ func _on_pressed() -> void:
 	GameManager.fadeFromBlack(0.5)
 	GameManager.resetGame()
 	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	GameManager.gameActive = true
