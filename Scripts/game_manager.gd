@@ -91,6 +91,21 @@ func endGame():
 	if gameActive == false: return
 	
 	gameActive = false
+	
+	if currentHealth <= 0:
+		# died from sinking, not cannon
+		var shipLevel:Node2D = currentScene.get_node("ShipNode/ShipMask/ShipLevel")
+		
+		var newPos:Vector2 = shipLevel.position+Vector2(0,100)
+		var tween = create_tween()
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_trans(Tween.TRANS_BACK)
+		tween.set_parallel()
+		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		tween.tween_property(shipLevel,"position",newPos,0.6)
+		tween.tween_property(shipLevel,"rotation_degrees",-13,0.6)
+		await get_tree().create_timer(0.4,true).timeout
+	
 	await get_tree().create_timer(0.2,true).timeout
 	get_tree().paused = true
 	get_tree().current_scene.modulate = Color(0.502, 0.275, 0.275, 1.0)
@@ -100,7 +115,7 @@ func endGame():
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_BOUNCE)
 	tween.set_parallel()
-	tween.tween_property(currentPlayer.playerCamera,"zoom",Vector2(2,2),0.35)
+	#tween.tween_property(currentPlayer.playerCamera,"zoom",Vector2(2,2),0.35)
 	#currentPlayer.playerCamera.zoom = Vector2(2,2)
 	
 	await get_tree().create_timer(0.75,true).timeout

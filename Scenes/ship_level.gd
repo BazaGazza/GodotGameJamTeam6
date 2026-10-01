@@ -9,7 +9,7 @@ func _ready() -> void:
 	endY = originalY+150
 
 func _process(delta: float) -> void:
-	
+	if GameManager.gameActive == false: return
 	var damage:int = 0
 	damage = GameManager.spawnedHoles * 1
 	

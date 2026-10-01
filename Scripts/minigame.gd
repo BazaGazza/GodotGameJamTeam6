@@ -66,6 +66,8 @@ func moveDrag(delta):
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		dragNode.velocity = Vector2.ZERO
 		dragNode = null
+		print("hovering plank")
+		print(hoveringPlank)
 		if currentPlank and hoveringPlank:
 			placePlankSignal.emit()
 			
@@ -332,8 +334,13 @@ func plankMinigame():
 	while placedPlanks < 4 and not gameCanceled:
 		await get_tree().process_frame
 		
+	holeArea.body_entered.disconnect(enterFunction)
+	holeArea.body_exited.disconnect(exitFunction)
 	placePlankSignal.disconnect(placeFunction)
-		
+	for child in plankCloneList:
+		if is_instance_valid(child):
+			child.queue_free()
+
 		
 func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 	#getting all references down early 

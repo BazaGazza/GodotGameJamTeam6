@@ -1,0 +1,586 @@
+[gd_scene format=3 uid="uid://c72r5doca5h3s"]
+
+[ext_resource type="Script" uid="uid://dg50ng6hn56b3" path="res://Scripts/minigame.gd" id="1_iqey4"]
+[ext_resource type="Texture2D" uid="uid://dhv8yp38gnl0p" path="res://Sprites/Cannon Rod.png" id="3_5bepb"]
+[ext_resource type="Texture2D" uid="uid://10gu7y44eugn" path="res://Sprites/Gun powder.png" id="3_id8w1"]
+[ext_resource type="Texture2D" uid="uid://cgylpd8sre7jd" path="res://Sprites/Cannon ball.png" id="4_yx24v"]
+[ext_resource type="Texture2D" uid="uid://dh3ucculuwd2y" path="res://Sprites/nail.png" id="6_vnlq7"]
+[ext_resource type="Texture2D" uid="uid://c8bju6jd0wdxm" path="res://Sprites/plank.png" id="6_xcq3l"]
+[ext_resource type="Theme" uid="uid://b4u1svlmtf02y" path="res://new_theme.tres" id="6_yx24v"]
+[ext_resource type="Texture2D" uid="uid://bq682katn3ent" path="res://Sprites/Hole.png" id="7_vnlq7"]
+[ext_resource type="Texture2D" uid="uid://h1ysyl5blnet" path="res://Sprites/floor-closeup.png" id="8_hr1fu"]
+[ext_resource type="Texture2D" uid="uid://cfg6u05m4fg1h" path="res://Sprites/Wheel.png" id="8_xcq3l"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_255i5"]
+load_path = "res://.godot/imported/cannon-minigame.png-c4a94c041d55e03fc9fbaf25f10da106.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oood0"]
+size = Vector2(4.677889, 84.22968)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_id8w1"]
+size = Vector2(5.7423134, 84.22968)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
+size = Vector2(194, 205)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l1l02"]
+radius = 148.63715
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufkp0"]
+size = Vector2(201, 161)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yx24v"]
+size = Vector2(641, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6vwk"]
+size = Vector2(206, 161)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbrk7"]
+size = Vector2(141, 296)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oood0"]
+radius = 368.16754
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ufkp0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l1l02"]
+distance = -200.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iqey4"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_id8w1"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yx24v"]
+
+[node name="minigame" type="Control" unique_id=1271992693]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_iqey4")
+
+[node name="Background" type="ColorRect" parent="." unique_id=793932141]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="MainFrame" type="MarginContainer" parent="." unique_id=111304815]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="CannonMinigame" type="Control" parent="MainFrame" unique_id=1902821591]
+process_mode = 4
+visible = false
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Cannon" type="TextureRect" parent="MainFrame/CannonMinigame" unique_id=1508803699]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -63.0
+offset_right = 224.0
+offset_bottom = 63.0
+grow_vertical = 2
+scale = Vector2(3.57, 3.57)
+pivot_offset = Vector2(0, 63)
+texture = SubResource("CompressedTexture2D_255i5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="MainFrame/CannonMinigame/Cannon" unique_id=604367992]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainFrame/CannonMinigame/Cannon/StaticBody2D" unique_id=284108390]
+scale = Vector2(0.99999994, 0.99999994)
+polygon = PackedVector2Array(16.80672, 0.53500366, 222.96918, -0.025215149, 223.24928, 19.582626, 25.770308, 20.422958, 24.369745, 101.935555, 223.24928, 102.215675, 224.92996, 124.90475, -0.56022453, 124.90475, -1.4005604, 0.53500366)
+
+[node name="PowderArea" type="Area2D" parent="MainFrame/CannonMinigame/Cannon" unique_id=674741054]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Cannon/PowderArea" unique_id=315124262]
+position = Vector2(26.512594, 61.78147)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_oood0")
+
+[node name="BallArea1" type="Area2D" parent="MainFrame/CannonMinigame/Cannon" unique_id=1696386074]
+position = Vector2(119.04761, -0.025217606)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Cannon/BallArea1" unique_id=435101305]
+position = Vector2(48.459396, 61.904755)
+scale = Vector2(0.9999991, 0.9999991)
+shape = SubResource("RectangleShape2D_id8w1")
+debug_color = Color(0.70196074, 0, 0, 0.41960785)
+
+[node name="BallArea2" type="Area2D" parent="MainFrame/CannonMinigame/Cannon" unique_id=882430029]
+position = Vector2(29.971989, -2.5462258)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Cannon/BallArea2" unique_id=1365130260]
+position = Vector2(48.459396, 61.904755)
+scale = Vector2(0.9999991, 0.9999991)
+shape = SubResource("RectangleShape2D_id8w1")
+debug_color = Color(0.70196074, 0, 0, 0.41960785)
+
+[node name="Powder" type="CharacterBody2D" parent="MainFrame/CannonMinigame" unique_id=994263630]
+position = Vector2(1259, 322)
+collision_layer = 4
+collision_mask = 4
+input_pickable = true
+motion_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/CannonMinigame/Powder" unique_id=1226604046]
+scale = Vector2(0.28185922, 0.2786008)
+texture = ExtResource("3_id8w1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Powder" unique_id=276228564]
+position = Vector2(1, 1.5)
+shape = SubResource("RectangleShape2D_l1l02")
+
+[node name="Cannonball" type="CharacterBody2D" parent="MainFrame/CannonMinigame" unique_id=2121899613]
+position = Vector2(1596, 314)
+collision_layer = 4
+collision_mask = 4
+input_pickable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/CannonMinigame/Cannonball" unique_id=545251472]
+scale = Vector2(0.36000717, 0.36000717)
+texture = ExtResource("4_yx24v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Cannonball" unique_id=283848326]
+scale = Vector2(0.9727748, 0.9727748)
+shape = SubResource("CircleShape2D_l1l02")
+
+[node name="Rod" type="CharacterBody2D" parent="MainFrame/CannonMinigame" unique_id=328639442]
+position = Vector2(1400, 873)
+collision_layer = 4
+collision_mask = 4
+input_pickable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/CannonMinigame/Rod" unique_id=1009507558]
+position = Vector2(-14, 1)
+rotation = -2.3768582
+texture = ExtResource("3_5bepb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Rod" unique_id=1118059071]
+position = Vector2(-316.5, 3.5)
+shape = SubResource("RectangleShape2D_ufkp0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Rod" unique_id=1342397052]
+position = Vector2(97.5, -4)
+shape = SubResource("RectangleShape2D_yx24v")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/CannonMinigame/Rod" unique_id=88447574]
+scale = Vector2(1.0199853, 1.1130118)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Rod/Area2D" unique_id=2087082269]
+position = Vector2(-312, 4.5)
+shape = SubResource("RectangleShape2D_f6vwk")
+debug_color = Color(0.70196074, 0, 0, 0.41960785)
+
+[node name="PlankMinigame" type="Control" parent="MainFrame" unique_id=114902012]
+process_mode = 4
+visible = false
+layout_mode = 2
+mouse_filter = 1
+
+[node name="PlankTemplate" type="CharacterBody2D" parent="MainFrame/PlankMinigame" unique_id=746476654]
+position = Vector2(327, 546)
+scale = Vector2(2, 3.368)
+collision_layer = 2
+collision_mask = 4
+input_pickable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/PlankMinigame/PlankTemplate" unique_id=1993085760]
+scale = Vector2(0.3496802, 0.34968007)
+texture = ExtResource("6_xcq3l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/PlankTemplate" unique_id=1676886263]
+position = Vector2(-1.5, -2)
+shape = SubResource("RectangleShape2D_nbrk7")
+
+[node name="Nail1" type="Sprite2D" parent="MainFrame/PlankMinigame/PlankTemplate" unique_id=660643505]
+visible = false
+position = Vector2(-38.875954, -136.74675)
+scale = Vector2(0.23444271, 0.14117937)
+skew = 0.27052602
+texture = ExtResource("6_vnlq7")
+
+[node name="Nail2" type="Sprite2D" parent="MainFrame/PlankMinigame/PlankTemplate" unique_id=347796915]
+visible = false
+position = Vector2(49.6416, -137.10194)
+scale = Vector2(0.23444271, 0.14117937)
+skew = 0.27052602
+texture = ExtResource("6_vnlq7")
+
+[node name="Nail3" type="Sprite2D" parent="MainFrame/PlankMinigame/PlankTemplate" unique_id=59065149]
+visible = false
+position = Vector2(-35.885498, 122.53926)
+scale = Vector2(0.23444271, 0.14117937)
+skew = 0.27052602
+texture = ExtResource("6_vnlq7")
+
+[node name="Nail4" type="Sprite2D" parent="MainFrame/PlankMinigame/PlankTemplate" unique_id=75717019]
+visible = false
+position = Vector2(43.06259, 123.604866)
+scale = Vector2(0.23444271, 0.14117937)
+skew = 0.27052602
+texture = ExtResource("6_vnlq7")
+
+[node name="HoleArea" type="Area2D" parent="MainFrame/PlankMinigame" unique_id=892221337]
+position = Vector2(1305, 526)
+scale = Vector2(1.15, 1.15)
+collision_layer = 0
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea" unique_id=918733742]
+scale = Vector2(0.80000246, 0.80000246)
+texture = ExtResource("7_vnlq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea" unique_id=1734410942]
+scale = Vector2(0.80000246, 0.80000246)
+shape = SubResource("CircleShape2D_oood0")
+
+[node name="Planks" type="Node2D" parent="MainFrame/PlankMinigame/HoleArea" unique_id=1122076147]
+
+[node name="Plank1" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks" unique_id=1372790776]
+position = Vector2(-196.52168, -108.69563)
+rotation = 0.8090571
+scale = Vector2(0.5846599, 0.9844974)
+texture = ExtResource("6_xcq3l")
+
+[node name="Nail1" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1" unique_id=1260437708]
+position = Vector2(-111.17578, -391.06253)
+scale = Vector2(0.670449, 0.40373874)
+skew = 0.2705257
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail1" unique_id=29924225]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail1/Area2D" unique_id=592794687]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Nail2" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1" unique_id=420037069]
+position = Vector2(141.96289, -392.07834)
+scale = Vector2(0.670449, 0.40373874)
+skew = 0.2705257
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail2" unique_id=303806915]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail2/Area2D" unique_id=239782315]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Nail3" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1" unique_id=345231942]
+position = Vector2(-102.62378, 350.43246)
+scale = Vector2(0.670449, 0.40373874)
+skew = 0.2705257
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail3" unique_id=838234406]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail3/Area2D" unique_id=755597131]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Nail4" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1" unique_id=777004601]
+position = Vector2(123.14844, 353.4799)
+scale = Vector2(0.670449, 0.40373874)
+skew = 0.2705257
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail4" unique_id=2015136149]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail4/Area2D" unique_id=587887747]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Plank2" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks" unique_id=1668546785]
+visible = false
+position = Vector2(130, -154)
+rotation = -0.9239576
+scale = Vector2(0.58465993, 0.9844975)
+texture = ExtResource("6_xcq3l")
+
+[node name="Nail1" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2" unique_id=1595013530]
+position = Vector2(-111.17566, -391.06238)
+scale = Vector2(0.670449, 0.40373868)
+skew = 0.2705258
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail1" unique_id=2127103503]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail1/Area2D" unique_id=1341702788]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Nail2" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2" unique_id=756679010]
+position = Vector2(141.96289, -392.07837)
+scale = Vector2(0.670449, 0.40373868)
+skew = 0.2705258
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail2" unique_id=158262174]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail2/Area2D" unique_id=2070439057]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Nail3" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2" unique_id=184582652]
+position = Vector2(-102.62384, 350.4325)
+scale = Vector2(0.670449, 0.40373868)
+skew = 0.2705258
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail3" unique_id=897489671]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail3/Area2D" unique_id=188336009]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Nail4" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2" unique_id=1288660613]
+position = Vector2(123.14856, 353.47998)
+scale = Vector2(0.670449, 0.40373868)
+skew = 0.2705258
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail4" unique_id=561605104]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail4/Area2D" unique_id=1846603757]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Plank3" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks" unique_id=1287208304]
+visible = false
+position = Vector2(-47, 178)
+rotation = 1.9020808
+scale = Vector2(0.58465993, 0.9844975)
+texture = ExtResource("6_xcq3l")
+
+[node name="Nail1" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3" unique_id=1297497731]
+position = Vector2(-111.17566, -391.0625)
+scale = Vector2(0.6704489, 0.40373868)
+skew = 0.2705258
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail1" unique_id=1685642116]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail1/Area2D" unique_id=1538133955]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Nail2" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3" unique_id=835668876]
+position = Vector2(141.96289, -392.07837)
+scale = Vector2(0.6704489, 0.40373868)
+skew = 0.2705258
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail2" unique_id=569812380]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail2/Area2D" unique_id=1348998564]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Nail3" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3" unique_id=1172157916]
+position = Vector2(-102.62372, 350.4325)
+scale = Vector2(0.6704489, 0.40373868)
+skew = 0.2705258
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail3" unique_id=2042021533]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail3/Area2D" unique_id=1652486767]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Nail4" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3" unique_id=291567069]
+position = Vector2(123.14856, 353.47974)
+scale = Vector2(0.6704489, 0.40373868)
+skew = 0.2705258
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail4" unique_id=1639561939]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail4/Area2D" unique_id=1027137313]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Plank4" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks" unique_id=612228990]
+visible = false
+position = Vector2(19, 13)
+rotation = 1.6735281
+scale = Vector2(0.58465993, 0.9844974)
+texture = ExtResource("6_xcq3l")
+
+[node name="Nail1" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4" unique_id=1738785357]
+position = Vector2(-111.17572, -391.0625)
+scale = Vector2(0.6704489, 0.40373868)
+skew = 0.2705258
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail1" unique_id=1337488734]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail1/Area2D" unique_id=567269378]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Nail2" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4" unique_id=1694853116]
+position = Vector2(141.96283, -392.07825)
+scale = Vector2(0.6704489, 0.40373868)
+skew = 0.2705258
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail2" unique_id=2026183774]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail2/Area2D" unique_id=1276247142]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Nail3" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4" unique_id=700409145]
+position = Vector2(-102.62378, 350.43237)
+scale = Vector2(0.6704489, 0.40373868)
+skew = 0.2705258
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail3" unique_id=317214821]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail3/Area2D" unique_id=1137787593]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="Nail4" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4" unique_id=226052064]
+position = Vector2(123.14856, 353.47974)
+scale = Vector2(0.6704489, 0.40373868)
+skew = 0.2705258
+texture = ExtResource("6_vnlq7")
+
+[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail4" unique_id=1328009235]
+scale = Vector2(16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail4/Area2D" unique_id=1018509979]
+shape = SubResource("CircleShape2D_ufkp0")
+
+[node name="PlankBackground" type="TextureRect" parent="MainFrame/PlankMinigame" unique_id=793983650]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 1000.0
+offset_bottom = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_hr1fu")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="WheelMinigame" type="Control" parent="MainFrame" unique_id=483800096]
+process_mode = 4
+layout_mode = 2
+mouse_filter = 1
+
+[node name="pivot" type="Node2D" parent="MainFrame/WheelMinigame" unique_id=386809020]
+position = Vector2(625, 574)
+
+[node name="Wheel" type="CharacterBody2D" parent="MainFrame/WheelMinigame/pivot" unique_id=545945409]
+position = Vector2(-10, 5)
+collision_layer = 4
+collision_mask = 4
+
+[node name="TextureRect" type="TextureRect" parent="MainFrame/WheelMinigame/pivot/Wheel" unique_id=1254653753]
+offset_left = -597.0
+offset_top = -631.0
+offset_right = 620.0
+offset_bottom = 586.0
+texture = ExtResource("8_xcq3l")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainFrame/WheelMinigame/pivot/Wheel" unique_id=2135105379]
+build_mode = 1
+polygon = PackedVector2Array(-52, -351, -13, -360, -13, -392, -23, -400, -13, -414, -7, -430, -20, -448, -21, -481, -23, -515, -15, -542, 2, -561, 17, -566, 32, -556, 34, -527, 32, -492, 31, -460, 27, -437, 20, -427, 22, -414, 31, -406, 24, -396, 23, -380, 21, -365, 87, -356, 162, -329, 207, -300, 233, -278, 249, -294, 251, -311, 265, -311, 275, -311, 278, -322, 287, -341, 341, -395, 368, -415, 385, -414, 393, -401, 393, -378, 381, -349, 339, -309, 318, -296, 306, -293, 296, -293, 293, -285, 294, -276, 292, -267, 287, -264, 278, -265, 274, -266, 258, -254, 293, -210, 326, -145, 342, -89, 347, -45, 370, -47, 374, -54, 379, -59, 384, -59, 391, -55, 394, -47, 402, -44, 411, -50, 419, -54, 437, -57, 463, -61, 499, -61, 527, -59, 541, -56, 549, -47, 550, -36, 547, -24, 535, -12, 522, -5, 498, 2, 467, 6, 440, 4, 423, 0, 410, -6, 402, -11, 395, -10, 391, -3, 385, 3, 378, 3, 373, 1, 370, -4, 370, -7, 348, -10, 342, 36, 314, 124, 297, 154, 269, 194, 255, 210, 270, 225, 284, 225, 292, 230, 292, 242, 287, 248, 291, 254, 300, 255, 320, 268, 376, 329, 384, 341, 389, 353, 384, 369, 365, 376, 350, 375, 325, 362, 301, 341, 276, 308, 269, 292, 266, 273, 259, 270, 245, 271, 241, 269, 239, 264, 239, 258, 240, 252, 236, 245, 230, 235, 202, 258, 166, 280, 137, 293, 107, 304, 86, 310, 57, 316, 29, 318, 29, 326, 30, 335, 31, 341, 40, 347, 42, 351, 42, 356, 39, 361, 35, 364, 28, 367, 26, 374, 33, 382, 37, 390, 40, 409, 42, 433, 42, 451, 42, 468, 40, 500, 36, 513, 27, 520, 20, 522, 7, 518, -2, 510, -10, 500, -18, 484, -21, 467, -23, 454, -24, 430, -23, 412, -19, 398, -14, 384, -9, 375, -7, 371, -8, 364, -14, 362, -20, 356, -21, 351, -20, 345, -17, 342, -12, 339, -8, 319, -27, 318, -54, 314, -83, 308, -112, 298, -131, 290, -148, 282, -174, 267, -212, 239, -214, 238, -218, 246, -222, 252, -223, 256, -221, 261, -222, 267, -225, 271, -236, 272, -241, 271, -248, 274, -249, 286, -254, 299, -260, 310, -267, 322, -274, 331, -283, 341, -295, 353, -306, 361, -318, 369, -326, 373, -336, 377, -347, 378, -354, 377, -362, 373, -369, 368, -372, 362, -373, 356, -371, 350, -369, 344, -343, 311, -320, 283, -298, 264, -281, 254, -273, 253, -270, 249, -274, 244, -274, 236, -274, 229, -270, 226, -263, 224, -257, 225, -253, 225, -241, 212, -242, 209, -245, 206, -250, 201, -258, 192, -266, 182, -274, 170, -282, 158, -289, 145, -296, 132, -303, 120, -310, 104, -320, 73, -327, 47, -331, 20, -334, -6, -334, -11, -341, -10, -348, -9, -355, -8, -359, -2, -366, 2, -370, 2, -373, -1, -375, -1, -380, -7, -381, -11, -384, -11, -384, -12, -388, -14, -396, -8, -405, -3, -416, -1, -427, 3, -457, 3, -477, 2, -498, -4, -518, -12, -530, -22, -536, -30, -537, -44, -536, -50, -530, -56, -522, -60, -487, -62, -435, -61, -412, -59, -403, -56, -395, -52, -392, -48, -390, -47, -382, -47, -378, -57, -372, -61, -364, -61, -359, -56, -356, -51, -334, -47, -331, -68, -330, -80, -326, -98, -317, -132, -307, -157, -298, -179, -284, -204, -272, -223, -261, -237, -251, -248, -248, -253, -258, -258, -267, -265, -272, -263, -280, -263, -283, -266, -285, -266, -287, -278, -285, -283, -287, -290, -296, -291, -310, -296, -324, -303, -336, -312, -349, -323, -362, -337, -373, -352, -381, -366, -387, -383, -387, -400, -384, -406, -378, -413, -373, -416, -366, -418, -359, -417, -353, -415, -345, -409, -307, -376, -280, -346, -270, -331, -267, -324, -268, -317, -262, -313, -260, -312, -256, -315, -244, -316, -238, -311, -237, -304, -239, -298, -242, -297, -240, -295, -237, -295, -229, -285, -226, -281, -225, -277, -215, -285, -202, -296, -184, -309, -156, -325, -133, -338, -118, -344, -103, -350, -88, -354, -66, -360, -60, -361, -44, -282, -89, -270, -149, -237, -195, -193, -227, -146, -247, -97, -256, -48, -257, -1, -250, 40, -238, 81, -215, 123, -189, 156, -162, 183, -129, 206, -91, 224, -49, 237, -13, 241, 29, 241, 64, 236, 95, 226, 134, 208, 161, 190, 195, 161, 221, 129, 244, 92, 262, 44, 269, 6, 271, -40, 265, -81, 251, -126, 234, -162, 202, -205, 170, -233, 153, -246, 105, -271, 53, -285, 4, -288, -34, -285, -41, -284, -56, -350)
+
+[node name="HintText" type="RichTextLabel" parent="." unique_id=1429109670]
+z_index = 10
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.44811198
+anchor_top = 0.1
+anchor_right = 0.55188805
+anchor_bottom = 0.10061728
+offset_left = -0.75
+offset_right = 45.25
+offset_bottom = 16.333336
+grow_horizontal = 2
+scale = Vector2(6, 6)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme = ExtResource("6_yx24v")
+bbcode_enabled = true
+text = "hey hey hey"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Boundaries" type="Node" parent="." unique_id=1598324448]
+
+[node name="BottomBoundary" type="StaticBody2D" parent="Boundaries" unique_id=893639299]
+position = Vector2(0, 1077)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/BottomBoundary" unique_id=416132219]
+shape = SubResource("WorldBoundaryShape2D_l1l02")
+
+[node name="TopBoundary" type="StaticBody2D" parent="Boundaries" unique_id=739690665]
+rotation = -3.1415925
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/TopBoundary" unique_id=2068006161]
+shape = SubResource("WorldBoundaryShape2D_iqey4")
+
+[node name="LeftBoundary" type="StaticBody2D" parent="Boundaries" unique_id=1078280651]
+rotation = 1.5707964
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/LeftBoundary" unique_id=1531564049]
+shape = SubResource("WorldBoundaryShape2D_id8w1")
+
+[node name="RightBoundary" type="StaticBody2D" parent="Boundaries" unique_id=222977560]
+position = Vector2(1917, 0)
+rotation = -1.5707964
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/RightBoundary" unique_id=383032368]
+shape = SubResource("WorldBoundaryShape2D_yx24v")
