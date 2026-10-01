@@ -111,7 +111,7 @@ scale = Vector2(0.384, 1.2)
 texture = ExtResource("5_hptm8")
 
 [node name="LowerRail" type="Sprite2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=111853541]
-z_index = 10
+z_index = 6
 position = Vector2(11, 121)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_d1ilt")

@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://bfkgorj3w6mq5"]
+
+[ext_resource type="Script" uid="uid://cxs050ghng33c" path="res://Scenes/target_area.gd" id="1_b6n80"]
+[ext_resource type="Texture2D" uid="uid://lbi07v5ukrog" path="res://Sprites/Explosion frames.png" id="2_b6n80"]
+[ext_resource type="Texture2D" uid="uid://j3tsvscrqnin" path="res://Sprites/target distorted.png" id="2_s1yqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1yqv"]
+atlas = ExtResource("2_b6n80")
+region = Rect2(0, 0, 1378, 1602)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_huk5o"]
+atlas = ExtResource("2_b6n80")
+region = Rect2(1378, 0, 1378, 1602)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6qer"]
+atlas = ExtResource("2_b6n80")
+region = Rect2(2756, 0, 1378, 1602)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om5er"]
+atlas = ExtResource("2_b6n80")
+region = Rect2(0, 1602, 1378, 1602)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojk5w"]
+atlas = ExtResource("2_b6n80")
+region = Rect2(1378, 1602, 1378, 1602)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfkyg"]
+atlas = ExtResource("2_b6n80")
+region = Rect2(2756, 1602, 1378, 1602)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l1l02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1yqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_huk5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6qer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om5er")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojk5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfkyg")
+}],
+"loop": 0,
+"name": &"explode",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l1l02"]
+radius = 154.0
+height = 362.0
+
+[node name="TargetArea" type="Node2D" unique_id=961781219]
+z_index = 7
+z_as_relative = false
+script = ExtResource("1_b6n80")
+
+[node name="Target" type="Sprite2D" parent="." unique_id=795731303]
+self_modulate = Color(1, 0.03529412, 0.03529412, 1)
+position = Vector2(-7, 17)
+scale = Vector2(0.65, 0.65)
+skew = 0.55850536
+texture = ExtResource("2_s1yqv")
+
+[node name="Explosion" type="AnimatedSprite2D" parent="." unique_id=1192158183]
+visible = false
+z_index = 12
+position = Vector2(33, -84.00001)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_l1l02")
+animation = &"explode"
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=26164941]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2060938736]
+position = Vector2(-1, -100)
+shape = SubResource("CapsuleShape2D_l1l02")

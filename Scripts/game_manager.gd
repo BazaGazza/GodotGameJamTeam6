@@ -14,6 +14,7 @@ var InteractablesNode:Node2D = null
 var holeArea:Area2D = null
 var holeShape = null
 var holeScene:PackedScene = preload("res://Scenes/interactable-Hole.tscn")
+var targetScene:PackedScene = preload("res://Scenes/target_area.tscn")
 var timerUI:Control = null
 
 const shakeMaxLength = 20
@@ -47,10 +48,7 @@ func _process(delta: float) -> void:
 		InteractablesNode = currentScene.get_node("ShipNode").get_node("ShipMask").get_node("ShipLevel").get_node("Interactables")
 	if timerUI == null:
 		timerUI = currentScene.get_node("TimerUI").get_node("timerUI")
-	if holeArea == null:
-		holeArea = currentScene.get_node("ShipNode").get_node("ShipMask").get_node("ShipLevel").get_node("HoleArea")
-		holeShape = holeArea.get_node("CollisionShape2D")
-	
+
 	timer += delta
 	timerUI.get_node("TextLabel").text = richTextWavy(str(timer).pad_decimals(2))
 	
@@ -58,11 +56,10 @@ func _process(delta: float) -> void:
 
 	currentShakeLevel = round(lerp(baseShakeLevel,maxShakeLevel,progress))
 	currentShakeRate = round(lerp(baseShakeRate,maxShakeRate,progress))
-	print(currentShakeLevel)
 
 	# the game timer probably goes in here too
 	var timerInt = floor(timer)
-	if timerInt > 0 and spawnedHoles < timerInt:
+	if timerInt > 0 and spawnedHoles < timerInt and spawnedHoles < 3:
 		spawnedHoles += 1
 		spawnHole()
 
@@ -85,9 +82,16 @@ func resetGame():
 		if child.get_meta("Clone"):
 			child.queue_free()
 	
+func endGame():
+	GameManager.fadeToBlack(0.5)
+	await get_tree().create_timer(0.5).timeout
+	GameManager.fadeFromBlack(0.5)
+	GameManager.resetGame()
+	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	
 func spawnHole():
-	var holeClone = holeScene.instantiate()
-
+	var holeArea = currentScene.get_node("ShipNode").get_node("ShipMask").get_node("ShipLevel").get_node("HoleArea")
+	var holeShape = holeArea.get_node("CollisionShape2D")
 	var spawnShape:RectangleShape2D = holeShape.shape as RectangleShape2D
 	var spawnSize:Vector2 = spawnShape.size
 	
@@ -96,7 +100,13 @@ func spawnHole():
 	var randomLocalPos:Vector2 = Vector2(ranX,ranY)
 	var randomGlobalPos = holeShape.to_global(randomLocalPos)
 	
-	holeClone.position = InteractablesNode.to_local(randomGlobalPos)
+	var targetClone:Node2D = targetScene.instantiate()
+	targetClone.position = currentScene.get_node("ShipNode/ShipMask/ShipLevel").to_local(randomGlobalPos)
+	currentScene.get_node("ShipNode/ShipMask/ShipLevel").add_child(targetClone)
+	
+	await get_tree().create_timer(1.5).timeout
+	var holeClone:Node2D = holeScene.instantiate()
+	holeClone.position = InteractablesNode.to_local(randomGlobalPos+Vector2(0,20))
 	var holeIcon:TextureRect = holeClone.get_node("HoleIcon")
 	
 	var randomScale = randf_range(0.9, 1.4)*holeIcon.scale

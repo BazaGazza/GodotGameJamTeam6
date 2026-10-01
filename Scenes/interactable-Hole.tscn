@@ -5,7 +5,7 @@
 
 [node name="Interactable" unique_id=610343071 instance=ExtResource("1_qgnuu")]
 rotation = -1.5707964
-scale = Vector2(4.0313945, 4.055729)
+scale = Vector2(5, 5.031)
 interactType = "PlankMinigame"
 
 [node name="Icon" parent="." index="1" unique_id=2102358570]

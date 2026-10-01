@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://cxenhpd2fi2ls"]
+
+[ext_resource type="Theme" uid="uid://b4u1svlmtf02y" path="res://new_theme.tres" id="1_rwas2"]
+[ext_resource type="FontFile" uid="uid://bfn5fns14rq66" path="res://Fonts/FOT-RodinBokutoh Pro B.otf" id="2_tseak"]
+[ext_resource type="Script" uid="uid://ct0eya5hwm6se" path="res://Scenes/retry_button.gd" id="3_tseak"]
+
+[node name="DeathScreen" type="CanvasLayer" unique_id=1943215041]
+layer = 999
+
+[node name="Background" type="ColorRect" parent="." unique_id=728842728]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RetryButton" type="Button" parent="." unique_id=1710958440]
+z_index = 999
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.56203705
+anchor_right = 0.5
+anchor_bottom = 0.56203705
+offset_left = -139.5
+offset_top = -45.0
+offset_right = 139.5
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.70625, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.3019608, 0.3019608, 0.5372549)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_tseak")
+theme_override_font_sizes/font_size = 80
+text = "RETRY"
+flat = true
+script = ExtResource("3_tseak")
+metadata/_edit_use_anchors_ = true
+
+[node name="GameOver" type="RichTextLabel" parent="." unique_id=865001264]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.2685185
+anchor_right = 0.5
+anchor_bottom = 0.32962963
+offset_left = -630.0
+offset_top = -77.0
+offset_right = 630.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_rwas2")
+theme_override_colors/default_color = Color(1, 0.053125024, 0.053125024, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 0.41960785)
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "game over"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=684788562]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.4185185
+anchor_right = 0.5
+anchor_bottom = 0.42777777
+offset_left = -244.0
+offset_top = -29.0
+offset_right = 244.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rwas2")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "score: 67
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="RetryButton" to="RetryButton" method="_on_pressed"]
