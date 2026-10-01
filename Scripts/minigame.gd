@@ -54,6 +54,12 @@ var currentPlank:CharacterBody2D = null
 var hoveringPlank:bool = false
 var placedPlanks = 0
 
+#Wheel Minigame Variables 
+var isDraggingWheel: bool = false
+var previousMouseAngle: float = 0.0
+var wheelVelocity: float = 0.0
+var maxWheelRotation: float = deg_to_rad(120) # Clamps wheel to 120 degrees left/right
+
 signal placePlankSignal
 
 func moveDrag(delta):
@@ -325,37 +331,55 @@ func plankMinigame():
 		
 		
 func wheelMinigame(): #RODOLFO ADD WHEEL minigame
-	
-	
 	#getting all references down early 
 	var minigameFrame = mainFrame.get_node("WheelMinigame")
 	var wheel_node:CharacterBody2D = minigameFrame.get_node("pivot/Wheel")
 	var collider:CollisionPolygon2D = minigameFrame.get_node("pivot/Wheel/CollisionPolygon2")
 
-	#setting up all variables
+	hintText.modulate.a = 0
+	fadeLabel(hintText, 1)
+	hintText.text = richTextWavy("Steer clear of the rocks!")
 	
+	wheel_node.rotation = 0
+	wheelVelocity = 0.0
+	isDraggingWheel = false
 	
-	#setting visibility to true 
+	#setting all previous minigames visibility to false
 	for child in mainFrame.get_children():
+		child.visible = false
+		
+	#setting visibility to true 
+	for child in minigameFrame.get_children():
 		child.visible = true
 	
-	currentPlayer.playerCamera.offset = Vector2(300,currentPlayer.playerCamera.offset.y)
-	currentPlayer.playerCamera.offset = Vector2(0,currentPlayer.playerCamera.offset.y)
+	var wheelInputFunction = func(viewport, event, shape_idx):
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+			if event.is_pressed():
+				isDraggingWheel = true
+				previousMouseAngle = (wheel_node.get_global_mouse_position() - wheel_node.global_position).angle()
+
+	# Connect the collision input
+	wheel_node.input_event.connect(wheelInputFunction)
+	
+	# Game Loop - Waits until canceled or a win/loss condition is met
+	while not gameCanceled:
+		# TODO: Add your logic here to check if the ship survived the rocks
+		# Example: if shipSurvived: break
+		await get_tree().process_frame
+
+	# Cleanup connections and states when minigame ends
+	wheel_node.input_event.disconnect(wheelInputFunction)
+	isDraggingWheel = false
+	wheelVelocity = 0.0
+	
+	fadeLabel(hintText, 0, 0.5)
+	
+	if gameCanceled: return
+	print("Finished Wheel Minigame")
+	await get_tree().create_timer(1.0).timeout
 	
 	
 	
-	var rotation_speed: float = 8.0
-	#IDEA Player drags tips of steering wheel to steer in different directions to complete ship by steering away from incoming rocks 
-	#The ship will then move up or down in y-direction to steer clear of rocks
-	var delta = get_process_delta_time()
-	
-	var target_angle = (wheel_node.get_global_mouse_position() - wheel_node.global_position).angle()
-	wheel_node.rotation = lerp_angle(wheel_node.rotation, target_angle, rotation_speed * delta)
-
-	#Ship moving after rotation made 
-
-
-
 
 
 
