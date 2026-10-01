@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dodcyg4ujqyay"
-path="res://.godot/imported/powder-charge.png-328cc6774294d721da02812682eea1f9.ctex"
+uid="uid://cvjlkc7v8wnv5"
+path="res://.godot/imported/mast-title-screen.jpg-a26b66c3b2216930b89e9534fd3969ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/powder-charge.png"
-dest_files=["res://.godot/imported/powder-charge.png-328cc6774294d721da02812682eea1f9.ctex"]
+source_file="res://Sprites/mast-title-screen.jpg"
+dest_files=["res://.godot/imported/mast-title-screen.jpg-a26b66c3b2216930b89e9534fd3969ce.ctex"]
 
 [params]
 

@@ -39,7 +39,7 @@ func _physics_process(delta:float):
 		playerSprite.flip_h = false
 		velocity.x -= 1
 		
-	if GameManager.currentScene == "Ship":
+	if GameManager.currentSceneName == "Ship":
 		if Input.is_action_pressed("move_up"):
 			velocity.y -= 1
 		if Input.is_action_pressed("move_down"):

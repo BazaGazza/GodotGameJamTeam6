@@ -1,34 +1,39 @@
 [gd_scene format=3 uid="uid://dcrba6u2lufxp"]
 
 [ext_resource type="Script" uid="uid://cruwnldyq76uk" path="res://Scripts/play_button.gd" id="1_tt5f1"]
+[ext_resource type="Texture2D" uid="uid://cvjlkc7v8wnv5" path="res://Sprites/mast-title-screen.jpg" id="2_853f1"]
 
-[node name="MainMenu" type="Node2D" unique_id=1969375548]
+[node name="MainMenu" type="Control" unique_id=457001684]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1245475642]
-position = Vector2(322, 154)
-
-[node name="Play Button" type="Button" parent="Node2D" unique_id=1758141113]
-offset_left = 382.0
-offset_top = 291.0
-offset_right = 768.0
-offset_bottom = 544.0
-text = "Play Game"
+[node name="PlayButton" type="Button" parent="." unique_id=1758141113]
+z_index = 3
+layout_mode = 0
+offset_left = 72.0
+offset_top = 795.0
+offset_right = 458.0
+offset_bottom = 1048.0
+text = "
+hasdfasdfasdf
+"
 script = ExtResource("1_tt5f1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D/Play Button" unique_id=2136876822]
+[node name="Sprite2D" type="Sprite2D" parent="PlayButton" unique_id=2136876822]
 
-[node name="Node2D2" type="Node2D" parent="." unique_id=772268021]
-position = Vector2(322, 154)
+[node name="Background" type="TextureRect" parent="." unique_id=734952654]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_853f1")
 
-[node name="Main Title" type="Node2D" parent="Node2D2" unique_id=1467879957]
-position = Vector2(12, 0)
-scale = Vector2(6, 6)
-
-[node name="Label" type="Label" parent="Node2D2/Main Title" unique_id=74551322]
-offset_left = 37.0
-offset_top = 4.0
-offset_right = 155.0
-offset_bottom = 27.0
-text = "MAST MAYHEM"
-
-[connection signal="pressed" from="Node2D/Play Button" to="Node2D/Play Button" method="_on_pressed"]
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]

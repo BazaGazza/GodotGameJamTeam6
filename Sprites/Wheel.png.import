@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmyi07pw085xq"
-path="res://.godot/imported/Ramming rod placeholder.png-043f264e9725d245c657a7574417e431.ctex"
+uid="uid://cfg6u05m4fg1h"
+path="res://.godot/imported/Wheel.png-15a365f05f73459504a53c11446abcb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ramming rod placeholder.png"
-dest_files=["res://.godot/imported/Ramming rod placeholder.png-043f264e9725d245c657a7574417e431.ctex"]
+source_file="res://Sprites/Wheel.png"
+dest_files=["res://.godot/imported/Wheel.png-15a365f05f73459504a53c11446abcb6.ctex"]
 
 [params]
 

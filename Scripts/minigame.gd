@@ -41,8 +41,6 @@ func richTextWavy(text:String):
 	return "[shake rate=8.0 level=2 connected=0]"+text+"[/shake]"
 
 @onready var cannonballBody = $MainFrame/CannonMinigame.get_node("Cannonball")
-var currentMinigame = ""
-
 
 var dragNode = null
 var dragGoal = null
@@ -90,7 +88,7 @@ func _physics_process(delta: float) -> void:
 	
 	if dragNode != null:
 		moveDrag(delta)
-		if currentMinigame != "CannonMinigame": return
+		if GameManager.currentMinigame != "CannonMinigame": return
 		if dragNode != null and dragNode.name == "Rod":
 			var currentPos = dragNode.global_position
 			if previousPosition == null: 
@@ -102,7 +100,7 @@ func _physics_process(delta: float) -> void:
 			previousPosition = currentPos
 	
 	#1/distance, so standing still is more penalized, and making big movements, there's less decay
-	if currentMinigame != "CannonMinigame": return
+	if GameManager.currentMinigame != "CannonMinigame": return
 	var decay = 15*(1/distance)
 	currentRamSpeed = clamp(currentRamSpeed-(delta*decay),0,currentRamSpeed)
 	
@@ -274,9 +272,7 @@ func plankMinigame():
 		currentPlank.queue_free()
 		currentPlank = null
 		
-		print(placedPlanks)
 		var newPlank = planksHolder.get_node("Plank"+str(placedPlanks+1))
-		print(newPlank)
 		newPlank.visible = true
 		var originalScale = newPlank.scale
 		newPlank.scale = originalScale * 1.15
@@ -380,7 +376,7 @@ func startGame(gameType:String,interactableObject:Interactable):
 	
 	parentCanvas.visible = true
 	var gameFunction = gameFunctions[gameType]
-	currentMinigame = gameType
+	GameManager.currentMinigame = gameType
 	
 	#toggle visibility of minigame
 	for child in mainFrame.get_children():
@@ -416,7 +412,7 @@ func startGame(gameType:String,interactableObject:Interactable):
 			interactableObject.queue_free()
 	
 		
-	currentMinigame = ""
+	GameManager.currentMinigame = ""
 	currentPlayer.movementSpeed = currentPlayer.baseSpeed
 	currentPlayer.doingMinigame = false
 	parentCanvas.visible = false

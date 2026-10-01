@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7mk2bhxogg2k"
-path="res://.godot/imported/Hole placeholder.png-fd720d1842dd08634cd63773081b71e2.ctex"
+uid="uid://dhv8yp38gnl0p"
+path="res://.godot/imported/Cannon Rod.png-ab9051bc76f58ea4c969c28040096f91.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Hole placeholder.png"
-dest_files=["res://.godot/imported/Hole placeholder.png-fd720d1842dd08634cd63773081b71e2.ctex"]
+source_file="res://Sprites/Cannon Rod.png"
+dest_files=["res://.godot/imported/Cannon Rod.png-ab9051bc76f58ea4c969c28040096f91.ctex"]
 
 [params]
 

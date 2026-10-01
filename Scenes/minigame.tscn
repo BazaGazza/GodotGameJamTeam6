@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://c72r5doca5h3s"]
 
 [ext_resource type="Script" uid="uid://dg50ng6hn56b3" path="res://Scripts/minigame.gd" id="1_iqey4"]
-[ext_resource type="Texture2D" uid="uid://dmyi07pw085xq" path="res://Sprites/Ramming rod placeholder.png" id="3_5bepb"]
-[ext_resource type="Texture2D" uid="uid://bt6aeo8y07b36" path="res://Sprites/Gun powder charge bag placeholder.png" id="3_id8w1"]
+[ext_resource type="Texture2D" uid="uid://dhv8yp38gnl0p" path="res://Sprites/Cannon Rod.png" id="3_5bepb"]
+[ext_resource type="Texture2D" uid="uid://10gu7y44eugn" path="res://Sprites/Gun powder.png" id="3_id8w1"]
 [ext_resource type="Texture2D" uid="uid://cgylpd8sre7jd" path="res://Sprites/Cannon ball.png" id="4_yx24v"]
 [ext_resource type="Texture2D" uid="uid://dh3ucculuwd2y" path="res://Sprites/nail.png" id="6_vnlq7"]
 [ext_resource type="Texture2D" uid="uid://c8bju6jd0wdxm" path="res://Sprites/plank.png" id="6_xcq3l"]
 [ext_resource type="Theme" uid="uid://b4u1svlmtf02y" path="res://new_theme.tres" id="6_yx24v"]
-[ext_resource type="Texture2D" uid="uid://7mk2bhxogg2k" path="res://Sprites/Hole placeholder.png" id="7_vnlq7"]
-[ext_resource type="Texture2D" uid="uid://wfc5ij7m1316" path="res://Sprites/rustic-brown-wood-texture-background-with-planks-and-vintage-feel-photo.jpg" id="8_hr1fu"]
-[ext_resource type="Texture2D" uid="uid://3a4cnpl610xh" path="res://Sprites/Placeholder Steering wheel.png" id="8_xcq3l"]
+[ext_resource type="Texture2D" uid="uid://bq682katn3ent" path="res://Sprites/Hole.png" id="7_vnlq7"]
+[ext_resource type="Texture2D" uid="uid://h1ysyl5blnet" path="res://Sprites/floor-closeup.png" id="8_hr1fu"]
+[ext_resource type="Texture2D" uid="uid://cfg6u05m4fg1h" path="res://Sprites/Wheel.png" id="8_xcq3l"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_255i5"]
 load_path = "res://.godot/imported/cannon-minigame.png-c4a94c041d55e03fc9fbaf25f10da106.ctex"
@@ -85,7 +85,6 @@ theme_override_constants/margin_bottom = 50
 
 [node name="CannonMinigame" type="Control" parent="MainFrame" unique_id=1902821591]
 process_mode = 4
-visible = false
 layout_mode = 2
 mouse_filter = 1
 
@@ -177,7 +176,8 @@ collision_mask = 4
 input_pickable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="MainFrame/CannonMinigame/Rod" unique_id=1009507558]
-rotation = -1.5707964
+position = Vector2(-14, 1)
+rotation = -2.3768582
 texture = ExtResource("3_5bepb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Rod" unique_id=1118059071]
@@ -264,8 +264,8 @@ shape = SubResource("CircleShape2D_oood0")
 [node name="Planks" type="Node2D" parent="MainFrame/PlankMinigame/HoleArea" unique_id=1122076147]
 
 [node name="Plank1" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks" unique_id=1372790776]
-position = Vector2(-153, -115)
-rotation = 0.701863
+position = Vector2(-196.52168, -108.69563)
+rotation = 0.8090571
 scale = Vector2(0.5846599, 0.9844974)
 texture = ExtResource("6_xcq3l")
 
@@ -276,7 +276,7 @@ skew = 0.2705257
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail1" unique_id=29924225]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail1/Area2D" unique_id=592794687]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -288,7 +288,7 @@ skew = 0.2705257
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail2" unique_id=303806915]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail2/Area2D" unique_id=239782315]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -300,7 +300,7 @@ skew = 0.2705257
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail3" unique_id=838234406]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail3/Area2D" unique_id=755597131]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -312,7 +312,7 @@ skew = 0.2705257
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail4" unique_id=2015136149]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1/Nail4/Area2D" unique_id=587887747]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -331,7 +331,7 @@ skew = 0.2705258
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail1" unique_id=2127103503]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail1/Area2D" unique_id=1341702788]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -343,7 +343,7 @@ skew = 0.2705258
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail2" unique_id=158262174]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail2/Area2D" unique_id=2070439057]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -355,7 +355,7 @@ skew = 0.2705258
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail3" unique_id=897489671]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail3/Area2D" unique_id=188336009]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -367,7 +367,7 @@ skew = 0.2705258
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail4" unique_id=561605104]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail4/Area2D" unique_id=1846603757]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -386,7 +386,7 @@ skew = 0.2705258
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail1" unique_id=1685642116]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail1/Area2D" unique_id=1538133955]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -398,7 +398,7 @@ skew = 0.2705258
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail2" unique_id=569812380]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail2/Area2D" unique_id=1348998564]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -410,7 +410,7 @@ skew = 0.2705258
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail3" unique_id=2042021533]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail3/Area2D" unique_id=1652486767]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -422,7 +422,7 @@ skew = 0.2705258
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail4" unique_id=1639561939]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail4/Area2D" unique_id=1027137313]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -441,7 +441,7 @@ skew = 0.2705258
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail1" unique_id=1337488734]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail1/Area2D" unique_id=567269378]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -453,7 +453,7 @@ skew = 0.2705258
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail2" unique_id=2026183774]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail2/Area2D" unique_id=1276247142]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -465,7 +465,7 @@ skew = 0.2705258
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail3" unique_id=317214821]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail3/Area2D" unique_id=1137787593]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -477,7 +477,7 @@ skew = 0.2705258
 texture = ExtResource("6_vnlq7")
 
 [node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail4" unique_id=1328009235]
-scale = Vector2(13, 13)
+scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank4/Nail4/Area2D" unique_id=1018509979]
 shape = SubResource("CircleShape2D_ufkp0")
@@ -543,6 +543,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 theme = ExtResource("6_yx24v")
 bbcode_enabled = true
+text = "hey hey hey"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
