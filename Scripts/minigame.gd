@@ -328,7 +328,7 @@ func plankMinigame():
 	placePlankSignal.disconnect(placeFunction)
 		
 		
-func wheelMinigame(): #RODOLFO ADD WHEEL
+func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 	
 	
 	#getting all references down early 
