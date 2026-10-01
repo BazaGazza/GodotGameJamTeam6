@@ -88,6 +88,11 @@ func moveDrag(delta):
 	#i'm using move and slide from characterbody2d specifically to detect collision
 	dragNode.move_and_slide()
 
+
+func _process(delta: float) -> void:
+	if GameManager.gameActive == false:
+		gameCanceled = true
+	
 func _physics_process(delta: float) -> void:
 	
 	var distance = 1
@@ -206,7 +211,7 @@ func cannonMinigame():
 	fadeLabel(hintText,0,0.5)
 	print("Finished Cannon Minigame")
 	
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(1.0,false).timeout
 	return
 
 func plankMinigame():
@@ -312,7 +317,7 @@ func plankMinigame():
 			connection.append(nailFunction)
 			area.input_event.connect(nailFunction)
 			
-		while variables.nailCount < 4:
+		while variables.nailCount < 4 and not gameCanceled:
 			await get_tree().process_frame
 			
 		hintText.modulate.a = 0
@@ -376,7 +381,7 @@ func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 	
 	if gameCanceled: return
 	print("Finished Wheel Minigame")
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(1.0,false).timeout
 	
 	
 	
@@ -397,7 +402,7 @@ func startGame(gameType:String,interactableObject:Interactable):
 	resetPositions()
 	currentPlayer.movementSpeed = 0
 	currentPlayer.doingMinigame = true
-	
+	gameCanceled = false
 	parentCanvas.visible = true
 	var gameFunction = gameFunctions[gameType]
 	GameManager.currentMinigame = gameType

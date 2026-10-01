@@ -22,12 +22,12 @@ func _ready() -> void:
 	tween.tween_property(targetSprite,"modulate:a",1,0.6)
 	tween.tween_property(targetSprite,"scale",originalScale,0.6)
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.5,false).timeout
 	var blinkTween = create_tween()
 	blinkTween.set_loops()
 	blinkTween.tween_property(targetSprite, "modulate:a", 0.2, 0.25)
 	blinkTween.tween_property(targetSprite, "modulate:a", 1.0, 0.25)
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(1.0,false).timeout
 	blinkTween.kill()
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
@@ -38,13 +38,13 @@ func _ready() -> void:
 
 	explosionSprite.visible = true
 	explosionSprite.play("explode")
-	await get_tree().create_timer(0.25).timeout
+	await get_tree().create_timer(0.25,false).timeout
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.tween_property(explosionSprite,"modulate:a",0,0.4)
-	
-	await get_tree().create_timer(0.4).timeout
+
+	await get_tree().create_timer(0.4,false).timeout
 	self.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

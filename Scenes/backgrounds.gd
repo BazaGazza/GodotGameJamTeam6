@@ -15,6 +15,9 @@ func _ready() -> void:
 		
 		# Optional: Automatically position bg2 directly next to bg1 on start
 		bg2.position.x = bg1.position.x + sprite_width
+		
+	get_tree().current_scene.modulate = Color(1.0, 1.0, 1.0, 1.0)
+	
 
 func _process(delta: float) -> void:
 	bg1.position.x -= ocean_speed * delta

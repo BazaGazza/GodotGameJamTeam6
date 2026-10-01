@@ -58,7 +58,7 @@ func startAim():
 			ship.destroy()
 
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.5,false).timeout
 	explosionSprite.visible = false
 
 	

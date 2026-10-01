@@ -31,6 +31,7 @@ size = Vector2(1073, 150)
 load_path = "res://.godot/imported/sea.jpeg-2d3adac23d308b6e2259358346c4f057.ctex"
 
 [node name="Main" type="Node2D" unique_id=2112882412]
+process_mode = 1
 y_sort_enabled = true
 
 [node name="ShipNode" type="Node2D" parent="." unique_id=652642637]

@@ -59,11 +59,13 @@ radius = 154.0
 height = 362.0
 
 [node name="TargetArea" type="Node2D" unique_id=961781219]
+process_mode = 1
 z_index = 7
 z_as_relative = false
 script = ExtResource("1_b6n80")
 
 [node name="Target" type="Sprite2D" parent="." unique_id=795731303]
+process_mode = 1
 self_modulate = Color(1, 0.03529412, 0.03529412, 1)
 position = Vector2(-7, 17)
 scale = Vector2(0.65, 0.65)
@@ -71,6 +73,7 @@ skew = 0.55850536
 texture = ExtResource("2_s1yqv")
 
 [node name="Explosion" type="AnimatedSprite2D" parent="." unique_id=1192158183]
+process_mode = 1
 visible = false
 z_index = 12
 position = Vector2(33, -84.00001)
@@ -79,6 +82,8 @@ sprite_frames = SubResource("SpriteFrames_l1l02")
 animation = &"explode"
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=26164941]
+collision_layer = 255
+collision_mask = 255
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2060938736]
 position = Vector2(-1, -100)

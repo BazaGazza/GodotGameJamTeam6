@@ -43,7 +43,6 @@ func fadeFromBlack(duration = 0.25):
 
 func _process(delta: float) -> void:
 	if currentHealth <= 0 and gameActive:
-		gameActive = false
 		endGame()
 		return
 	
@@ -89,9 +88,28 @@ func resetGame():
 			child.queue_free()
 	
 func endGame():
-	fadeToBlack(0.25)
-	await get_tree().create_timer(0.25).timeout
+	if gameActive == false: return
+	
+	gameActive = false
+	await get_tree().create_timer(0.2,true).timeout
+	get_tree().paused = true
+	get_tree().current_scene.modulate = Color(0.502, 0.275, 0.275, 1.0)
+	
+	var tween = create_tween()
+	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_BOUNCE)
+	tween.set_parallel()
+	tween.tween_property(currentPlayer.playerCamera,"zoom",Vector2(2,2),0.35)
+	#currentPlayer.playerCamera.zoom = Vector2(2,2)
+	
+	await get_tree().create_timer(0.75,true).timeout
 	get_tree().change_scene_to_file("res://Scenes/death_screen.tscn")
+	get_tree().paused = false
+	# the game freezes, so if you get blown up, it'll freeze on that frame and its funny
+	
+	fadeToBlack(0)
+
 	fadeFromBlack(0.25)
 	resetGame()
 	
@@ -110,8 +128,11 @@ func spawnHole():
 	targetClone.position = currentScene.get_node("ShipNode/ShipMask/ShipLevel").to_local(randomGlobalPos)
 	currentScene.get_node("ShipNode/ShipMask/ShipLevel").add_child(targetClone)
 	
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1.5,false).timeout
+
 	var holeClone:Node2D = holeScene.instantiate()
+	if not is_instance_valid(holeClone): return
+	if not is_instance_valid(InteractablesNode): return
 	holeClone.position = InteractablesNode.to_local(randomGlobalPos+Vector2(0,20))
 	var holeIcon:TextureRect = holeClone.get_node("HoleIcon")
 	
@@ -122,6 +143,13 @@ func spawnHole():
 	
 	InteractablesNode.add_child(holeClone)
 	currentHealth -= 5
+	
+	var hitbox:Area2D = targetClone.get_node("Hitbox")
+	for body in hitbox.get_overlapping_bodies():
+		if body.name == "Player":
+			endGame()
+			return
+		
 	
 func richTextWavy(text:String):
 	return "[shake rate="+str(currentShakeRate)+" level="+str(currentShakeLevel)+" connected=1]"+text+"[/shake]"
