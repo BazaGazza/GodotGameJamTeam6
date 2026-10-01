@@ -16,7 +16,7 @@ var holeShape = null
 var holeScene:PackedScene = preload("res://Scenes/interactable-Hole.tscn")
 var timerUI:Control = null
 
-const shakeMaxLength = 10
+const shakeMaxLength = 20
 var maxShakeRate:float = 150.0
 var maxShakeLevel:float = 35.0
 var currentShakeRate:float = 0.0
@@ -24,10 +24,20 @@ var currentShakeLevel:float = 0.0
 var baseShakeLevel = 0.0
 var baseShakeRate = 0.0
 
+var fadeScene = preload("res://Scenes/fade_screen.tscn")
+var fadeScreen:CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	fadeScreen = fadeScene.instantiate()
+	add_child(fadeScreen)
 	resetGame()
+	fadeFromBlack()
+
+func fadeToBlack(duration = 0.25):
+	fadeScreen.fadeToBlack()
+func fadeFromBlack(duration = 0.25):
+	fadeScreen.fadeFromBlack()
 
 func _process(delta: float) -> void:
 	currentScene = get_tree().current_scene
@@ -45,9 +55,11 @@ func _process(delta: float) -> void:
 	timerUI.get_node("TextLabel").text = richTextWavy(str(timer).pad_decimals(2))
 	
 	var progress = clamp(timer/shakeMaxLength,0,1)
-	currentShakeLevel = lerp(baseShakeLevel,maxShakeLevel,progress)
-	currentShakeRate = lerp(baseShakeRate,maxShakeRate,progress)
-	
+
+	currentShakeLevel = round(lerp(baseShakeLevel,maxShakeLevel,progress))
+	currentShakeRate = round(lerp(baseShakeRate,maxShakeRate,progress))
+	print(currentShakeLevel)
+
 	# the game timer probably goes in here too
 	var timerInt = floor(timer)
 	if timerInt > 0 and spawnedHoles < timerInt:

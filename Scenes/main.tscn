@@ -16,7 +16,7 @@
 size = Vector2(3.3196034, 4.6468644)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_126ht"]
-size = Vector2(1073, 166)
+size = Vector2(1073, 150)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_21xkr"]
 load_path = "res://.godot/imported/sea.jpeg-2d3adac23d308b6e2259358346c4f057.ctex"
@@ -143,7 +143,7 @@ baseSpeed = 200
 z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShipNode/ShipMask/ShipLevel/HoleArea" unique_id=698074123]
-position = Vector2(-70.5, 78)
+position = Vector2(-70.5, 70)
 shape = SubResource("RectangleShape2D_126ht")
 
 [node name="Backgrounds" type="Node2D" parent="." unique_id=1368142683]

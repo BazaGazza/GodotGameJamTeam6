@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://dcrba6u2lufxp"]
 
 [ext_resource type="Script" uid="uid://cruwnldyq76uk" path="res://Scripts/play_button.gd" id="1_tt5f1"]
+[ext_resource type="Texture2D" uid="uid://cn0mh00ht1mqr" path="res://Sprites/start button blur.png" id="2_8saeu"]
 [ext_resource type="Texture2D" uid="uid://cvjlkc7v8wnv5" path="res://Sprites/mast-title-screen.jpg" id="2_853f1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_853f1"]
+load_path = "res://.godot/imported/mast-start button.png-4da88e939bda81c695aa5230060ccd1b.ctex"
 
 [node name="MainMenu" type="Control" unique_id=457001684]
 layout_mode = 3
@@ -13,27 +17,53 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="PlayButton" type="Button" parent="." unique_id=1758141113]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 3
-layout_mode = 0
-offset_left = 72.0
-offset_top = 795.0
-offset_right = 458.0
-offset_bottom = 1048.0
-text = "
-hasdfasdfasdf
-"
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.040104166
+anchor_top = 0.9490741
+anchor_right = 0.12864584
+anchor_bottom = 0.9490741
+offset_top = -253.0
+offset_right = 400.0
+offset_bottom = -3.0
+grow_vertical = 0
+pivot_offset = Vector2(200, 125)
 script = ExtResource("1_tt5f1")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayButton" unique_id=2136876822]
+z_index = 1
+position = Vector2(273, 123)
+rotation = 0.06981317
+texture = SubResource("CompressedTexture2D_853f1")
+
+[node name="Glow" type="Sprite2D" parent="PlayButton" unique_id=666690032]
+self_modulate = Color(1, 1, 0.8, 1)
+position = Vector2(-197, -114.99998)
+rotation = 0.06981317
+scale = Vector2(1.7550195, 1.75502)
+texture = ExtResource("2_8saeu")
+centered = false
 
 [node name="Background" type="TextureRect" parent="." unique_id=734952654]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(960, 0)
 mouse_filter = 2
 texture = ExtResource("2_853f1")
 
+[connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PlayButton" to="PlayButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]
