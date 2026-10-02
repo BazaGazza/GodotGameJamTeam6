@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dbt4q18np7y0k"]
 
 [ext_resource type="Script" uid="uid://2kqx1ddmp6cg" path="res://Scripts/ship_level.gd" id="1_d1ilt"]
+[ext_resource type="Script" uid="uid://dk3v7bw8s87xo" path="res://Scenes/gameplay_song.gd" id="1_fevyy"]
 [ext_resource type="PackedScene" uid="uid://c776r2n3h4jgq" path="res://Scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dm3vt8ea8oqi1" path="res://Sprites/ripple1-skewed.png" id="2_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://df7v7276s2h0" path="res://Sprites/ripple-trail.png" id="3_jkdf5"]
@@ -44,6 +45,7 @@ a = Vector2(1.5872192, 9.583775)
 [node name="Main" type="Node2D" unique_id=2112882412]
 process_mode = 1
 y_sort_enabled = true
+script = ExtResource("1_fevyy")
 
 [node name="ShipNode" type="Node2D" parent="." unique_id=652642637]
 

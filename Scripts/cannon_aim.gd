@@ -53,6 +53,7 @@ func startAim():
 			aiming = false
 		await get_tree().process_frame
 		
+	AudioManager.playSfx("FireCannon")
 	var cannonSprite = get_parent().get_node("TextureRect")
 	cannonSprite.get_parent().set_meta("Cooldown",true)
 	

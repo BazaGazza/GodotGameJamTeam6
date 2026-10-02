@@ -112,8 +112,8 @@ func _physics_process(delta: float) -> void:
 	if (!(isJammed)):
 		#Goal is that game takes no longer than a few seconds
 		
-		if (revolutions % 10 == 0):
-			print("moving")
+		#if (revolutions % 10 == 0):
+			#print("moving")
 		 
 		if Input.is_key_pressed(KEY_Q):
 			print("Holding down the Q key!")
@@ -215,6 +215,7 @@ func cannonMinigame():
 	PowderArea.body_entered.disconnect(powderAreaFunction)
 	powderBody.input_event.disconnect(powderDrag)
 	if gameCanceled: return
+	AudioManager.playSfx("PowderSound")
 	
 	await get_tree().physics_frame
 	hintText.modulate.a = 0
@@ -234,6 +235,7 @@ func cannonMinigame():
 	cannonballBody.input_event.disconnect(ballDrag)
 	if gameCanceled: return
 		
+	AudioManager.playSfx("LoadCannon")
 	hintText.modulate.a = 0
 	fadeLabel(hintText,1)
 	hintText.text = richTextWavy("ram the cannonball!")
@@ -246,6 +248,7 @@ func cannonMinigame():
 		if body.name == "Cannonball":
 			ramVelocity = Vector2(-currentRamSpeed*12,0)
 			currentRamSpeed = 0
+			AudioManager.playSfx("RamSound")
 	var finishRamFunction = func(body):
 		if body.name == "Cannonball":
 			variables.dragFinished = true
@@ -309,6 +312,7 @@ func plankMinigame():
 		if currentPlank != null and newBody != currentPlank: return # only 1 plank at a time
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
+				AudioManager.playSfx("DragPlank")
 				currentPlank = newBody
 				dragNode = newBody
 				newBody.z_index = placedPlanks
@@ -328,8 +332,8 @@ func plankMinigame():
 	holeArea.body_exited.connect(exitFunction)
 
 	var placeFunction = func():
+		AudioManager.playSfx("PlankPlace")
 		vars.nailing = true
-		
 		hintText.modulate.a = 0
 		fadeLabel(hintText,1)
 		hintText.text = richTextWavy("nail down the plank...")
@@ -363,6 +367,7 @@ func plankMinigame():
 
 			var nailFunction = func(viewport, event, shape_idx):
 				if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+					AudioManager.playSfx("HammerNail")
 					nailTween.kill()
 					variables.nailCount += 1
 					nail.self_modulate = Color(1,1,1)

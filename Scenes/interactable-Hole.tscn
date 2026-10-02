@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://darf0u3wh3au1" path="res://Scenes/interactable.tscn" id="1_qgnuu"]
 [ext_resource type="Texture2D" uid="uid://bq682katn3ent" path="res://Sprites/Hole.png" id="2_1n50r"]
+[ext_resource type="AudioStream" uid="uid://b5580sexnj1g4" path="res://Audio/RushingWater.wav" id="3_wow6u"]
 
 [node name="Interactable" unique_id=610343071 instance=ExtResource("1_qgnuu")]
 rotation = -1.5707964
@@ -29,3 +30,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_1n50r")
 metadata/_edit_use_anchors_ = true
+
+[node name="WaterSound" type="AudioStreamPlayer" parent="." index="3" unique_id=2097609826]
+stream = ExtResource("3_wow6u")
+volume_db = -20.0
+autoplay = true

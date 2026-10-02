@@ -152,6 +152,8 @@ func resetGame():
 	
 func endGame():
 	if gameActive == false: return
+	#AudioManager.stopMainSong(1)
+	AudioManager.songDeath()
 	
 	gameActive = false
 	
@@ -216,12 +218,16 @@ func spawnHole():
 	
 
 	if not getShipLevel(): return
+	AudioManager.playSfx("DistantCannon",randomGlobalPos)
 	
 	var targetClone:Node2D = targetScene.instantiate()
 	targetClone.position = currentScene.get_node("ShipNode/ShipMask/ShipLevel").to_local(randomGlobalPos)
 	currentScene.get_node("ShipNode/ShipMask/ShipLevel").add_child(targetClone)
 	
-	await get_tree().create_timer(1.5,false).timeout
+	await get_tree().create_timer(1,false).timeout
+	AudioManager.playSfx("Warning",randomGlobalPos)
+	await get_tree().create_timer(0.5,false).timeout
+	AudioManager.playSfx("CannonballCrash",randomGlobalPos)
 	if not getShipLevel(): return
 	
 	var holeClone:Node2D = holeScene.instantiate()
@@ -260,6 +266,7 @@ func spawnShip():
 	var shipClone:Node2D = shipScene.instantiate()
 	shipClone.position = currentScene.get_node("ShipNode/ShipMask/ShipLevel/EnemyShips").to_local(randomGlobalPos)
 	currentScene.get_node("ShipNode/ShipMask/ShipLevel/EnemyShips").add_child(shipClone)
+	AudioManager.playSfx("ShipSpawn",shipClone.global_position)
 	
 	
 func richTextWavy(text:String):

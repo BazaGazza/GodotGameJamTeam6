@@ -1,0 +1,321 @@
+[gd_scene format=3 uid="uid://dbt4q18np7y0k"]
+
+[ext_resource type="Script" uid="uid://2kqx1ddmp6cg" path="res://Scripts/ship_level.gd" id="1_d1ilt"]
+[ext_resource type="Script" uid="uid://dk3v7bw8s87xo" path="res://Scenes/gameplay_song.gd" id="1_fevyy"]
+[ext_resource type="PackedScene" uid="uid://c776r2n3h4jgq" path="res://Scenes/player.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://dm3vt8ea8oqi1" path="res://Sprites/ripple1-skewed.png" id="2_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://df7v7276s2h0" path="res://Sprites/ripple-trail.png" id="3_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://darvh331r4yb2" path="res://Sprites/ship-asset.png" id="4_6iyac"]
+[ext_resource type="PackedScene" uid="uid://b84bbpqib4f1y" path="res://Scenes/interactable-Cannon.tscn" id="5_344ge"]
+[ext_resource type="PackedScene" uid="uid://bkwqt763hg5op" path="res://Scenes/interactable-Steering Wheel.tscn" id="5_d1ilt"]
+[ext_resource type="Texture2D" uid="uid://dppoh0ikkihtl" path="res://Sprites/mast.png" id="5_hptm8"]
+[ext_resource type="Texture2D" uid="uid://bbekbkqskxpap" path="res://Sprites/lower-rails.png" id="6_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://Scenes/minigame.tscn" id="8_344ge"]
+[ext_resource type="Script" uid="uid://b5a6woogfgv1d" path="res://Scenes/backgrounds.gd" id="8_hptm8"]
+[ext_resource type="PackedScene" uid="uid://k3aua5y3vsjc" path="res://Scenes/timer_ui.tscn" id="12_6iyac"]
+[ext_resource type="Texture2D" uid="uid://drr2tdornwsad" path="res://Sprites/Rock.png" id="12_jkdf5"]
+[ext_resource type="Theme" uid="uid://b4u1svlmtf02y" path="res://new_theme.tres" id="14_b3802"]
+[ext_resource type="Texture2D" uid="uid://b42h1axqdh150" path="res://Sprites/w-key.png" id="15_fevyy"]
+[ext_resource type="Texture2D" uid="uid://bmxgdx047aj0i" path="res://Sprites/a-key.png" id="16_hibaj"]
+[ext_resource type="Texture2D" uid="uid://8ujtruofg1s4" path="res://Sprites/s-key.png" id="17_pdsj5"]
+[ext_resource type="Texture2D" uid="uid://ynuvlgmgjyfj" path="res://Sprites/d-key.png" id="18_ee4r6"]
+
+[sub_resource type="Gradient" id="Gradient_l1l02"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_wsu2k"]
+_data = [Vector2(0, 0.6017699), 0.0, 0.0, 0, 0, Vector2(0.9364407, 0.840708), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(3.3196034, 4.6468644)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_126ht"]
+size = Vector2(1073, 143)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
+size = Vector2(950, 98)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_21xkr"]
+load_path = "res://.godot/imported/sea.jpeg-2d3adac23d308b6e2259358346c4f057.ctex"
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jkdf5"]
+a = Vector2(1.5872192, 9.583775)
+
+[node name="Main" type="Node2D" unique_id=2112882412]
+process_mode = 1
+y_sort_enabled = true
+script = ExtResource("1_fevyy")
+
+[node name="ShipNode" type="Node2D" parent="." unique_id=652642637]
+
+[node name="ShipMask" type="Control" parent="ShipNode" unique_id=790913952]
+z_as_relative = false
+y_sort_enabled = true
+clip_contents = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -760.0
+offset_top = -827.0
+offset_right = 811.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShipLevel" type="Node2D" parent="ShipNode/ShipMask" unique_id=1095382606]
+y_sort_enabled = true
+position = Vector2(762, 819)
+script = ExtResource("1_d1ilt")
+
+[node name="RippleParticle" type="CPUParticles2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=929277301]
+visible = false
+top_level = true
+z_index = -1
+z_as_relative = false
+position = Vector2(-771, 473)
+amount = 2
+texture = ExtResource("2_fdnlq")
+lifetime = 0.25
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(25, 25)
+direction = Vector2(-1, 0)
+gravity = Vector2(-1000, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_l1l02")
+
+[node name="TrailParticle" type="CPUParticles2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=1374369305]
+top_level = true
+z_index = -1
+z_as_relative = false
+position = Vector2(-736, 296)
+amount = 2
+texture = ExtResource("3_jkdf5")
+lifetime = 1.5
+local_coords = true
+direction = Vector2(-1, 0)
+gravity = Vector2(-20, 0)
+scale_amount_min = 1.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_wsu2k")
+color_ramp = SubResource("Gradient_l1l02")
+
+[node name="Sprite2D" type="Sprite2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=303963373]
+position = Vector2(52, 139)
+rotation = -3.1415925
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_6iyac")
+flip_h = true
+flip_v = true
+
+[node name="Interactables" type="Node2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=346291633]
+z_index = 3
+rotation = 1.5707964
+
+[node name="Steering Wheel" parent="ShipNode/ShipMask/ShipLevel/Interactables" unique_id=619485484 instance=ExtResource("5_d1ilt")]
+position = Vector2(40.999977, -542)
+rotation = -1.5707964
+scale = Vector2(4, 4.024)
+interactType = "WheelMinigame"
+
+[node name="Cannon" parent="ShipNode/ShipMask/ShipLevel/Interactables" unique_id=1985657767 instance=ExtResource("5_344ge")]
+position = Vector2(-76, -41.999996)
+rotation = -1.5707964
+scale = Vector2(6, 6.036)
+
+[node name="Cannon2" parent="ShipNode/ShipMask/ShipLevel/Interactables" unique_id=610343071 instance=ExtResource("5_344ge")]
+position = Vector2(-76.000015, -340)
+rotation = -1.5707964
+scale = Vector2(6, 6.036)
+
+[node name="Cannon3" parent="ShipNode/ShipMask/ShipLevel/Interactables" unique_id=308984835 instance=ExtResource("5_344ge")]
+position = Vector2(-75.99999, 245)
+rotation = -1.5707964
+scale = Vector2(6, 6.036)
+
+[node name="Cannon4" parent="ShipNode/ShipMask/ShipLevel/Interactables" unique_id=1785648100 instance=ExtResource("5_344ge")]
+position = Vector2(-75.99998, 540)
+rotation = -1.5707964
+scale = Vector2(6, 6.036)
+
+[node name="MastCollision" type="StaticBody2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=882011966]
+z_index = 1
+position = Vector2(-70.00001, 45.999996)
+scale = Vector2(20.484375, 9.468751)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipNode/ShipMask/ShipLevel/MastCollision" unique_id=489825309]
+position = Vector2(0.34172416, -0.21122122)
+scale = Vector2(1, 1.0000001)
+shape = SubResource("RectangleShape2D_cvnsp")
+
+[node name="Mast" type="Node2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=2003621907]
+z_index = 5
+z_as_relative = false
+position = Vector2(-60, 12.999997)
+rotation = 1.5707964
+
+[node name="MastSprite" type="Sprite2D" parent="ShipNode/ShipMask/ShipLevel/Mast" unique_id=1000391654]
+z_index = 5
+z_as_relative = false
+position = Vector2(-551, -71.99997)
+rotation = -1.5707964
+scale = Vector2(0.384, 1.2)
+texture = ExtResource("5_hptm8")
+
+[node name="LowerRail" type="Sprite2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=111853541]
+z_index = 6
+position = Vector2(11, 121)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_d1ilt")
+
+[node name="EnemyShips" type="Node2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=483103050]
+
+[node name="Collision" type="StaticBody2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=1793590727]
+y_sort_enabled = true
+rotation = 1.5707964
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShipNode/ShipMask/ShipLevel/Collision" unique_id=98235427]
+z_index = 1
+position = Vector2(-4.371139e-08, -1)
+scale = Vector2(1, 1.0090446)
+build_mode = 1
+polygon = PackedVector2Array(-49.00001, -301.2751, -49.00002, -420.19943, -37.000023, -479.66162, -16.000023, -512.36584, 56.999977, -523.2672, 135.99997, -533.1776, 181.99998, -447.94846, 186.00002, 321.0958, 184.00003, 610.4784, 103.00003, 632.28125, 8.000029, 641.20056, -47.999973, 621.3798, -49.999985, 330.0151)
+
+[node name="Player" parent="ShipNode/ShipMask/ShipLevel" unique_id=891791948 instance=ExtResource("1_ig7tw")]
+z_index = 5
+z_as_relative = false
+position = Vector2(-9, 82.99998)
+scale = Vector2(0.15, 0.15)
+baseSpeed = 200
+
+[node name="HoleArea" type="Area2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=784632357]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipNode/ShipMask/ShipLevel/HoleArea" unique_id=698074123]
+position = Vector2(-70.5, 73.5)
+shape = SubResource("RectangleShape2D_126ht")
+
+[node name="SpawnArea" type="Area2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=320662668]
+position = Vector2(-10, -344)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipNode/ShipMask/ShipLevel/SpawnArea" unique_id=2003025944]
+shape = SubResource("RectangleShape2D_l1l02")
+
+[node name="Backgrounds" type="Node2D" parent="." unique_id=1368142683]
+scale = Vector2(2.3, 3)
+script = ExtResource("8_hptm8")
+metadata/_edit_lock_ = true
+
+[node name="OceanBackground" type="Sprite2D" parent="Backgrounds" unique_id=1025804473]
+modulate = Color(0, 0.5529412, 1, 1)
+z_index = -1
+position = Vector2(48.26087, 62)
+scale = Vector2(2.8971424, 3.38)
+texture = SubResource("CompressedTexture2D_21xkr")
+metadata/_edit_lock_ = true
+
+[node name="OceanBackground2" type="Sprite2D" parent="Backgrounds" unique_id=792416354]
+modulate = Color(0, 0.5529412, 1, 1)
+z_index = -1
+position = Vector2(1570.0001, 62.000004)
+scale = Vector2(2.8971424, 3.38)
+texture = SubResource("CompressedTexture2D_21xkr")
+metadata/_edit_lock_ = true
+
+[node name="rocky" type="CharacterBody2D" parent="Backgrounds" unique_id=1560403940]
+position = Vector2(1300, 100)
+scale = Vector2(0.25, 0.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/rocky" unique_id=1237482496]
+position = Vector2(-100.869576, -35.999985)
+rotation = 2.9827676
+scale = Vector2(22, 22)
+shape = SubResource("SegmentShape2D_jkdf5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/rocky" unique_id=1240308174]
+z_index = -1
+rotation = 0.9145525
+texture = ExtResource("12_jkdf5")
+
+[node name="MinigameUI" type="CanvasLayer" parent="." unique_id=1198620330]
+layer = 3
+visible = false
+
+[node name="minigame" parent="MinigameUI" unique_id=1271992693 instance=ExtResource("8_344ge")]
+
+[node name="TimerUI" type="CanvasLayer" parent="." unique_id=149802906]
+layer = 5
+
+[node name="timerUI" parent="TimerUI" unique_id=1938765599 instance=ExtResource("12_6iyac")]
+
+[node name="Keys" type="Control" parent="TimerUI" unique_id=1727978398]
+layout_mode = 3
+anchor_left = 0.036979165
+anchor_top = 0.8962963
+anchor_right = 0.13125
+anchor_bottom = 0.91481483
+offset_left = -31.0
+offset_top = -19.0
+offset_right = 117.0
+offset_bottom = 21.0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TimerUI/Keys" unique_id=494326527]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.018229166
+anchor_top = 1.819312
+anchor_right = 0.5928635
+anchor_bottom = 1.819312
+offset_left = -2.052083
+offset_top = -126.82222
+offset_right = 37.947914
+offset_bottom = -86.82222
+grow_vertical = 0
+theme = ExtResource("14_b3802")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 16
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+bbcode_enabled = true
+text = "move & cancel minigame"
+scroll_active = false
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TimerUI/Keys" unique_id=170403131]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.95238125
+anchor_right = 0.887538
+anchor_bottom = 1.4285718
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.4800018, 0.4800018)
+metadata/_edit_use_anchors_ = true
+
+[node name="W" type="TextureRect" parent="TimerUI/Keys/HBoxContainer" unique_id=1356184218]
+layout_mode = 2
+texture = ExtResource("15_fevyy")
+
+[node name="A" type="TextureRect" parent="TimerUI/Keys/HBoxContainer" unique_id=287904695]
+layout_mode = 2
+texture = ExtResource("16_hibaj")
+
+[node name="S" type="TextureRect" parent="TimerUI/Keys/HBoxContainer" unique_id=68767130]
+layout_mode = 2
+texture = ExtResource("17_pdsj5")
+
+[node name="D" type="TextureRect" parent="TimerUI/Keys/HBoxContainer" unique_id=1120344320]
+layout_mode = 2
+texture = ExtResource("18_ee4r6")
+
+[connection signal="body_entered" from="ShipNode/ShipMask/ShipLevel/HoleArea" to="Backgrounds" method="_on_hole_area_body_entered"]
+[connection signal="body_exited" from="ShipNode/ShipMask/ShipLevel/HoleArea" to="Backgrounds" method="_on_hole_area_body_exited"]
+[connection signal="input_event" from="Backgrounds/rocky" to="Backgrounds" method="_on_rocky_input_event"]
