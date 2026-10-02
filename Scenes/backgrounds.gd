@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var ocean_speed: float = 50.0
-
+var isStuck = false
 @onready var bg1: Sprite2D = $OceanBackground
 @onready var bg2: Sprite2D = $OceanBackground2
 @onready var rock: CharacterBody2D = $rocky
@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	## Also find drain rate and increase or find it and ask for isStuck collision checker 
 	##Minigame script will move the rock sprite and then the sprites should move automatically, once the rock reaches the end a random variable will respawn it in the trajectory again 
 	
-	if(!(_on_rocky_input_event(ship))): #Freeze sprite movement until wheel minigame is cleared
+	if(!(isStuck)): #Freeze sprite movement until wheel minigame is cleared
 		bg1.position.x -= ocean_speed * delta
 		bg2.position.x -= ocean_speed * delta
 		
@@ -41,8 +41,8 @@ func _process(delta: float) -> void:
 		bg2.position.x = bg1.position.x + sprite_width
 
 
-func _on_rocky_input_event(body: Node2D) -> bool:
+func _on_rocky_input_event(body: Node2D) -> void:
 	if body.name == "HoleArea":
-		return true
+		isStuck = true
 	else:
-		return false
+		isStuck = false
