@@ -226,18 +226,19 @@ texture = SubResource("CompressedTexture2D_21xkr")
 metadata/_edit_lock_ = true
 
 [node name="rocky" type="CharacterBody2D" parent="Backgrounds" unique_id=1560403940]
+unique_name_in_owner = true
 position = Vector2(1300, 100)
 scale = Vector2(0.25, 0.25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/rocky" unique_id=1237482496]
 position = Vector2(-100.869576, -35.999985)
-rotation = 2.9827676
+rotation = 3.2742376
 scale = Vector2(22, 22)
 shape = SubResource("SegmentShape2D_jkdf5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/rocky" unique_id=1240308174]
 z_index = -1
-rotation = 0.9145525
+rotation = -0.35430184
 texture = ExtResource("12_jkdf5")
 
 [node name="MinigameUI" type="CanvasLayer" parent="." unique_id=1198620330]
