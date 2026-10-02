@@ -121,7 +121,8 @@ func _physics_process(delta: float) -> void:
 	
 	cannonballBody.velocity = ramVelocity
 	ramVelocity = ramVelocity.move_toward(Vector2.ZERO, 1000 * delta)
-	cannonballBody.move_and_slide()
+	if cannonballBody.velocity != Vector2.ZERO:
+		cannonballBody.move_and_slide()
 	
 	
 
@@ -129,8 +130,7 @@ var gameCanceled = false
 
 	
 func cannonMinigame():
-	
-		
+
 	ramVelocity = Vector2.ZERO
 	cannonballBody.velocity = Vector2.ZERO
 	previousPosition = null
@@ -146,6 +146,9 @@ func cannonMinigame():
 	
 	var powderBody = minigameFrame.get_node("Powder")
 	var rodBody = minigameFrame.get_node("Rod")
+	
+	#powderBody.add_collision_exception_with(cannonballBody)
+	#cannonballBody.add_collision_exception_with(powderBody)
 	
 	var PowderArea = minigameFrame.get_node("Cannon/PowderArea")
 	var BallArea1 = minigameFrame.get_node("Cannon/BallArea1")
@@ -164,13 +167,14 @@ func cannonMinigame():
 				
 				
 	var powderAreaFunction = func(body):
-		if body.name == "Powder":
+		if body.name == "Powder" and dragNode == body:
 			variables.dragFinished = true
 			
 	var ballAreaFunction = func(body):
-		if body.name == "Cannonball":
-			variables.dragFinished = true	
+		if body.name == "Cannonball" and dragNode == body:
+			variables.dragFinished = true
 			
+	await get_tree().physics_frame
 	dragSpeed = 3000
 	PowderArea.body_entered.connect(powderAreaFunction)
 	var powderDrag = dragFunction.bind(powderBody)
@@ -234,7 +238,7 @@ func cannonMinigame():
 	fadeLabel(hintText,0,0.5)
 	print("Finished Cannon Minigame")
 	
-	await get_tree().create_timer(1.0,false).timeout
+	await get_tree().create_timer(0.5,false).timeout
 	return
 
 func plankMinigame():

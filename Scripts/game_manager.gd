@@ -46,10 +46,10 @@ func fadeToBlack(duration = 0.25):
 func fadeFromBlack(duration = 0.25):
 	fadeScreen.fadeFromBlack()
 
-var defaultHoleMaxSpawn = 30.0
-var defaultHoleMinSpawn = 20.0
-var finalHoleMaxSpawn = 20.0
-var finalHoleMinSpawn = 15.0
+var defaultHoleMaxSpawn = 24.0
+var defaultHoleMinSpawn = 14.0
+var finalHoleMaxSpawn = 14.0
+var finalHoleMinSpawn = 10.0
 
 var defaultShipMaxSpawn = 20.0
 var defaultShipMinSpawn = 12.0
@@ -71,7 +71,7 @@ func fireCannons(progress):
 	var i = 0
 	var spawnCount := 1
 	for k in 2: # up to 2 extra spawns 
-		if randf() < progress/3:
+		if randf() < progress/2:
 			spawnCount += 1
 			
 	while i < spawnCount:
