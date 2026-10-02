@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 	if bg2.position.x <= -sprite_width:
 		bg2.position.x = bg1.position.x + sprite_width
 
-	if rock.positon.x <= sprite_width:
+	if rock.position.x <= sprite_width:
 		rock.position.x = randf_range(3000, 7000)
 		rock.position.y = originy
 
