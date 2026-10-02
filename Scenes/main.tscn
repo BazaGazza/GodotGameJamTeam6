@@ -12,15 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://Scenes/minigame.tscn" id="8_344ge"]
 [ext_resource type="Script" uid="uid://b5a6woogfgv1d" path="res://Scenes/backgrounds.gd" id="8_hptm8"]
 [ext_resource type="PackedScene" uid="uid://k3aua5y3vsjc" path="res://Scenes/timer_ui.tscn" id="12_6iyac"]
-<<<<<<< HEAD
+
 [ext_resource type="Theme" uid="uid://b4u1svlmtf02y" path="res://new_theme.tres" id="14_b3802"]
 [ext_resource type="Texture2D" uid="uid://b42h1axqdh150" path="res://Sprites/w-key.png" id="15_fevyy"]
 [ext_resource type="Texture2D" uid="uid://bmxgdx047aj0i" path="res://Sprites/a-key.png" id="16_hibaj"]
 [ext_resource type="Texture2D" uid="uid://8ujtruofg1s4" path="res://Sprites/s-key.png" id="17_pdsj5"]
 [ext_resource type="Texture2D" uid="uid://ynuvlgmgjyfj" path="res://Sprites/d-key.png" id="18_ee4r6"]
-=======
+
 [ext_resource type="Texture2D" uid="uid://drr2tdornwsad" path="res://Sprites/Rock.png" id="12_jkdf5"]
->>>>>>> 257c56c978acd73ec91eea20ff87c0965e608f14
+
 
 [sub_resource type="Gradient" id="Gradient_l1l02"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -254,7 +254,6 @@ layer = 5
 
 [node name="timerUI" parent="TimerUI" unique_id=1938765599 instance=ExtResource("12_6iyac")]
 
-<<<<<<< HEAD
 [node name="Keys" type="Control" parent="TimerUI" unique_id=1727978398]
 layout_mode = 3
 anchor_left = 0.036979165
@@ -317,8 +316,8 @@ texture = ExtResource("17_pdsj5")
 [node name="D" type="TextureRect" parent="TimerUI/Keys/HBoxContainer" unique_id=1120344320]
 layout_mode = 2
 texture = ExtResource("18_ee4r6")
-=======
+
 [connection signal="body_entered" from="ShipNode/ShipMask/ShipLevel/HoleArea" to="Backgrounds" method="_on_hole_area_body_entered"]
 [connection signal="body_exited" from="ShipNode/ShipMask/ShipLevel/HoleArea" to="Backgrounds" method="_on_hole_area_body_exited"]
 [connection signal="input_event" from="Backgrounds/rocky" to="Backgrounds" method="_on_rocky_input_event"]
->>>>>>> 257c56c978acd73ec91eea20ff87c0965e608f14
+
