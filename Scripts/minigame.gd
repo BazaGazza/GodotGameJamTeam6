@@ -363,12 +363,16 @@ func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 	isDraggingWheel = false
 	
 	#setting all previous minigames visibility to false
-	for child in mainFrame.get_children():
-		child.visible = false
+	##for child in mainFrame.get_children():
+		##child.visible = false
+		##print("invisible")
 		
 	#setting visibility to true 
+	mainFrame.visible = true
+	print("super visible")
 	for child in minigameFrame.get_children():
 		child.visible = true
+		print("visible")
 	
 	var wheelInputFunction = func(viewport, event, shape_idx):
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
