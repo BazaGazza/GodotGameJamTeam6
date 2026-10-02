@@ -51,6 +51,7 @@ func startAim():
 	while aiming:
 		if Input.is_action_just_pressed("interact"):
 			aiming = false
+		if not GameManager.gameActive: return
 		await get_tree().process_frame
 		
 	AudioManager.playSfx("FireCannon")
