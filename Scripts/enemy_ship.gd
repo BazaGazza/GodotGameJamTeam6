@@ -6,13 +6,19 @@ var attackOdds = 0.1
 @onready var sprite:Sprite2D = $Sprite2D
 @onready var blur:Sprite2D = $Blur
 
+var originalPos:Vector2
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	originalPos = sprite.position
+	sprite.position = originalPos + Vector2(200,0)
 	sprite.modulate.a = 0
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_BOUNCE)
+	tween.set_parallel()
 	tween.tween_property(sprite,"modulate:a",1,0.3)
+	tween.tween_property(sprite,"position",originalPos,0.3)
 	
 	blur.visible = true
 	tween = create_tween()
