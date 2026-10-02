@@ -62,10 +62,8 @@ var placedPlanks = 0
 var isDraggingWheel: bool = false
 var previousMouseAngle: float = 0.0
 var wheelVelocity: float = 0.0
-var maxWheelRotation: float = deg_to_rad(120) # Clamps wheel to 120 degrees left/right
 
-
-var return_speed_rate: float = deg_to_rad(90.0) # 90 degrees per second
+var return_speed_rate: float = deg_to_rad(360.0) 
 var lastStepdifference = 0
 var newStepDiffference = 0
 
@@ -127,7 +125,7 @@ func _physics_process(delta: float) -> void:
 			print("Revolutions: ", revolutions)
 		# Update the last step so it doesn't trigger again until the next full turn
 			lastStepdifference = newStepDiffference
-			
+			AudioManager.playSfx("WheelTurn")
 		
 		#if (revolutions % 10 == 0):
 			#print("moving")
@@ -433,7 +431,7 @@ func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 	hintText.modulate.a = 0
 	
 	fadeLabel(hintText, 1)
-	hintText.text = richTextWavy("Use 'Q' And 'R' To Steer clear of the rocks!")
+	hintText.text = richTextWavy("hold 'Q' or 'R' to get out the rock!")
 	
 	#setting visibility to true 
 	mainFrame.visible = true
@@ -441,15 +439,7 @@ func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 	for child in minigameFrame.get_children():
 		child.visible = true
 		print("visible")
-	
-	
-	## revolutoion when to jam
-	##var jamtimes = rand(1, 4)
-	var jamList: PackedInt32Array = []
-	##for x in range(jamtimes):
-		##x = rand(2,9)
-		##if x not in jamList:
-			##jamList.append(x)
+
 	while not gameCanceled:
 		# Example logic to jam the wheel at exactly 10 revolutions
 		##if revolutions == 10 and not isJammed:
@@ -457,61 +447,21 @@ func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 			##fadeLabel(hintText, 1)
 			##hintText.text = richTextWavy("Wheel Jammed, hit 'T' repeatedly!")
 			
-		# Example win condition
 		if revolutions >= 3: 
 			print("COMPLETE!")
-			# Calculate duration from distance and speed
 			var distance: float = 400.0
 			var speed: float = 25.0
 			var duration: float = distance / speed  # Equals 4.0 seconds
 
 			var tween = create_tween()
-
-# Move UP by 200 pixels over 4 seconds:
 			tween.tween_property(rock, "position:y", rock.position.y + distance, duration)
-			
-
-# (OR) Move DOWN by 200 pixels over 4 seconds:
-# tween.tween_property(rock, "position:y", rock.position.y + distance, duration)
 			break
 			
 		await get_tree().process_frame
 
 	# --- 3. CLEANUP ---
 	fadeLabel(hintText, 0, 0.5)
-	
-	if gameCanceled: return
-	
 	print("Finished Wheel Minigame")
-	await get_tree().create_timer(1.0, false).timeout
-		
-	##if revolutions == 10:
-		##rock.position.y -= 50 * delta
-	fadeLabel(hintText, 1)
-	hintText.text = richTextWavy("Wheel Jammed, hit either key many times!")
-	
-	
-	
-	# Game Loop - Waits until canceled or a win/loss condition is met
-	while not gameCanceled:
-		# TODO: Add your logic here to check if the ship survived the rocks
-		# Example: if shipSurvived: break
-		await get_tree().process_frame
-
-	# Cleanup connections and states when minigame ends
-	
-	fadeLabel(hintText, 0, 0.5)
-	
-	
-	if gameCanceled: return
-	print("Finished Wheel Minigame")
-	await get_tree().create_timer(1.0,false).timeout
-	
-	
-	
-
-
-
 	
 #Place to add and connect interactables via names
 var gameFunctions = {
@@ -567,6 +517,8 @@ func startGame(gameType:String,interactableObject:Interactable):
 		elif gameType == "PlankMinigame":
 			GameManager.spawnedHoles -= 1
 			interactableObject.queue_free()
+		elif gameType == "WheelMinigame":
+			interactableObject.set_meta("Cooldown",false)
 	
 		
 	GameManager.currentMinigame = ""

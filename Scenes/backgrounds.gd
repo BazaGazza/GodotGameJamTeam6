@@ -6,12 +6,18 @@ var isStuck = false
 @onready var bg2: Sprite2D = $OceanBackground2
 @onready var rock: CharacterBody2D = $rocky
 @onready var ship: Area2D = $"../ShipNode/ShipMask/ShipLevel/HoleArea"
+
+var steeringInteractable:Interactable
+
 # Variable to hold the dynamically calculated width
 var sprite_width: float = 0.0
 var originx = 0 
 var originy = 0 
 func _ready() -> void:
 	# Ensure the node and texture exist before attempting to read dimensions
+	steeringInteractable = get_tree().current_scene.get_node("ShipNode/ShipMask/ShipLevel/Interactables/Steering Wheel")
+	steeringInteractable.set_meta("Cooldown",true)
+	
 	if bg1 and bg1.texture:
 		sprite_width = bg1.texture.get_width() * bg1.scale.x
 		
@@ -33,7 +39,7 @@ func _process(delta: float) -> void:
 		bg1.position.x -= ocean_speed * delta
 		bg2.position.x -= ocean_speed * delta
 		rock.position.x -= ocean_speed * delta
-		print(rock.position.x)
+		#print(rock.position.x)
 		
 	
 	
@@ -51,7 +57,8 @@ func _process(delta: float) -> void:
 
 func _on_hole_area_body_entered(body: Node2D) -> void:
 	if body.name == "rocky":
-		print("Hit rock")
+		steeringInteractable.set_meta("Cooldown",false)
+		AudioManager.playSfx("HitRock")
 		isStuck = true
 
 

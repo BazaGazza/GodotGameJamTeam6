@@ -19,7 +19,9 @@ var sfx = {
 	"RamSound" = preload("res://Audio/RamSound.wav"),
 	"PowderSound" = preload("res://Audio/PowderSound.wav"),
 	"PlankPlace" = preload("res://Audio/PlankPlace.wav"),
-	"LoadCannon" = preload("res://Audio/LoadCannon.wav")
+	"LoadCannon" = preload("res://Audio/LoadCannon.wav"),
+	"HitRock" = preload("res://Audio/HitRock.wav"),
+	"WheelTurn" = preload("res://Audio/WheelTurn.wav"),
 }
 
 
