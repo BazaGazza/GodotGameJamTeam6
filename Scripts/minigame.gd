@@ -3,8 +3,10 @@ extends Control
 @onready var mainFrame = $MainFrame
 @onready var hintText = $HintText
 @onready var backgroundFrame = $Background
-
+@onready var rock: CharacterBody2D = $rocky
 	
+static var isJammed = false
+
 var currentPlayer:Player = null
 
 var defaultPositions = {}
@@ -99,7 +101,32 @@ func _process(delta: float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	
+	
+	#Wheel Minigame stuff
+	# Define your rotation speed rate (in radians or degrees converted to radians)
+	var minigameFrame = mainFrame.get_node("WheelMinigame")
+	var wheel_node:CharacterBody2D = minigameFrame.get_node("pivot/Wheel")
+	var return_speed_rate: float = deg_to_rad(90.0) # 90 degrees per second
+	
+	var revolutions = 0
+	if (!(isJammed)):
+		#Goal is that game takes no longer than a few seconds
+		
+		if (revolutions % 10 == 0):
+			print("moving")
+		 
+		if Input.is_key_pressed(KEY_Q):
+			print("Holding down the Q key!")
+			wheel_node.rotation = move_toward(wheel_node.rotation, -90.0, return_speed_rate * delta)
+			
+			
+		elif Input.is_key_pressed(KEY_R):
+			print("Holding down the R key!")
+			wheel_node.rotation = move_toward(wheel_node.rotation, 90.0, return_speed_rate * delta)
+			
+	
 	var distance = 1
+	
 	
 	if dragNode != null:
 		moveDrag(delta)
@@ -125,7 +152,7 @@ func _physics_process(delta: float) -> void:
 		cannonballBody.move_and_slide()
 	
 	
-
+		
 var gameCanceled = false
 
 	
@@ -371,21 +398,12 @@ func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 	#getting all references down early 
 	var minigameFrame = mainFrame.get_node("WheelMinigame")
 	var wheel_node:CharacterBody2D = minigameFrame.get_node("pivot/Wheel")
-	var collider:CollisionPolygon2D = minigameFrame.get_node("pivot/Wheel/CollisionPolygon2")
-
+	
 	hintText.modulate.a = 0
 	fadeLabel(hintText, 1)
-	hintText.text = richTextWavy("Steer clear of the rocks!")
+	hintText.text = richTextWavy("Use 'Q' And 'R' To Steer clear of the rocks!")
 	
-	wheel_node.rotation = 0
-	wheelVelocity = 0.0
-	isDraggingWheel = false
 	
-	#setting all previous minigames visibility to false
-	##for child in mainFrame.get_children():
-		##child.visible = false
-		##print("invisible")
-		
 	#setting visibility to true 
 	mainFrame.visible = true
 	print("super visible")
@@ -393,14 +411,13 @@ func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 		child.visible = true
 		print("visible")
 	
-	var wheelInputFunction = func(viewport, event, shape_idx):
-		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-			if event.is_pressed():
-				isDraggingWheel = true
-				previousMouseAngle = (wheel_node.get_global_mouse_position() - wheel_node.global_position).angle()
-
-	# Connect the collision input
-	wheel_node.input_event.connect(wheelInputFunction)
+	
+	
+	
+	##fadeLabel(hintText, 1)
+	##hintText.text = richTextWavy("Wheel Jammed, hit either key many times!")
+	
+	
 	
 	# Game Loop - Waits until canceled or a win/loss condition is met
 	while not gameCanceled:
@@ -409,11 +426,9 @@ func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 		await get_tree().process_frame
 
 	# Cleanup connections and states when minigame ends
-	wheel_node.input_event.disconnect(wheelInputFunction)
-	isDraggingWheel = false
-	wheelVelocity = 0.0
 	
 	fadeLabel(hintText, 0, 0.5)
+	
 	
 	if gameCanceled: return
 	print("Finished Wheel Minigame")

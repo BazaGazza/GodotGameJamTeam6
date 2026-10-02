@@ -56,4 +56,5 @@ func _on_hole_area_body_entered(body: Node2D) -> void:
 
 func _on_hole_area_body_exited(body: Node2D) -> void:
 	if body.name == "HoleArea":
+		("free of rock")
 		isStuck = false
