@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://Scenes/minigame.tscn" id="8_344ge"]
 [ext_resource type="Script" uid="uid://b5a6woogfgv1d" path="res://Scenes/backgrounds.gd" id="8_hptm8"]
 [ext_resource type="PackedScene" uid="uid://k3aua5y3vsjc" path="res://Scenes/timer_ui.tscn" id="12_6iyac"]
+[ext_resource type="Texture2D" uid="uid://drr2tdornwsad" path="res://Sprites/Rock.png" id="12_jkdf5"]
 
 [sub_resource type="Gradient" id="Gradient_l1l02"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -29,6 +30,8 @@ size = Vector2(1073, 150)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_21xkr"]
 load_path = "res://.godot/imported/sea.jpeg-2d3adac23d308b6e2259358346c4f057.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_msgep"]
 
 [node name="Main" type="Node2D" unique_id=2112882412]
 process_mode = 1
@@ -211,6 +214,22 @@ scale = Vector2(2.8971424, 3.38)
 texture = SubResource("CompressedTexture2D_21xkr")
 metadata/_edit_lock_ = true
 
+[node name="rocky" type="CharacterBody2D" parent="Backgrounds" unique_id=1560403940]
+position = Vector2(1300, 100)
+scale = Vector2(0.25, 0.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/rocky" unique_id=1237482496]
+position = Vector2(-5.7324266, 54.329277)
+rotation = 0.13788101
+scale = Vector2(43, 43)
+skew = 0.13264503
+shape = SubResource("CircleShape2D_msgep")
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/rocky" unique_id=1240308174]
+z_index = -1
+rotation = 0.9145525
+texture = ExtResource("12_jkdf5")
+
 [node name="MinigameUI" type="CanvasLayer" parent="." unique_id=1198620330]
 layer = 3
 visible = false
@@ -221,3 +240,5 @@ visible = false
 layer = 5
 
 [node name="timerUI" parent="TimerUI" unique_id=1938765599 instance=ExtResource("12_6iyac")]
+
+[connection signal="input_event" from="Backgrounds/rocky" to="Backgrounds" method="_on_rocky_input_event"]
