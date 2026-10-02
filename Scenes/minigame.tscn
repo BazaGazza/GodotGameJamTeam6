@@ -547,4 +547,4 @@ handle_input_locally = false
 render_target_update_mode = 4
 script = ExtResource("12_eicgb")
 
-[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport" unique_id=1555631325]
+[node name="ViewportCamera" type="Camera2D" parent="SubViewportContainer/SubViewport" unique_id=1555631325]
