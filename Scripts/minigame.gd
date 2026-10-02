@@ -3,9 +3,11 @@ extends Control
 @onready var mainFrame = $MainFrame
 @onready var hintText = $HintText
 @onready var backgroundFrame = $Background
-@onready var rock: CharacterBody2D = $rocky
+@onready var rock: CharacterBody2D = %rocky
 	
 static var isJammed = false
+static var revolutions = 0
+static var unJamTimes = 0
 
 var currentPlayer:Player = null
 
@@ -62,8 +64,13 @@ var previousMouseAngle: float = 0.0
 var wheelVelocity: float = 0.0
 var maxWheelRotation: float = deg_to_rad(120) # Clamps wheel to 120 degrees left/right
 
-signal placePlankSignal
 
+var return_speed_rate: float = deg_to_rad(90.0) # 90 degrees per second
+var lastStepdifference = 0
+var newStepDiffference = 0
+
+
+signal placePlankSignal
 func moveDrag(delta):
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		dragNode.velocity = Vector2.ZERO
@@ -106,24 +113,38 @@ func _physics_process(delta: float) -> void:
 	# Define your rotation speed rate (in radians or degrees converted to radians)
 	var minigameFrame = mainFrame.get_node("WheelMinigame")
 	var wheel_node:CharacterBody2D = minigameFrame.get_node("pivot/Wheel")
-	var return_speed_rate: float = deg_to_rad(90.0) # 90 degrees per second
 	
-	var revolutions = 0
 	if (!(isJammed)):
 		#Goal is that game takes no longer than a few seconds
+		newStepDiffference = wheel_node.rotation 
+		# when the difference between each one is 
+		
+		# Calculate the current revolution step (using TAU which is 360 degrees in radians)
+		newStepDiffference = wheel_node.rotation / TAU
+
+		if abs(int(newStepDiffference) - int(lastStepdifference)) >= 1:
+			revolutions += 1
+			print("Revolutions: ", revolutions)
+		# Update the last step so it doesn't trigger again until the next full turn
+			lastStepdifference = newStepDiffference
+			
 		
 		#if (revolutions % 10 == 0):
 			#print("moving")
 		 
 		if Input.is_key_pressed(KEY_Q):
-			print("Holding down the Q key!")
 			wheel_node.rotation = move_toward(wheel_node.rotation, -90.0, return_speed_rate * delta)
 			
 			
 		elif Input.is_key_pressed(KEY_R):
-			print("Holding down the R key!")
 			wheel_node.rotation = move_toward(wheel_node.rotation, 90.0, return_speed_rate * delta)
 			
+			
+	elif (isJammed):
+		if Input.is_key_pressed(KEY_T):
+			print("One unjam sequence")
+			 
+	
 	
 	var distance = 1
 	
@@ -403,11 +424,16 @@ func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 	#getting all references down early 
 	var minigameFrame = mainFrame.get_node("WheelMinigame")
 	var wheel_node:CharacterBody2D = minigameFrame.get_node("pivot/Wheel")
-	
+	revolutions = 0
+	isJammed = false
+	unJamTimes = 0
+	lastStepdifference = 0
+	newStepDiffference = 0
+	wheel_node.rotation = 0.0 # Reset wheel position to top dead center
 	hintText.modulate.a = 0
+	
 	fadeLabel(hintText, 1)
 	hintText.text = richTextWavy("Use 'Q' And 'R' To Steer clear of the rocks!")
-	
 	
 	#setting visibility to true 
 	mainFrame.visible = true
@@ -417,10 +443,52 @@ func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 		print("visible")
 	
 	
+	## revolutoion when to jam
+	##var jamtimes = rand(1, 4)
+	var jamList: PackedInt32Array = []
+	##for x in range(jamtimes):
+		##x = rand(2,9)
+		##if x not in jamList:
+			##jamList.append(x)
+	while not gameCanceled:
+		# Example logic to jam the wheel at exactly 10 revolutions
+		##if revolutions == 10 and not isJammed:
+			##isJammed = true
+			##fadeLabel(hintText, 1)
+			##hintText.text = richTextWavy("Wheel Jammed, hit 'T' repeatedly!")
+			
+		# Example win condition
+		if revolutions >= 3: 
+			print("COMPLETE!")
+			# Calculate duration from distance and speed
+			var distance: float = 400.0
+			var speed: float = 25.0
+			var duration: float = distance / speed  # Equals 4.0 seconds
+
+			var tween = create_tween()
+
+# Move UP by 200 pixels over 4 seconds:
+			tween.tween_property(rock, "position:y", rock.position.y + distance, duration)
+			
+
+# (OR) Move DOWN by 200 pixels over 4 seconds:
+# tween.tween_property(rock, "position:y", rock.position.y + distance, duration)
+			break
+			
+		await get_tree().process_frame
+
+	# --- 3. CLEANUP ---
+	fadeLabel(hintText, 0, 0.5)
 	
+	if gameCanceled: return
 	
-	##fadeLabel(hintText, 1)
-	##hintText.text = richTextWavy("Wheel Jammed, hit either key many times!")
+	print("Finished Wheel Minigame")
+	await get_tree().create_timer(1.0, false).timeout
+		
+	##if revolutions == 10:
+		##rock.position.y -= 50 * delta
+	fadeLabel(hintText, 1)
+	hintText.text = richTextWavy("Wheel Jammed, hit either key many times!")
 	
 	
 	
