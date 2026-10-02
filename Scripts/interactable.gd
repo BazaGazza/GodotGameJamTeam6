@@ -34,7 +34,8 @@ func _on_toggle_prompt(newInteractable):
 func _on_body_entered(body: Node2D) -> void:
 	if body is not Player: return
 	if currentPlayer.doingMinigame == true: return
-		
+	if self.get_meta("Cooldown",false) == true: return
+	
 	if extraIcon:
 		extraIcon.visible = true
 	$Icon.show()

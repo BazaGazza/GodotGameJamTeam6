@@ -19,6 +19,8 @@ func _ready() -> void:
 	GameManager.setCurrentPlayer(self)
 	playerCamera.set_meta("DefaultOffset",playerCamera.offset.y)
 	movementSpeed = baseSpeed
+	
+	GameManager.startingSequence()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

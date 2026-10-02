@@ -1,19 +1,71 @@
 [gd_scene format=3 uid="uid://dchbe4xnf3xjo"]
 
 [ext_resource type="Script" uid="uid://cars2rhhgax04" path="res://Scripts/enemy_ship.gd" id="1_fqvla"]
-[ext_resource type="Texture2D" uid="uid://bexpiht4j27k5" path="res://Sprites/Placeholder enemy ship.png" id="1_tmwji"]
+[ext_resource type="Texture2D" uid="uid://cm1ce3dxdakmi" path="res://Sprites/Ghost ship.png" id="2_fqvla"]
+[ext_resource type="Texture2D" uid="uid://clntodesj43a0" path="res://Sprites/Cannon.png" id="3_38hgn"]
+[ext_resource type="Texture2D" uid="uid://dyethyx4rfdqf" path="res://Sprites/ship blur.png" id="3_csf4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
 
 [node name="EnemyShip" type="Node2D" unique_id=1293328923]
+scale = Vector2(1.85, 1.85)
 script = ExtResource("1_fqvla")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1186528619]
+z_index = 1
+position = Vector2(8, -36)
 scale = Vector2(0.16000126, 0.16000126)
-texture = ExtResource("1_tmwji")
+texture = ExtResource("2_fqvla")
+
+[node name="Blur" type="Sprite2D" parent="." unique_id=2083162196]
+visible = false
+z_index = 1
+position = Vector2(7.5675697, -35.675674)
+scale = Vector2(0.16000126, 0.16000126)
+texture = ExtResource("3_csf4i")
 
 [node name="ShipHurtbox" type="Area2D" parent="." unique_id=1650287822]
-scale = Vector2(8.56, 8.56)
+position = Vector2(3, -5)
+scale = Vector2(18.559998, 8.56)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShipHurtbox" unique_id=865381665]
 shape = SubResource("RectangleShape2D_l1l02")
+
+[node name="Cannon1" type="TextureRect" parent="." unique_id=511811747]
+visible = false
+modulate = Color(0.11764706, 0.7137255, 0.72156864, 0.29411766)
+offset_left = -453.51352
+offset_top = -262.16217
+offset_right = 273.48648
+offset_bottom = 842.8378
+rotation = -3.1395082
+scale = Vector2(0.035, 0.035)
+pivot_offset = Vector2(363.5, 305.5)
+texture = ExtResource("3_38hgn")
+stretch_mode = 3
+
+[node name="Cannon2" type="TextureRect" parent="." unique_id=360703486]
+visible = false
+modulate = Color(0.11764706, 0.7137255, 0.72156864, 0.29411766)
+offset_left = -388.10815
+offset_top = -264.32434
+offset_right = 338.89185
+offset_bottom = 840.67566
+rotation = -3.1395082
+scale = Vector2(0.035, 0.035)
+pivot_offset = Vector2(363.5, 305.5)
+texture = ExtResource("3_38hgn")
+stretch_mode = 3
+
+[node name="Cannon3" type="TextureRect" parent="." unique_id=1372324014]
+visible = false
+modulate = Color(0.11764706, 0.7137255, 0.72156864, 0.29411766)
+offset_left = -302.16217
+offset_top = -267.02704
+offset_right = 424.83783
+offset_bottom = 837.97296
+rotation = -3.1395082
+scale = Vector2(0.035, 0.035)
+pivot_offset = Vector2(363.5, 305.5)
+texture = ExtResource("3_38hgn")
+stretch_mode = 3

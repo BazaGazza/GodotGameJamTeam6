@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bfkgorj3w6mq5"]
 
-[ext_resource type="Script" uid="uid://cxs050ghng33c" path="res://Scenes/target_area.gd" id="1_b6n80"]
+[ext_resource type="Script" uid="uid://cxs050ghng33c" path="res://Scripts/target_area.gd" id="1_b6n80"]
 [ext_resource type="Texture2D" uid="uid://lbi07v5ukrog" path="res://Sprites/Explosion frames.png" id="2_b6n80"]
 [ext_resource type="Texture2D" uid="uid://j3tsvscrqnin" path="res://Sprites/target distorted.png" id="2_s1yqv"]
 
@@ -55,8 +55,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l1l02"]
-radius = 66.0
-height = 204.0
+radius = 44.0
+height = 240.0
 
 [node name="TargetArea" type="Node2D" unique_id=961781219]
 process_mode = 1
@@ -76,16 +76,19 @@ texture = ExtResource("2_s1yqv")
 process_mode = 1
 visible = false
 z_index = 12
-position = Vector2(33, -84.00001)
-scale = Vector2(0.3, 0.3)
+position = Vector2(61, -84)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_l1l02")
 animation = &"explode"
+frame = 5
+frame_progress = 1.0
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=26164941]
+position = Vector2(0, -15)
 collision_layer = 255
 collision_mask = 255
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2060938736]
-position = Vector2(2, 0)
+position = Vector2(3, 42)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_l1l02")

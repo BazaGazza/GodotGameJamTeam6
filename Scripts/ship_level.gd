@@ -6,12 +6,12 @@ var endY
 
 func _ready() -> void:
 	originalY = ship.position.y
-	endY = originalY+150
+	endY = originalY+200
 
 func _process(delta: float) -> void:
 	if GameManager.gameActive == false: return
 	var damage:int = 0
-	damage = GameManager.spawnedHoles * 1
+	damage = GameManager.spawnedHoles * 0.5
 	
 	GameManager.currentHealth -= damage*delta
 	var progress = 1-(GameManager.currentHealth/GameManager.maxHealth)

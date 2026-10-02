@@ -6,8 +6,11 @@
 [node name="Interactable" unique_id=610343071 instance=ExtResource("1_32bqh")]
 
 [node name="Icon" parent="." index="1" unique_id=2102358570]
-offset_top = -48.726746
-offset_bottom = -41.765778
+offset_left = -5.0
+offset_top = -30.827126
+offset_right = 1.960968
+offset_bottom = -23.866158
+scale = Vector2(1.5, 1.5)
 
 [node name="Icon2" type="TextureRect" parent="." index="2" unique_id=1894256935]
 visible = false

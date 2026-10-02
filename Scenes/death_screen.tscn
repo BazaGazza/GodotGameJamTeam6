@@ -2,7 +2,8 @@
 
 [ext_resource type="Theme" uid="uid://b4u1svlmtf02y" path="res://new_theme.tres" id="1_rwas2"]
 [ext_resource type="FontFile" uid="uid://bfn5fns14rq66" path="res://Fonts/FOT-RodinBokutoh Pro B.otf" id="2_tseak"]
-[ext_resource type="Script" uid="uid://ct0eya5hwm6se" path="res://Scenes/retry_button.gd" id="3_tseak"]
+[ext_resource type="Script" uid="uid://ct0eya5hwm6se" path="res://Scripts/retry_button.gd" id="3_tseak"]
+[ext_resource type="Script" uid="uid://ra8871rxn0x" path="res://Scripts/score.gd" id="4_amiou"]
 
 [node name="DeathScreen" type="CanvasLayer" unique_id=1943215041]
 layer = 999
@@ -87,6 +88,7 @@ text = "score: 67
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("4_amiou")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="RetryButton" to="RetryButton" method="_on_pressed"]

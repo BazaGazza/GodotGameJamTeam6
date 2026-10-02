@@ -66,8 +66,6 @@ func moveDrag(delta):
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		dragNode.velocity = Vector2.ZERO
 		dragNode = null
-		print("hovering plank")
-		print(hoveringPlank)
 		if currentPlank and hoveringPlank:
 			placePlankSignal.emit()
 			
@@ -109,7 +107,7 @@ func _physics_process(delta: float) -> void:
 			
 			# i'm not using distance_to because only the horizontal movement is relevant
 			distance = abs(currentPos.x - previousPosition.x)
-			currentRamSpeed += distance/10
+			currentRamSpeed += 5 + 2*log(1+distance/100)
 			previousPosition = currentPos
 	
 	#1/distance, so standing still is more penalized, and making big movements, there's less decay
@@ -165,12 +163,17 @@ func cannonMinigame():
 	while not variables.dragFinished and not gameCanceled:
 		await get_tree().process_frame
 	
+	ramVelocity = Vector2.ZERO
+	cannonballBody.velocity = Vector2.ZERO
+	previousPosition = null
+	currentRamSpeed = 0
 	variables.dragFinished = false
 	dragNode = null
 	powderBody.input_event.disconnect(dragFunction)
 	PowderArea.body_entered.disconnect(areaFunction)
 	if gameCanceled: return
 	
+	await get_tree().physics_frame
 	hintText.modulate.a = 0
 	fadeLabel(hintText,1)
 	hintText.text = richTextWavy("load the cannonball...")
@@ -207,7 +210,10 @@ func cannonMinigame():
 	
 	while not variables.dragFinished and not gameCanceled:
 		await get_tree().process_frame
+		
 	rodBody.get_node("Area2D").body_entered.disconnect(ramFunction)
+	minigameFrame.get_node("Cannon/BallArea2").body_entered.disconnect(finishRamFunction)
+	
 	if gameCanceled: return
 	
 	fadeLabel(hintText,0,0.5)
@@ -239,7 +245,7 @@ func plankMinigame():
 		"nailing":false
 	}
 	
-	for i in range(1,5,1):
+	for i in range(1,4,1):
 		var plankClone = plankTemplate.duplicate()
 		plankClone.name = "PlankClone"+str(i)
 		plankClone.rotation_degrees = randf_range(-40,40)
@@ -331,7 +337,7 @@ func plankMinigame():
 	
 	placePlankSignal.connect(placeFunction)
 	
-	while placedPlanks < 4 and not gameCanceled:
+	while placedPlanks < 3 and not gameCanceled:
 		await get_tree().process_frame
 		
 	holeArea.body_entered.disconnect(enterFunction)
@@ -432,6 +438,9 @@ func startGame(gameType:String,interactableObject:Interactable):
 	await gameFunction.call()
 			
 	if not gameCanceled:
+		if gameType == "CannonMinigame" or gameType == "PlankMinigame":
+			GameManager.completedMinigames += 1
+			
 		if gameType == "CannonMinigame":
 			#also do the aiming mini game
 			var aimer = interactableObject.get_node("Aimer")

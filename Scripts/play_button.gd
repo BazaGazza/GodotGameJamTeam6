@@ -8,6 +8,7 @@ func _on_pressed() -> void:
 	GameManager.resetGame()
 	get_tree().change_scene_to_file("res://Scenes/main.tscn")
 	GameManager.gameActive = true
+	AudioManager.stopMenuSong()
 
 @onready var board:Sprite2D = $Sprite2D
 @onready var glow:Sprite2D = $Glow
@@ -16,6 +17,7 @@ var glowTween:Tween
 var boardTween:Tween
 
 func _ready() -> void:
+	AudioManager.playMenuSong()
 	glow.modulate.a = 0
 	board.rotation_degrees = 0
 	board.scale = Vector2(1.00,1.00)

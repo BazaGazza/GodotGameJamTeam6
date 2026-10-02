@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dbt4q18np7y0k"]
 
-[ext_resource type="Script" uid="uid://2kqx1ddmp6cg" path="res://Scenes/ship_level.gd" id="1_d1ilt"]
+[ext_resource type="Script" uid="uid://2kqx1ddmp6cg" path="res://Scripts/ship_level.gd" id="1_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://c776r2n3h4jgq" path="res://Scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dm3vt8ea8oqi1" path="res://Sprites/ripple1-skewed.png" id="2_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://df7v7276s2h0" path="res://Sprites/ripple-trail.png" id="3_jkdf5"]
@@ -9,10 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://bkwqt763hg5op" path="res://Scenes/interactable-Steering Wheel.tscn" id="5_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://dppoh0ikkihtl" path="res://Sprites/mast.png" id="5_hptm8"]
 [ext_resource type="Texture2D" uid="uid://bbekbkqskxpap" path="res://Sprites/lower-rails.png" id="6_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://dchbe4xnf3xjo" path="res://Scenes/enemy_ship.tscn" id="7_hptm8"]
 [ext_resource type="PackedScene" uid="uid://c72r5doca5h3s" path="res://Scenes/minigame.tscn" id="8_344ge"]
 [ext_resource type="Script" uid="uid://b5a6woogfgv1d" path="res://Scenes/backgrounds.gd" id="8_hptm8"]
 [ext_resource type="PackedScene" uid="uid://k3aua5y3vsjc" path="res://Scenes/timer_ui.tscn" id="12_6iyac"]
+[ext_resource type="Theme" uid="uid://b4u1svlmtf02y" path="res://new_theme.tres" id="14_b3802"]
+[ext_resource type="Texture2D" uid="uid://b42h1axqdh150" path="res://Sprites/w-key.png" id="15_fevyy"]
+[ext_resource type="Texture2D" uid="uid://bmxgdx047aj0i" path="res://Sprites/a-key.png" id="16_hibaj"]
+[ext_resource type="Texture2D" uid="uid://8ujtruofg1s4" path="res://Sprites/s-key.png" id="17_pdsj5"]
+[ext_resource type="Texture2D" uid="uid://ynuvlgmgjyfj" path="res://Sprites/d-key.png" id="18_ee4r6"]
 
 [sub_resource type="Gradient" id="Gradient_l1l02"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -25,7 +29,10 @@ point_count = 2
 size = Vector2(3.3196034, 4.6468644)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_126ht"]
-size = Vector2(1073, 150)
+size = Vector2(1073, 143)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
+size = Vector2(950, 98)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_21xkr"]
 load_path = "res://.godot/imported/sea.jpeg-2d3adac23d308b6e2259358346c4f057.ctex"
@@ -162,9 +169,6 @@ texture = ExtResource("6_d1ilt")
 
 [node name="EnemyShips" type="Node2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=483103050]
 
-[node name="EnemyShip" parent="ShipNode/ShipMask/ShipLevel/EnemyShips" unique_id=1293328923 instance=ExtResource("7_hptm8")]
-position = Vector2(264, -436)
-
 [node name="Collision" type="StaticBody2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=1793590727]
 y_sort_enabled = true
 rotation = 1.5707964
@@ -187,8 +191,14 @@ baseSpeed = 200
 z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShipNode/ShipMask/ShipLevel/HoleArea" unique_id=698074123]
-position = Vector2(-70.5, 70)
+position = Vector2(-70.5, 73.5)
 shape = SubResource("RectangleShape2D_126ht")
+
+[node name="SpawnArea" type="Area2D" parent="ShipNode/ShipMask/ShipLevel" unique_id=320662668]
+position = Vector2(-10, -344)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShipNode/ShipMask/ShipLevel/SpawnArea" unique_id=2003025944]
+shape = SubResource("RectangleShape2D_l1l02")
 
 [node name="Backgrounds" type="Node2D" parent="." unique_id=1368142683]
 scale = Vector2(2.3, 3)
@@ -221,3 +231,66 @@ visible = false
 layer = 5
 
 [node name="timerUI" parent="TimerUI" unique_id=1938765599 instance=ExtResource("12_6iyac")]
+
+[node name="Keys" type="Control" parent="TimerUI" unique_id=1727978398]
+layout_mode = 3
+anchor_left = 0.036979165
+anchor_top = 0.8962963
+anchor_right = 0.13125
+anchor_bottom = 0.91481483
+offset_left = -31.0
+offset_top = -19.0
+offset_right = 117.0
+offset_bottom = 21.0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TimerUI/Keys" unique_id=494326527]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.018229166
+anchor_top = 1.819312
+anchor_right = 0.5928635
+anchor_bottom = 1.819312
+offset_left = -2.052083
+offset_top = -126.82222
+offset_right = 37.947914
+offset_bottom = -86.82222
+grow_vertical = 0
+theme = ExtResource("14_b3802")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 16
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+bbcode_enabled = true
+text = "move & cancel minigame"
+scroll_active = false
+vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TimerUI/Keys" unique_id=170403131]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.95238125
+anchor_right = 0.887538
+anchor_bottom = 1.4285718
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.4800018, 0.4800018)
+metadata/_edit_use_anchors_ = true
+
+[node name="W" type="TextureRect" parent="TimerUI/Keys/HBoxContainer" unique_id=1356184218]
+layout_mode = 2
+texture = ExtResource("15_fevyy")
+
+[node name="A" type="TextureRect" parent="TimerUI/Keys/HBoxContainer" unique_id=287904695]
+layout_mode = 2
+texture = ExtResource("16_hibaj")
+
+[node name="S" type="TextureRect" parent="TimerUI/Keys/HBoxContainer" unique_id=68767130]
+layout_mode = 2
+texture = ExtResource("17_pdsj5")
+
+[node name="D" type="TextureRect" parent="TimerUI/Keys/HBoxContainer" unique_id=1120344320]
+layout_mode = 2
+texture = ExtResource("18_ee4r6")

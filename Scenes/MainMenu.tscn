@@ -64,6 +64,8 @@ pivot_offset = Vector2(960, 0)
 mouse_filter = 2
 texture = ExtResource("2_853f1")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1179157499]
+
 [connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PlayButton" to="PlayButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_pressed"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://darf0u3wh3au1"]
 
 [ext_resource type="Script" uid="uid://dwy7sldd07xq7" path="res://Scripts/interactable.gd" id="1_wh154"]
-[ext_resource type="Texture2D" uid="uid://cox1eomtfld8j" path="res://Sprites/e-prompt.png" id="3_0k2he"]
+[ext_resource type="Texture2D" uid="uid://b715p65cp0dge" path="res://Sprites/e-key.png" id="2_pmsje"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l1l02"]
 
@@ -17,7 +17,7 @@ offset_left = -3.480484
 offset_top = -19.888472
 offset_right = 3.480484
 offset_bottom = -12.927504
-texture = ExtResource("3_0k2he")
+texture = ExtResource("2_pmsje")
 expand_mode = 3
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
