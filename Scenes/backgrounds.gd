@@ -57,6 +57,9 @@ func _process(delta: float) -> void:
 
 func _on_hole_area_body_entered(body: Node2D) -> void:
 	if body.name == "rocky":
+		if body.get_meta("Cooldown",false) == true: return
+		
+		GameManager.stuckInRock = true
 		steeringInteractable.set_meta("Cooldown",false)
 		AudioManager.playSfx("HitRock")
 		isStuck = true
@@ -66,3 +69,4 @@ func _on_hole_area_body_exited(body: Node2D) -> void:
 	if body.name == "rocky":
 		("free of rock")
 		isStuck = false
+		GameManager.stuckInRock = false

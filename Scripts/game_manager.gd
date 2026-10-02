@@ -5,6 +5,9 @@ var currentHealth = 100
 const maxHealth = 100
 var timer = 0
 
+var distanceTraveled = 0
+var stuckInRock = false
+
 var currentScene:Node = null
 var currentSceneName = "Ship"
 var currentMinigame:String = ""
@@ -20,7 +23,7 @@ var targetScene:PackedScene = preload("res://Scenes/target_area.tscn")
 var shipScene:PackedScene = preload("res://Scenes/enemy_ship.tscn")
 var timerUI:Control = null
 
-const shakeMaxLength = 60
+const shakeMaxLength = 90
 var maxShakeRate:float = 150.0
 var maxShakeLevel:float = 35.0
 var currentShakeRate:float = 0.0
@@ -47,9 +50,9 @@ func fadeFromBlack(duration = 0.25):
 	fadeScreen.fadeFromBlack()
 
 var defaultHoleMaxSpawn = 24.0
-var defaultHoleMinSpawn = 14.0
-var finalHoleMaxSpawn = 14.0
-var finalHoleMinSpawn = 10.0
+var defaultHoleMinSpawn = 18.0
+var finalHoleMaxSpawn = 18.0
+var finalHoleMinSpawn = 12.0
 
 var defaultShipMaxSpawn = 20.0
 var defaultShipMinSpawn = 12.0
@@ -93,6 +96,13 @@ func _process(delta: float) -> void:
 		timerUI = currentScene.get_node("TimerUI").get_node("timerUI")
 
 	timer += delta
+	if not stuckInRock:
+		distanceTraveled += delta/2
+		timerUI.get_node("DistanceLabel").modulate = Color(1.0, 1.0, 1.0, 1.0)
+	else:
+		timerUI.get_node("DistanceLabel").modulate = Color(1.0, 0.0, 0.0, 1.0)
+
+	timerUI.get_node("DistanceLabel").text = str(distanceTraveled).pad_decimals(1)+"m"
 	timerUI.get_node("TextLabel").text = richTextWavy(str(timer).pad_decimals(2))
 	
 	var progress = clamp(timer/shakeMaxLength,0,1)
@@ -136,6 +146,8 @@ func startingSequence():
 	
 func resetGame():
 	timer = 0
+	distanceTraveled = 0
+	stuckInRock = false
 	currentHealth = maxHealth
 	currentMinigame = ""
 	spawnedHoles = 0

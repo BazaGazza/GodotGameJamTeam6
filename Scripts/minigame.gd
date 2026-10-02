@@ -455,6 +455,15 @@ func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 
 			var tween = create_tween()
 			tween.tween_property(rock, "position:y", rock.position.y + distance, duration)
+			
+			var cdFunc = func():
+				#cooldown on collision
+				rock.set_meta("Cooldown",true)
+				await get_tree().create_timer(5,false).timeout
+				rock.set_meta("Cooldown",false)
+				
+			cdFunc.call()
+			
 			break
 			
 		await get_tree().process_frame
@@ -518,7 +527,8 @@ func startGame(gameType:String,interactableObject:Interactable):
 			GameManager.spawnedHoles -= 1
 			interactableObject.queue_free()
 		elif gameType == "WheelMinigame":
-			interactableObject.set_meta("Cooldown",false)
+			interactableObject.set_meta("Cooldown",true)
+			GameManager.stuckInRock = false
 	
 		
 	GameManager.currentMinigame = ""
