@@ -49,6 +49,7 @@ var defaultVolumes = {
 }
 
 func playSfx(audioName: String,soundPosition = null):
+	if GameManager.gameActive == false: return
 	var stream: AudioStream = sfx.get(audioName)
 	if stream == null: return
 	
