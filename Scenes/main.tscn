@@ -31,7 +31,8 @@ size = Vector2(1073, 150)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_21xkr"]
 load_path = "res://.godot/imported/sea.jpeg-2d3adac23d308b6e2259358346c4f057.ctex"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_msgep"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jkdf5"]
+a = Vector2(1.5872192, 9.583775)
 
 [node name="Main" type="Node2D" unique_id=2112882412]
 process_mode = 1
@@ -219,11 +220,10 @@ position = Vector2(1300, 100)
 scale = Vector2(0.25, 0.25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/rocky" unique_id=1237482496]
-position = Vector2(-5.7324266, 54.329277)
-rotation = 0.13788101
-scale = Vector2(43, 43)
-skew = 0.13264503
-shape = SubResource("CircleShape2D_msgep")
+position = Vector2(-100.869576, -35.999985)
+rotation = 2.9827676
+scale = Vector2(22, 22)
+shape = SubResource("SegmentShape2D_jkdf5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Backgrounds/rocky" unique_id=1240308174]
 z_index = -1
@@ -241,4 +241,6 @@ layer = 5
 
 [node name="timerUI" parent="TimerUI" unique_id=1938765599 instance=ExtResource("12_6iyac")]
 
+[connection signal="body_entered" from="ShipNode/ShipMask/ShipLevel/HoleArea" to="Backgrounds" method="_on_hole_area_body_entered"]
+[connection signal="body_exited" from="ShipNode/ShipMask/ShipLevel/HoleArea" to="Backgrounds" method="_on_hole_area_body_exited"]
 [connection signal="input_event" from="Backgrounds/rocky" to="Backgrounds" method="_on_rocky_input_event"]

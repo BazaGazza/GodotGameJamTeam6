@@ -8,7 +8,8 @@ var isStuck = false
 @onready var ship: Area2D = $"../ShipNode/ShipMask/ShipLevel/HoleArea"
 # Variable to hold the dynamically calculated width
 var sprite_width: float = 0.0
-
+var originx = 0 
+var originy = 0 
 func _ready() -> void:
 	# Ensure the node and texture exist before attempting to read dimensions
 	if bg1 and bg1.texture:
@@ -16,7 +17,8 @@ func _ready() -> void:
 		
 		# Optional: Automatically position bg2 directly next to bg1 on start
 		bg2.position.x = bg1.position.x + sprite_width
-		
+		originx = rock.position.x 
+		originy = rock.position.y 
 	get_tree().current_scene.modulate = Color(1.0, 1.0, 1.0, 1.0)
 	
 
@@ -30,6 +32,7 @@ func _process(delta: float) -> void:
 	if(!(isStuck)): #Freeze sprite movement until wheel minigame is cleared
 		bg1.position.x -= ocean_speed * delta
 		bg2.position.x -= ocean_speed * delta
+		rock.position.x -= ocean_speed * delta
 		
 	
 	
@@ -40,9 +43,17 @@ func _process(delta: float) -> void:
 	if bg2.position.x <= -sprite_width:
 		bg2.position.x = bg1.position.x + sprite_width
 
+	if rock.positon.x <= sprite_width:
+		rock.position.x = randf_range(3000, 7000)
+		rock.position.y = originy
 
-func _on_rocky_input_event(body: Node2D) -> void:
-	if body.name == "HoleArea":
+
+func _on_hole_area_body_entered(body: Node2D) -> void:
+	if body.name == "rocky":
+		print("Hit rock")
 		isStuck = true
-	else:
+
+
+func _on_hole_area_body_exited(body: Node2D) -> void:
+	if body.name == "HoleArea":
 		isStuck = false
