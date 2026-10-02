@@ -278,7 +278,7 @@ func spawnShip():
 	var shipClone:Node2D = shipScene.instantiate()
 	shipClone.position = currentScene.get_node("ShipNode/ShipMask/ShipLevel/EnemyShips").to_local(randomGlobalPos)
 	currentScene.get_node("ShipNode/ShipMask/ShipLevel/EnemyShips").add_child(shipClone)
-	AudioManager.playSfx("ShipSpawn",shipClone.global_position)
+	AudioManager.playSfx("ShipSpawn")
 	
 	
 func richTextWavy(text:String):
