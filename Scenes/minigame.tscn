@@ -270,9 +270,9 @@ shape = SubResource("CircleShape2D_oood0")
 [node name="Planks" type="Node2D" parent="MainFrame/PlankMinigame/HoleArea" unique_id=1122076147]
 
 [node name="Plank1" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks" unique_id=1372790776]
-position = Vector2(-195.71677, -108.06789)
-rotation = 0.8090571
-scale = Vector2(0.743, 1.25)
+position = Vector2(84.61522, -53.84602)
+rotation = 0.91492045
+scale = Vector2(0.9, 1.514)
 texture = ExtResource("6_xcq3l")
 
 [node name="Nail1" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank1" unique_id=1260437708]
@@ -324,9 +324,9 @@ scale = Vector2(16, 16)
 shape = SubResource("CircleShape2D_ufkp0")
 
 [node name="Plank2" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks" unique_id=1668546785]
-position = Vector2(107.43428, -130.00862)
-rotation = -1.3569448
-scale = Vector2(0.743, 1.25)
+position = Vector2(5.4945087, -50.54931)
+rotation = -1.244712
+scale = Vector2(0.9, 1.514)
 texture = ExtResource("6_xcq3l")
 
 [node name="Nail1" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2" unique_id=1595013530]
@@ -375,60 +375,6 @@ texture = ExtResource("6_vnlq7")
 scale = Vector2(16, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank2/Nail4/Area2D" unique_id=1846603757]
-shape = SubResource("CircleShape2D_ufkp0")
-
-[node name="Plank3" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks" unique_id=1287208304]
-position = Vector2(-50.84326, 98.42972)
-rotation = 1.343284
-scale = Vector2(0.743, 1.25)
-texture = ExtResource("6_xcq3l")
-
-[node name="Nail1" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3" unique_id=1297497731]
-position = Vector2(-111.17566, -391.0625)
-scale = Vector2(0.6704489, 0.40373868)
-skew = 0.2705258
-texture = ExtResource("6_vnlq7")
-
-[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail1" unique_id=1685642116]
-scale = Vector2(16, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail1/Area2D" unique_id=1538133955]
-shape = SubResource("CircleShape2D_ufkp0")
-
-[node name="Nail2" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3" unique_id=835668876]
-position = Vector2(141.96289, -392.07837)
-scale = Vector2(0.6704489, 0.40373868)
-skew = 0.2705258
-texture = ExtResource("6_vnlq7")
-
-[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail2" unique_id=569812380]
-scale = Vector2(16, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail2/Area2D" unique_id=1348998564]
-shape = SubResource("CircleShape2D_ufkp0")
-
-[node name="Nail3" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3" unique_id=1172157916]
-position = Vector2(-102.62372, 350.4325)
-scale = Vector2(0.6704489, 0.40373868)
-skew = 0.2705258
-texture = ExtResource("6_vnlq7")
-
-[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail3" unique_id=2042021533]
-scale = Vector2(16, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail3/Area2D" unique_id=1652486767]
-shape = SubResource("CircleShape2D_ufkp0")
-
-[node name="Nail4" type="Sprite2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3" unique_id=291567069]
-position = Vector2(123.14856, 353.47974)
-scale = Vector2(0.6704489, 0.40373868)
-skew = 0.2705258
-texture = ExtResource("6_vnlq7")
-
-[node name="Area2D" type="Area2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail4" unique_id=1639561939]
-scale = Vector2(16, 16)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/PlankMinigame/HoleArea/Planks/Plank3/Nail4/Area2D" unique_id=1027137313]
 shape = SubResource("CircleShape2D_ufkp0")
 
 [node name="PlankBackground" type="TextureRect" parent="MainFrame/PlankMinigame" unique_id=793983650]

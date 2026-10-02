@@ -89,6 +89,10 @@ func moveDrag(delta):
 	dragNode.move_and_slide()
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("move_up") or event.is_action_pressed("move_down") or event.is_action_pressed("move_left") or event.is_action_pressed("move_right"):
+		gameCanceled = true
+		return
 func _process(delta: float) -> void:
 	if GameManager.gameActive == false:
 		gameCanceled = true
@@ -123,12 +127,18 @@ func _physics_process(delta: float) -> void:
 
 var gameCanceled = false
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("move_up") or event.is_action_pressed("move_down") or event.is_action_pressed("move_left"):
-		gameCanceled = true
-		
 	
 func cannonMinigame():
+	
+		
+	ramVelocity = Vector2.ZERO
+	cannonballBody.velocity = Vector2.ZERO
+	previousPosition = null
+	currentRamSpeed = 0
+	dragNode = null
+	
+	await get_tree().physics_frame
+	
 	var minigameFrame = mainFrame.get_node("CannonMinigame")
 	hintText.modulate.a = 0
 	fadeLabel(hintText,1)
@@ -151,26 +161,28 @@ func cannonMinigame():
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 			if event.is_pressed():
 				dragNode = newBody
-	var areaFunction = func(body):
-		if body.name == "Powder" or body.name == "Cannonball" or body.name == "Rod":
+				
+				
+	var powderAreaFunction = func(body):
+		if body.name == "Powder":
 			variables.dragFinished = true
 			
+	var ballAreaFunction = func(body):
+		if body.name == "Cannonball":
+			variables.dragFinished = true	
 			
 	dragSpeed = 3000
-	PowderArea.body_entered.connect(areaFunction)
-	powderBody.input_event.connect(dragFunction.bind(powderBody))
+	PowderArea.body_entered.connect(powderAreaFunction)
+	var powderDrag = dragFunction.bind(powderBody)
+	powderBody.input_event.connect(powderDrag)
 	
 	while not variables.dragFinished and not gameCanceled:
 		await get_tree().process_frame
-	
-	ramVelocity = Vector2.ZERO
-	cannonballBody.velocity = Vector2.ZERO
-	previousPosition = null
-	currentRamSpeed = 0
+
 	variables.dragFinished = false
 	dragNode = null
-	powderBody.input_event.disconnect(dragFunction)
-	PowderArea.body_entered.disconnect(areaFunction)
+	PowderArea.body_entered.disconnect(powderAreaFunction)
+	powderBody.input_event.disconnect(powderDrag)
 	if gameCanceled: return
 	
 	await get_tree().physics_frame
@@ -179,15 +191,16 @@ func cannonMinigame():
 	hintText.text = richTextWavy("load the cannonball...")
 	
 	dragSpeed = 1200
-	BallArea1.body_entered.connect(areaFunction)
-	cannonballBody.input_event.connect(dragFunction.bind(cannonballBody))
+	BallArea1.body_entered.connect(ballAreaFunction)
+	var ballDrag = dragFunction.bind(cannonballBody)
+	cannonballBody.input_event.connect(ballDrag)
 	
 	while not variables.dragFinished and not gameCanceled:
 		await get_tree().process_frame
 	variables.dragFinished = false
 	dragNode = null
-	cannonballBody.input_event.disconnect(dragFunction)
-	BallArea1.body_entered.disconnect(areaFunction)
+	BallArea1.body_entered.disconnect(ballAreaFunction)
+	cannonballBody.input_event.disconnect(ballDrag)
 	if gameCanceled: return
 		
 	hintText.modulate.a = 0
@@ -195,7 +208,8 @@ func cannonMinigame():
 	hintText.text = richTextWavy("ram the cannonball!")
 	
 	dragSpeed = 3000
-	rodBody.input_event.connect(dragFunction.bind(rodBody))
+	var rodDrag = dragFunction.bind(rodBody)
+	rodBody.input_event.connect(rodDrag)
 	
 	var ramFunction = func(body):
 		if body.name == "Cannonball":
@@ -211,6 +225,7 @@ func cannonMinigame():
 	while not variables.dragFinished and not gameCanceled:
 		await get_tree().process_frame
 		
+	rodBody.input_event.disconnect(rodDrag)
 	rodBody.get_node("Area2D").body_entered.disconnect(ramFunction)
 	minigameFrame.get_node("Cannon/BallArea2").body_entered.disconnect(finishRamFunction)
 	
@@ -245,7 +260,7 @@ func plankMinigame():
 		"nailing":false
 	}
 	
-	for i in range(1,4,1):
+	for i in range(1,3,1):
 		var plankClone = plankTemplate.duplicate()
 		plankClone.name = "PlankClone"+str(i)
 		plankClone.rotation_degrees = randf_range(-40,40)
@@ -337,7 +352,7 @@ func plankMinigame():
 	
 	placePlankSignal.connect(placeFunction)
 	
-	while placedPlanks < 3 and not gameCanceled:
+	while placedPlanks < 2 and not gameCanceled:
 		await get_tree().process_frame
 		
 	holeArea.body_entered.disconnect(enterFunction)
@@ -458,6 +473,7 @@ func startGame(gameType:String,interactableObject:Interactable):
 			mainFrame.visible = true
 			$Background.visible = true
 		elif gameType == "PlankMinigame":
+			GameManager.spawnedHoles -= 1
 			interactableObject.queue_free()
 	
 		

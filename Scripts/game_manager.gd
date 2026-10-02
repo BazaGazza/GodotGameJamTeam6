@@ -105,12 +105,11 @@ func _process(delta: float) -> void:
 		scheduleHoleSpawn(progress)
 		fireCannons(progress)
 
-	#ship spawning is handled by a ship when it dies
-
-	#if timerInt >= nextShipTime:
+	if timerInt >= nextShipTime:
+		#ship scheduling is handled by a ship when it dies
 		#scheduleShipSpawn(progress)
-		#if spawnedShips == 0:
-			#spawnShip()
+		if spawnedShips == 0:
+			spawnShip()
 		
 
 

@@ -74,7 +74,7 @@ func startAim():
 	var cooldownFunc = func():
 		await get_tree().create_timer(5,false).timeout
 		cannonSprite.get_node("SmokeParticle").emitting = false
-		#cannon.set_meta("Cooldown",false)
+		cannonSprite.get_parent().set_meta("Cooldown",false)
 		
 	cooldownFunc.call()
 	
