@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 		bg1.position.x -= ocean_speed * delta
 		bg2.position.x -= ocean_speed * delta
 		rock.position.x -= ocean_speed * delta
+		print(rock.position.x)
 		
 	
 	
@@ -43,8 +44,8 @@ func _process(delta: float) -> void:
 	if bg2.position.x <= -sprite_width:
 		bg2.position.x = bg1.position.x + sprite_width
 
-	if rock.position.x <= sprite_width:
-		rock.position.x = randf_range(3000, 7000)
+	if rock.position.x <= 0:
+		rock.position.x = randf_range(700, 1300)
 		rock.position.y = originy
 
 
@@ -55,6 +56,6 @@ func _on_hole_area_body_entered(body: Node2D) -> void:
 
 
 func _on_hole_area_body_exited(body: Node2D) -> void:
-	if body.name == "HoleArea":
+	if body.name == "rocky":
 		("free of rock")
 		isStuck = false

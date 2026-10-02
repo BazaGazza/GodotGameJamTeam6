@@ -227,7 +227,7 @@ metadata/_edit_lock_ = true
 
 [node name="rocky" type="CharacterBody2D" parent="Backgrounds" unique_id=1560403940]
 unique_name_in_owner = true
-position = Vector2(1300, 100)
+position = Vector2(1000, 100)
 scale = Vector2(0.25, 0.25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Backgrounds/rocky" unique_id=1237482496]

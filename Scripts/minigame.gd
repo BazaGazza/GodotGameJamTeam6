@@ -453,14 +453,15 @@ func wheelMinigame(): #RODOLFO ADD WHEEL minigame
 		if revolutions >= 3: 
 			print("COMPLETE!")
 			# Calculate duration from distance and speed
-			var distance: float = 200.0
-			var speed: float = 50.0
+			var distance: float = 400.0
+			var speed: float = 25.0
 			var duration: float = distance / speed  # Equals 4.0 seconds
 
 			var tween = create_tween()
 
 # Move UP by 200 pixels over 4 seconds:
-			tween.tween_property(rock, "position:y", rock.position.y - distance, duration)
+			tween.tween_property(rock, "position:y", rock.position.y + distance, duration)
+			
 
 # (OR) Move DOWN by 200 pixels over 4 seconds:
 # tween.tween_property(rock, "position:y", rock.position.y + distance, duration)
