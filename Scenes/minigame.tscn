@@ -17,7 +17,7 @@
 size = Vector2(4.677889, 84.22968)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_id8w1"]
-size = Vector2(5.7423134, 84.22968)
+size = Vector2(7.122858, 84.22968)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l1l02"]
 size = Vector2(194, 205)
@@ -84,7 +84,6 @@ theme_override_constants/margin_bottom = 50
 
 [node name="CannonMinigame" type="Control" parent="MainFrame" unique_id=1902821591]
 process_mode = 4
-visible = false
 layout_mode = 2
 mouse_filter = 1
 
@@ -110,7 +109,7 @@ collision_mask = 4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MainFrame/CannonMinigame/Cannon/StaticBody2D" unique_id=284108390]
 scale = Vector2(0.99999994, 0.99999994)
-polygon = PackedVector2Array(7.5, -20.3414, 293.48215, -19.18068, 292.5893, -1.3235474, 1.25, -2.2164001, 1.5178528, 126.80145, 295.7143, 128.58719, 296.16074, 143.76575, -8.750008, 143.31934, -48.125, 122.1586, -66.25001, 84.0336, -58.125008, 21.5336, -21.875, -13.4664)
+polygon = PackedVector2Array(7.5, -20.3414, 293.48215, -19.18068, 292.5893, -1.3235474, -2.0535736, -4.8949738, -2.0535736, 128.14075, 295.7143, 128.58719, 296.16074, 143.76575, -8.750008, 143.31934, -48.125, 122.1586, -66.25001, 84.0336, -58.125008, 21.5336, -21.875, -13.4664)
 
 [node name="PowderArea" type="Area2D" parent="MainFrame/CannonMinigame/Cannon" unique_id=674741054]
 position = Vector2(171, -21.999992)
@@ -119,7 +118,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Cannon/PowderArea" unique_id=315124262]
-position = Vector2(26.512594, 61.78147)
+position = Vector2(18.594105, 61.78147)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_oood0")
 
@@ -142,7 +141,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainFrame/CannonMinigame/Cannon/BallArea2" unique_id=1365130260]
-position = Vector2(69.39252, 61.875)
+position = Vector2(70.47969, 61.874985)
 scale = Vector2(1.5749991, 1.5749991)
 shape = SubResource("RectangleShape2D_id8w1")
 debug_color = Color(0.70196074, 0, 0, 0.41960785)
@@ -177,7 +176,8 @@ scale = Vector2(0.9727748, 0.9727748)
 shape = SubResource("CircleShape2D_l1l02")
 
 [node name="Rod" type="CharacterBody2D" parent="MainFrame/CannonMinigame" unique_id=328639442]
-position = Vector2(1400, 873)
+position = Vector2(1478.9999, 873)
+scale = Vector2(0.85, 0.85)
 collision_layer = 4
 collision_mask = 4
 input_pickable = true
@@ -207,6 +207,7 @@ debug_color = Color(0.70196074, 0, 0, 0.41960785)
 
 [node name="PlankMinigame" type="Control" parent="MainFrame" unique_id=114902012]
 process_mode = 4
+visible = false
 layout_mode = 2
 mouse_filter = 1
 
@@ -426,7 +427,7 @@ z_index = 10
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.44811198
-anchor_top = 0.14444445
+anchor_top = 0.13950616
 anchor_right = 0.55188805
 anchor_bottom = 0.13950616
 offset_left = -0.75

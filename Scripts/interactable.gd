@@ -25,20 +25,28 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_toggle_prompt(newInteractable):
-	if newInteractable != self:
-		if extraIcon:
-			extraIcon.visible = false
-		$Icon.hide()
 
-func _on_body_entered(body: Node2D) -> void:
-	if body is not Player: return
+
+func visualShow():
+
 	if currentPlayer.doingMinigame == true: return
 	if self.get_meta("Cooldown",false) == true: return
 	
 	if extraIcon:
 		extraIcon.visible = true
 	$Icon.show()
+
+func _on_toggle_prompt(newInteractable):
+	if newInteractable != self:
+		if extraIcon:
+			extraIcon.visible = false
+		$Icon.hide()
+	elif $Icon.visible == false:
+		visualShow()
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is not Player: return
+	visualShow()
 	InteractionManager.showPrompt(self)
 
 func _on_body_exited(body: Node2D) -> void:

@@ -33,5 +33,5 @@ metadata/_edit_use_anchors_ = true
 
 [node name="WaterSound" type="AudioStreamPlayer" parent="." index="3" unique_id=2097609826]
 stream = ExtResource("3_wow6u")
-volume_db = -20.0
+volume_db = -15.0
 autoplay = true

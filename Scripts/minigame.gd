@@ -157,7 +157,7 @@ func _physics_process(delta: float) -> void:
 			
 			# i'm not using distance_to because only the horizontal movement is relevant
 			distance = abs(currentPos.x - previousPosition.x)
-			currentRamSpeed += 5 + 2*log(1+distance/100)
+			currentRamSpeed += 1 + 12*log(1+distance/100)
 			previousPosition = currentPos
 	
 	#1/distance, so standing still is more penalized, and making big movements, there's less decay
@@ -535,3 +535,5 @@ func startGame(gameType:String,interactableObject:Interactable):
 	currentPlayer.movementSpeed = currentPlayer.baseSpeed
 	currentPlayer.doingMinigame = false
 	parentCanvas.visible = false
+	if gameCanceled:
+		InteractionManager.showPrompt(interactableObject)
